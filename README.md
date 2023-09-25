@@ -1,2 +1,9 @@
-# CEESP_UFSM
-Projeto com WPF e Arduino responsável pelo monitoramento de um gerador trifásico sincrono.
+# CEESP-UFSM
+---
+title: "CEESP-UFSM"
+author: "Filipe Sacchet Kaizer"
+date: "Sep 25, 2023"
+---
+
+## Descrição:
+
