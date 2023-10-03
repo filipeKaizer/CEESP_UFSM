@@ -1,0 +1,67 @@
+﻿<Page x:Class="CEESP_software.Dados"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CEESP_software"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Dados">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GridSplitter HorizontalAlignment="Left" Height="300" Margin="560,86,0,0" VerticalAlignment="Top" Width="2" Background="#66FFFFFF"/>
+        <Button x:Name="btGraph" Content="" HorizontalAlignment="Left" Margin="58,402,0,0" VerticalAlignment="Top" BorderBrush="#00000000" Width="30" Height="30" Foreground="#02000000" Cursor="Hand" Click="btGraph_Click">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btDelete" Content="" HorizontalAlignment="Left" Margin="508,402,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/mdi_delete-outline.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/mdi_delete-outline.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btEdit" Content="" HorizontalAlignment="Left" Margin="478,402,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="btEdit_Click_1">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/edit.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/edit.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btSave" Content="" HorizontalAlignment="Left" Margin="448,402,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="30" Height="30" Cursor="Hand">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/save.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/save.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="591,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Ia:" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="586,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Va:" FontFamily="Times New Roman" FontSize="20" RenderTransformOrigin="1.2,0.652"/>
+        <TextBlock HorizontalAlignment="Left" Margin="569,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="XsIa:" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="595,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20" Height="28"><Run Text="φ:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="TBIa" HorizontalAlignment="Left" Margin="630,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFDFAFA" SelectionTextBrush="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBVa" HorizontalAlignment="Left" Margin="630,128,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBXA" HorizontalAlignment="Left" Margin="630,152,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBAngle" HorizontalAlignment="Left" Margin="630,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <Rectangle x:Name="RSave" HorizontalAlignment="Left" Height="24" Margin="639,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" RadiusX="10" RadiusY="10" Fill="#FF8C8EB8" Visibility="Hidden"/>
+        <TextBlock x:Name="Tsave" HorizontalAlignment="Left" Margin="646,316,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Foreground="#FF120321" Visibility="Hidden"/>
+        <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="639,316,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand"/>
+    </Grid>
+</Page>

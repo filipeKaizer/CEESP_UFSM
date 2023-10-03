@@ -1,0 +1,163 @@
+﻿<Page x:Class="CEESP_software.Grafico"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CEESP_software"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      Title="Grafico" Width="798">
+    <Page.Resources>
+        <Storyboard x:Key="HideSub">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Legenda" Storyboard.TargetProperty="(Canvas.Left)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="230"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="850"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Legenda" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ShowSub">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Legenda" Storyboard.TargetProperty="(Canvas.Left)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="850">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="230">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="HideInfo">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Info" Storyboard.TargetProperty="(Canvas.Left)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="26">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Info" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ShowInfo">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Info" Storyboard.TargetProperty="(Canvas.Left)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="26">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Info" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid Background="#33010101" Margin="0,0,15,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Titulo" Content="Grafico" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White" Height="36" Width="86" d:IsHidden="True"/>
+        <Canvas x:Name="Graph" Margin="-4,-1,0,1">
+            <Button x:Name="refresh" Content="" Canvas.Left="730" Canvas.Top="11" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.083,0.467" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Vector.png"/>
+                </Button.OpacityMask>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Vector.png"/>
+                </Button.Background>
+            </Button>
+            <ComboBox x:Name="CBTimes" Canvas.Left="685" Canvas.Top="10" Width="32" Height="32" BorderBrush="#004A3D3D" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="CBTimes_SelectionChanged" Cursor="Hand">
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="/ri_time-line.png"/>
+                </ComboBox.Background>
+                <ComboBox.OpacityMask>
+                    <ImageBrush ImageSource="/ri_time-line.png"/>
+                </ComboBox.OpacityMask>
+            </ComboBox>
+            <Label x:Name="TimeSelectet" Content="5s" Canvas.Left="708" Canvas.Top="26" Background="#00FBFAFA" Foreground="#FFF7E0E0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="22"/>
+            <Button x:Name="btDados" Content="" Canvas.Left="10" Canvas.Top="407" Width="31" Height="33" Foreground="#00000000" BorderBrush="#00707070" RenderTransformOrigin="0.758,0.53" Cursor="Hand" Click="btDados_Click">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Data.png"/>
+                </Button.OpacityMask>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Data.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btLegenda" Content="Button" Canvas.Left="730" Canvas.Top="403" Width="35" Height="31" BorderBrush="#00707070" Foreground="#00000000" Click="btLegenda_Click" Cursor="Hand">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/Legenda.png"/>
+                </Button.OpacityMask>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Legenda.png"/>
+                </Button.Background>
+            </Button>
+            <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#3F000000">
+                <Label Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,23,60,89"/>
+                <Label Content="Ea:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,51,60,63"/>
+                <Label Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="6,78,60,35"/>
+                <Label Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,105,60,9"/>
+                <Label Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,-4,0,0"/>
+            </Grid>
+            <ComboBox x:Name="Phase" Canvas.Left="312" Canvas.Top="410" Width="176" Height="30" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Foreground="Black" Cursor="Hand">
+                <ComboBoxItem Cursor="Hand" Content="Fase A"/>
+                <ComboBoxItem Content="Fase B"/>
+                <ComboBoxItem Cursor="Hand" Content="Fase C"/>
+                <ComboBoxItem/>
+            </ComboBox>
+            <Grid x:Name="Legenda" Height="30" Canvas.Left="230" Canvas.Top="340" Width="340">
+                <Rectangle x:Name="l" Fill="#FF429743" Margin="0,7,320,3"/>
+                <TextBlock x:Name="l1" TextWrapping="Wrap" Text="Va" Foreground="#FFB2B6B2" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Open Sans" FontSize="20" Margin="25,3,0,0"/>
+                <Rectangle x:Name="l2" Fill="#FFE71717" Margin="68,7,252,3"/>
+                <TextBlock x:Name="l3" TextWrapping="Wrap" Text="Ia" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Margin="92,3,224,0"/>
+                <Rectangle x:Name="l4" Fill="#FFA6016F" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="128,7,0,0"/>
+                <TextBlock x:Name="l5" TextWrapping="Wrap" Text="Ea" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,3,0,0"/>
+                <Rectangle x:Name="l6" Fill="#FFC15100" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="197,7,0,0"/>
+                <TextBlock x:Name="l7" TextWrapping="Wrap" Text="Xs*Ia" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="51" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="222,3,0,0"/>
+                <Rectangle x:Name="l8" Fill="#FF3D0D2C" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.1,0.533" Margin="291,7,0,0"/>
+                <TextBlock x:Name="l9" TextWrapping="Wrap" Text="φ" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,0,0,0"/>
+            </Grid>
+        </Canvas>
+    </Grid>
+</Page>

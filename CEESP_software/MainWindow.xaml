@@ -118,7 +118,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="InicioBt" Content="" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="40" Width="82" Click="Button_Click" Background="#00DDDDDD" BorderBrush="#00707070" Focusable="False" Foreground="#00000000" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="InicioBt" Content="" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="40" Width="82" Click="Button_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Background="#00DDDDDD" BorderBrush="#00707070" Focusable="False" Foreground="#00000000" OpacityMask="#00000000" Cursor="Hand"/>
 
     </Grid>
 </Window>

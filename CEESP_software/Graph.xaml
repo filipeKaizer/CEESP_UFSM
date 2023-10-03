@@ -1,0 +1,86 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CEESP_software"
+      xmlns:oxy="http://oxyplot.org/wpf" x:Class="CEESP_software.Graph"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Graph">
+    <Page.Resources>
+        <Storyboard x:Key="Mostra_Check">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckList" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="116"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckList" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="4"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Esconde_Check">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckList" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="116.666">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckList" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.667">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+
+        <oxy:PlotView x:Name="PlotGraph" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450" Width="800" Background="#33010101"/>
+        <Button x:Name="btReturn" Content="" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btReturn_Click" Cursor="Hand">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/checkList.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/checkList.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="Check_Situation" Content="D" HorizontalAlignment="Left" Margin="81,425,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="10" FontFamily="Times New Roman"/>
+        <Grid x:Name="CheckList" Margin="-75,310,805,46" Width="70" Height="95" Background="#4C424242" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <CheckBox x:Name="VaCheck" Content="Va" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
+            <CheckBox x:Name="IaCheck" Content="Ia" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
+            <CheckBox x:Name="EaCheck" Content="Ea" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
+            <CheckBox x:Name="RPM" Content="RPM" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
+        </Grid>
+
+    </Grid>
+</Page>
