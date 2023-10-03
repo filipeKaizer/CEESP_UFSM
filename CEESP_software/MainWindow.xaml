@@ -6,7 +6,119 @@
         xmlns:local="clr-namespace:CEESP_software"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <Storyboard x:Key="Init">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bInicio" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="118.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="126">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="lInicio" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="118.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="126">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.7000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="label1" Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00" Value="#00EDEEEE">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="00:00:01.2000000" Value="#FFEDEEEE">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bInicio" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="lInicio" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bInicio" Storyboard.TargetProperty="(AutomationProperties.IsOffscreenBehavior)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static IsOffscreenBehavior.Default}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.2000000" Value="{x:Static IsOffscreenBehavior.Default}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.7000000" Value="{x:Static IsOffscreenBehavior.Default}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="lInicio" Storyboard.TargetProperty="(AutomationProperties.IsOffscreenBehavior)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static IsOffscreenBehavior.Default}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.2000000" Value="{x:Static IsOffscreenBehavior.Default}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.7000000" Value="{x:Static IsOffscreenBehavior.Default}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Grid Width="800" Height="450">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0" MappingMode="Absolute" SpreadMethod="Pad">
+                <GradientStop Color="#FF202CA1"/>
+                <GradientStop Color="#FF0C1246" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="label1" Content="Bem-vindo!" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="46" FontSize="30" FontFamily="SansSerif" Foreground="#FFEDEEEE"/>
+        <Rectangle x:Name="bInicio" HorizontalAlignment="Center" Height="35" Margin="0,331,0,0" VerticalAlignment="Top" Width="90" Fill="#FF4C4194" RadiusX="10" RadiusY="10" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label x:Name="lInicio" Content="Inicio" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" FontFamily="SansSerif" FontSize="25" Foreground="#FF0C1246" BorderBrush="#FF0B114B" Padding="5,5,5,5" FontWeight="Bold" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="InicioBt" Content="" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="40" Width="82" Click="Button_Click" Background="#00DDDDDD" BorderBrush="#00707070" Focusable="False" Foreground="#00000000" OpacityMask="#00000000" Cursor="Hand"/>
 
     </Grid>
 </Window>
