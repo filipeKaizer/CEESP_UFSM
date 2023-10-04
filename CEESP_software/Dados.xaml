@@ -67,5 +67,6 @@
         <Rectangle x:Name="RSave" HorizontalAlignment="Left" Height="24" Margin="639,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" RadiusX="10" RadiusY="10" Fill="#FF8C8EB8" Visibility="Hidden"/>
         <TextBlock x:Name="Tsave" HorizontalAlignment="Left" Margin="646,316,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Foreground="#FF120321" Visibility="Hidden"/>
         <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="639,316,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand"/>
+        <Button x:Name="text" Content="Button" HorizontalAlignment="Left" Margin="646,269,0,0" VerticalAlignment="Top" Click="text_Click"/>
     </Grid>
 </Page>

@@ -69,9 +69,9 @@ namespace CEESP_software
 
         private async void test_Click(object sender, RoutedEventArgs e)
         {
-            ListData.colectedData.Add(await serialCOM.readValues());
+            ListData1.colectedData.Add(await serialCOM.readValues());
             
-            List<ColectedData> data = ListData.colectedData;
+           // List<ColectedData> data = ListData1.colectedData;
 
             
         }

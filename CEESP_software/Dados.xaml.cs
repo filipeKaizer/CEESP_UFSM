@@ -31,6 +31,7 @@ namespace CEESP_software
             InitializeComponent();
             CEESP = reference;
             Serial = referenceSerial;
+            
 
         }
 
@@ -53,7 +54,7 @@ namespace CEESP_software
 
         private void btEdit_Click(object sender, RoutedEventArgs e)
         {
-            
+                  
         }
 
         private void btGraph_Click(object sender, RoutedEventArgs e)
@@ -85,6 +86,17 @@ namespace CEESP_software
                 TBAngle.IsEnabled = true;
                 edit = true;
                 btSaveAfterEdit.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void text_Click(object sender, RoutedEventArgs e)
+        {
+            List<ColectedData> data = ListData1.colectedData;
+
+            foreach(ColectedData i in data)
+            {
+                MessageBox.Show(i.Va[0].ToString());
             }
 
         }

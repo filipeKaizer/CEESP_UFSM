@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Media.Animation;
 
 namespace CEESP_software
@@ -14,7 +13,7 @@ namespace CEESP_software
         private Storyboard MostraMenu;
         private bool MenuAberto = false;
 
-        public  List<ColectedData> colectedData;
+        public List<ColectedData> colectedData;
         public SerialCOM serialCOM;
         /*private Brush rtColorInicio;
         private Brush rtColorGrafico;
@@ -83,7 +82,7 @@ namespace CEESP_software
 
         private void btIncio_Click(object sender, RoutedEventArgs e)
         {
-            SetPage(0, true);  
+            SetPage(0, true);
         }
 
         private void btGrafico_Click(object sender, RoutedEventArgs e)
