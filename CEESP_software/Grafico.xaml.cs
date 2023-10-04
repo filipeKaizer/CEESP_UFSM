@@ -28,12 +28,14 @@ namespace CEESP_software
         private bool sub = true;
         private bool info = true;
 
+        public List<ColectedData> Data;
+        public SerialCOM Serial;
         Storyboard ShowInfo;
         Storyboard HideInfo;
         Storyboard ShowSub;
         Storyboard HideSub;
 
-        public Grafico()
+        public Grafico(SerialCOM referenceSerial, List<ColectedData> referenceData)
         {
             InitializeComponent();
             InitializeTime(10);
@@ -43,7 +45,9 @@ namespace CEESP_software
             ShowSub = (Storyboard)FindResource("ShowSub");
             HideSub = (Storyboard)FindResource("HideSub");
 
-            plot = new plot(250, 450/2, 5);
+            plot = new plot(250, 450 / 2, 5);
+            Data = referenceData;
+            Serial = referenceSerial;
         }
 
 

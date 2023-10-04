@@ -2,6 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Threading;
+using System.Windows.Media.Animation;
+using System.Linq;
 
 namespace CEESP_software
 {
@@ -15,12 +17,14 @@ namespace CEESP_software
         private SerialCOM serialCOM;
         private Brush originalBtColor;
 
+        Storyboard connectAnim;
+        bool connectAnimStatus = false;
 
         public Inicio()
         {
             InitializeComponent();
             this.serialCOM = new SerialCOM();
-
+            connectAnim = (Storyboard)FindResource("Connected");
         }
 
 
@@ -49,7 +53,14 @@ namespace CEESP_software
 
         private void LPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!connectAnimStatus)
+            {
+                connectAnim.Begin();
+                connectAnimStatus = true;
+            }
 
+
+           // data.Add(serialCOM.readValues());
         }
     }
 }

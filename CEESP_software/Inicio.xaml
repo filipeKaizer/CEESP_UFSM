@@ -7,17 +7,83 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Inicio">
+    <Page.Resources>
+        <Storyboard x:Key="Connected">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LPorts" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-559.569"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GXs" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-557.569"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LPorts" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="7.244"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GXs" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="7.244"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LPorts" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GXs" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Lbutton" Storyboard.TargetProperty="(ContentControl.Content)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="Buscar"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="Iniciar"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="Iniciar"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
 
     <Grid>
 
         <Label x:Name="Titulo" Content="Monitor de Gerador Síncrono" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White"/>
         <Rectangle x:Name="btRetangulo" HorizontalAlignment="Center" Height="30" Margin="0,376,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Fill="#F2CAC3C3" RadiusX="12" RadiusY="12"/>
         <Label x:Name="Lbutton" Content="Buscar" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Foreground="#FF110931" FontWeight="Bold" FontFamily="Segoe UI" FontSize="22" Height="38"/>
-        <ListBox x:Name="LPorts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="300,225,300,105" Width="200" Height="120" Background="#5E373D4E" BorderBrush="#FF051C18" Foreground="#FFEFEAB2" FontWeight="SemiBold" FontSize="15" FontStyle="Italic" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" SelectionChanged="LPorts_SelectionChanged"/>
+        <ListBox x:Name="LPorts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="300,225,300,105" Width="200" Height="120" Background="#5E373D4E" BorderBrush="#FF051C18" Foreground="#FFEFEAB2" FontWeight="SemiBold" FontSize="15" FontStyle="Italic" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" SelectionChanged="LPorts_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
         <Button x:Name="Buscar" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" HorizontalAlignment="Center" Margin="0,376,0,0" VerticalAlignment="Top" Background="#00DDDDE0" Foreground="#00000000" Width="100" Height="30" BorderBrush="#00707070" Cursor="Hand" OpacityMask="#00000000" Click="Buscar_Click"/>
         <ProgressBar x:Name="progress" HorizontalAlignment="Center" Height="10" Margin="0,432,0,0" VerticalAlignment="Top" Width="306" BorderBrush="{x:Null}" Foreground="#FF247508" Visibility="Hidden"/>
         <Label x:Name="verbose" Content="Buscando" HorizontalAlignment="Center" Margin="0,409,0,0" VerticalAlignment="Top" Width="200" Foreground="#FFE0BEBE" FontSize="10" Visibility="Hidden"/>
-        <Grid x:Name="GXs" Margin="800,205,-263,105">
+        <Grid x:Name="GXs" Margin="827,225,-290,85" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
 
             <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Informe a resistencia Xs:" VerticalAlignment="Top" FontSize="22"/>
             <TextBox x:Name="Xs" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="100" Height="24" FontSize="15" TextAlignment="Center" RenderTransformOrigin="0.48,1.6" Background="White"/>

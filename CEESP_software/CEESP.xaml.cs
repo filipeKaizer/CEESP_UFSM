@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media.Animation;
 
 namespace CEESP_software
@@ -12,6 +14,8 @@ namespace CEESP_software
         private Storyboard MostraMenu;
         private bool MenuAberto = false;
 
+        public List<ColectedData> colectedData;
+        public SerialCOM serialCOM;
         /*private Brush rtColorInicio;
         private Brush rtColorGrafico;
         private Brush rtColorDados;
@@ -24,8 +28,8 @@ namespace CEESP_software
 
             //Associa cada frame do tabcontrol Work a uma pagina.
             FrameInicio.Navigate(new Inicio());
-            FrameGraficos.Navigate(new Grafico());
-            FrameDados.Navigate(new Dados(this));
+            FrameGraficos.Navigate(new Grafico(this.serialCOM, this.colectedData));
+            FrameDados.Navigate(new Dados(this, this.colectedData, this.serialCOM));
             FrameGraphPlot.Navigate(new Graph(this));
 
             this.EscondeMenu = (Storyboard)FindResource("EscondeMenu");
@@ -57,6 +61,7 @@ namespace CEESP_software
                 MenuAberto = false;
             }
         }
+
 
         private void Esconder()
         {

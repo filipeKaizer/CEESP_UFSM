@@ -8,9 +8,10 @@ using System.Windows;
 
 namespace CEESP_software
 {
-    internal class SerialCOM
-    {
 
+    public  class SerialCOM
+    {
+        String portSelected="";
         public SerialCOM()
         {
 
@@ -57,6 +58,60 @@ namespace CEESP_software
             return comp;
         }
 
+
+
+        public async Task readValues(List<ColectedData> Data)
+        {
+            float[] Va = new float[4]; //0-Media, 1-A, 2-B, 3-C
+            float[] Ia = new float[4];
+            float[] FP = new float[4];
+            float frequency = 0;
+            float RPM = 0;
+
+            String[] values = new string[14];
+
+            SerialPort connection = new SerialPort(portSelected, 9600, Parity.None, 8, StopBits.One);
+
+            try{
+                connection.Open();
+
+             //   connection.WriteLine("snd");
+
+                values = connection.ReadLine().Split(',');
+
+                connection.Close();
+            } catch(Exception e)
+            {
+                //MessageBox.Show(e.Message);
+            }
+
+            for (int i=0; i<values.Length; i++)
+            {
+                if (i<3)
+                {
+                    Va.Append(float.Parse(values[i]));
+                } else if (i < 8)
+                {
+                    Ia.Append(float.Parse(values[i]));
+                } else if (i<12)
+                {
+                    FP.Append(float.Parse(values[i]));
+                } else if (i==12)
+                {
+                    frequency = float.Parse(values[i]);
+                } else
+                {
+                    RPM = float.Parse(values[i]);
+                }
+            }
+
+
+            ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
+
+            Data.Add(colected); //Atualiza a lista de dados passada por parametro.
+
+
+        }
 
     }
 }

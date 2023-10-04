@@ -12,10 +12,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black">
+        <ListView x:Name="ListData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Va" DisplayMemberBinding="{Binding Va}"/>
+                    <GridViewColumn Header="Ia" DisplayMemberBinding="{Binding Ia}"/>
+                    <GridViewColumn Header="FP" DisplayMemberBinding="{Binding FP}"/>
+                    <GridViewColumn Header="RPM" DisplayMemberBinding="{Binding RPM}"/>
+                    <GridViewColumn Header="F" DisplayMemberBinding="{Binding frequency}"/>
                 </GridView>
             </ListView.View>
         </ListView>
