@@ -11,10 +11,12 @@ namespace CEESP_software
 
     public  class SerialCOM
     {
-        String portSelected="";
-        public SerialCOM()
-        {
+        String portSelected="COM9";
+        List<ColectedData> colectedDatas;
 
+        public SerialCOM(List<ColectedData> DataReference)
+        {
+            this.colectedDatas = DataReference;
         }
 
 
@@ -36,9 +38,10 @@ namespace CEESP_software
                     int B = random.Next(0, 101);
 
                     int resposta = (A % B) * (A + B); // O teste é feito com uma operação matemática
-
-                    serialPort.WriteLine($"{A},{B}");
                     
+                    serialPort.WriteLine("test"); //Pede teste
+
+                    serialPort.WriteLine($"{A},{B}"); //Envia os valores de teste
 
                     if (int.Parse(serialPort.ReadLine()) == resposta)
                     {
@@ -60,7 +63,7 @@ namespace CEESP_software
 
 
 
-        public async Task readValues(List<ColectedData> Data)
+        public async Task<ColectedData> readValues()
         {
             float[] Va = new float[4]; //0-Media, 1-A, 2-B, 3-C
             float[] Ia = new float[4];
@@ -68,21 +71,26 @@ namespace CEESP_software
             float frequency = 0;
             float RPM = 0;
 
-            String[] values = new string[14];
-
-            SerialPort connection = new SerialPort(portSelected, 9600, Parity.None, 8, StopBits.One);
+            String[] values = new string[13];
+            MessageBox.Show("Entrou");
+            
 
             try{
+                SerialPort connection = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
                 connection.Open();
+                connection.WriteLine("snd"); //Pede envio de dados
 
-             //   connection.WriteLine("snd");
+                String response = connection.ReadLine();
+                values = response.Split(';');
+                MessageBox.Show(response);
 
-                values = connection.ReadLine().Split(',');
+
 
                 connection.Close();
+
             } catch(Exception e)
             {
-                //MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
 
             for (int i=0; i<values.Length; i++)
@@ -108,9 +116,9 @@ namespace CEESP_software
 
             ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
 
-            Data.Add(colected); //Atualiza a lista de dados passada por parametro.
+            return colected;   
 
-
+            
         }
 
     }

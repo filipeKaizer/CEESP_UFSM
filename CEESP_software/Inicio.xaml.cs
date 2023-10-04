@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Threading;
 using System.Windows.Media.Animation;
 using System.Linq;
+using System.Windows;
 
 namespace CEESP_software
 {
@@ -13,6 +14,7 @@ namespace CEESP_software
     public partial class Inicio : Page
     {
         List <string> compatiblePorts;
+        List<ColectedData> data;
 
         private SerialCOM serialCOM;
         private Brush originalBtColor;
@@ -20,11 +22,12 @@ namespace CEESP_software
         Storyboard connectAnim;
         bool connectAnimStatus = false;
 
-        public Inicio()
+        public Inicio(List<ColectedData> data)
         {
             InitializeComponent();
-            this.serialCOM = new SerialCOM();
+            this.serialCOM = new SerialCOM(this.data);
             connectAnim = (Storyboard)FindResource("Connected");
+            this.data = data;
         }
 
 
@@ -49,6 +52,7 @@ namespace CEESP_software
             {
                 LPorts.Items.Add(port);
             }
+            
         }
 
         private void LPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,8 +63,17 @@ namespace CEESP_software
                 connectAnimStatus = true;
             }
 
-
+             
            // data.Add(serialCOM.readValues());
+        }
+
+        private async void test_Click(object sender, RoutedEventArgs e)
+        {
+            ListData.colectedData.Add(await serialCOM.readValues());
+            
+            List<ColectedData> data = ListData.colectedData;
+
+            
         }
     }
 }

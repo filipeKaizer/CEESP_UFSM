@@ -89,6 +89,7 @@
             <TextBox x:Name="Xs" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="100" Height="24" FontSize="15" TextAlignment="Center" RenderTransformOrigin="0.48,1.6" Background="White"/>
             <TextBlock HorizontalAlignment="Left" Margin="16,113,0,0" TextWrapping="Wrap" Text="Caso não for informado, será adotado 5Ω." VerticalAlignment="Top"/>
         </Grid>
+        <Button x:Name="test" Content="Button" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Click="test_Click"/>
 
     </Grid>
 </Page>
