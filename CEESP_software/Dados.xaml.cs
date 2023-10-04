@@ -35,7 +35,6 @@ namespace CEESP_software
 
         }
 
-
         private  void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)
         {
            
@@ -94,10 +93,6 @@ namespace CEESP_software
         {
             List<ColectedData> data = ListData1.colectedData;
 
-            foreach(ColectedData i in data)
-            {
-                MessageBox.Show(i.Va[0].ToString());
-            }
 
         }
     }

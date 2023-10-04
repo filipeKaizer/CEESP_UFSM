@@ -62,9 +62,6 @@ namespace CEESP_software
                 connectAnim.Begin();
                 connectAnimStatus = true;
             }
-
-             
-           // data.Add(serialCOM.readValues());
         }
 
         private async void test_Click(object sender, RoutedEventArgs e)

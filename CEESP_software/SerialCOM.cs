@@ -11,7 +11,7 @@ namespace CEESP_software
 
     public  class SerialCOM
     {
-        String portSelected="COM9";
+        public static String portSelected="";
         List<ColectedData> colectedDatas;
 
         public SerialCOM(List<ColectedData> DataReference)
@@ -48,9 +48,6 @@ namespace CEESP_software
                         comp.Add(port);
                         MessageBox.Show("Porta compatível: " + port);
                     }
-
-
-
                     serialPort.Close();
                 }
                 catch (Exception e)
@@ -65,9 +62,14 @@ namespace CEESP_software
 
         public async Task<ColectedData> readValues()
         {
-            float[] Va = new float[4]; //0-Media, 1-A, 2-B, 3-C
+            float[] Va = new float[4];
+            int countVa = 0;
             float[] Ia = new float[4];
+            int countIa = 0;
             float[] FP = new float[4];
+            int countFP = 0;
+            float[] CFP = new float[4];
+            int countCFP = 0;
             float frequency = 0;
             float RPM = 0;
 
@@ -78,13 +80,12 @@ namespace CEESP_software
             try{
                 SerialPort connection = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
                 connection.Open();
+
                 connection.WriteLine("snd"); //Pede envio de dados
 
                 String response = connection.ReadLine();
                 values = response.Split(';');
                 MessageBox.Show(response);
-
-
 
                 connection.Close();
 
@@ -95,24 +96,27 @@ namespace CEESP_software
 
             for (int i=0; i<values.Length; i++)
             {
-                if (i<3)
+                if (i < 4)
                 {
-                    Va.Append(float.Parse(values[i]));
-                } else if (i < 8)
+                   Va[countVa] = (float.Parse(values[i]));
+                    countVa++;
+                } else if (i>=4 && i<8) 
                 {
-                    Ia.Append(float.Parse(values[i]));
-                } else if (i<12)
+                    Ia[countIa] = (float.Parse(values[i]));
+                    countIa++;
+                } else if (i>=8 && i<12)
                 {
-                    FP.Append(float.Parse(values[i]));
-                } else if (i==12)
+                    FP[countFP] = (float.Parse(values[i]));
+                    countFP++;
+                } else if (i>=12 && i<16)
                 {
-                    frequency = float.Parse(values[i]);
+                    CFP[countCFP] = (float.Parse(values[i]));
+                    countCFP++;
                 } else
                 {
-                    RPM = float.Parse(values[i]);
+                    frequency = (float.Parse(values[i]));
                 }
             }
-
 
             ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
 
