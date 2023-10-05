@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Threading;
 using System.Windows.Media.Animation;
-using System.Linq;
-using System.Windows;
 
 namespace CEESP_software
 {
@@ -13,7 +11,7 @@ namespace CEESP_software
     /// </summary>
     public partial class Inicio : Page
     {
-        List <string> compatiblePorts;
+        List<string> compatiblePorts;
         List<ColectedData> data;
 
         private SerialCOM serialCOM;
@@ -46,13 +44,13 @@ namespace CEESP_software
         private async void Buscar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             LPorts.Visibility = System.Windows.Visibility.Visible;
-            List <string> compatiblePorts = await serialCOM.SearchPorts(); //Busca portas de forma assincrona
+            List<string> compatiblePorts = await serialCOM.SearchPorts(); //Busca portas de forma assincrona
 
             foreach (string port in compatiblePorts)
             {
                 LPorts.Items.Add(port);
             }
-            
+
         }
 
         private void LPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,10 +65,6 @@ namespace CEESP_software
         private async void test_Click(object sender, RoutedEventArgs e)
         {
             ListData1.colectedData.Add(await serialCOM.readValues());
-            
-           // List<ColectedData> data = ListData1.colectedData;
-
-            
         }
     }
 }

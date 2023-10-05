@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -62,6 +63,8 @@ namespace CEESP_software
 
         public async Task<ColectedData> readValues()
         {
+            bool connected = false;
+
             float[] Va = new float[4];
             int countVa = 0;
             float[] Ia = new float[4];
@@ -73,9 +76,8 @@ namespace CEESP_software
             float frequency = 0;
             float RPM = 0;
 
-            String[] values = new string[13];
-            MessageBox.Show("Entrou");
-            
+
+            String[] values = { };
 
             try{
                 SerialPort connection = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
@@ -83,47 +85,71 @@ namespace CEESP_software
 
                 connection.WriteLine("snd"); //Pede envio de dados
 
-                String response = connection.ReadLine();
-                values = response.Split(';');
-                MessageBox.Show(response);
+                values = await Receber(connection); //Chama de forma assincrona a função para ler dados do arduino
+                String msg="";
+                foreach(String i in values)
+                {
+                    msg += i+" ";
+                }
 
                 connection.Close();
+                connected = true;
 
             } catch(Exception e)
             {
                 MessageBox.Show(e.Message);
+                connected = false;
             }
-
-            for (int i=0; i<values.Length; i++)
+            
+            if (connected)
             {
-                if (i < 4)
+                for (int i = 0; i < values.Length; i++)
                 {
-                   Va[countVa] = (float.Parse(values[i]));
-                    countVa++;
-                } else if (i>=4 && i<8) 
-                {
-                    Ia[countIa] = (float.Parse(values[i]));
-                    countIa++;
-                } else if (i>=8 && i<12)
-                {
-                    FP[countFP] = (float.Parse(values[i]));
-                    countFP++;
-                } else if (i>=12 && i<16)
-                {
-                    CFP[countCFP] = (float.Parse(values[i]));
-                    countCFP++;
-                } else
-                {
-                    frequency = (float.Parse(values[i]));
+                    if (i < 4)
+                    {
+                        Va[countVa] = (float.Parse(values[i]));
+                        countVa++;
+                    }
+                    else if (i >= 4 && i < 8)
+                    {
+                        Ia[countIa] = (float.Parse(values[i]));
+                        countIa++;
+                    }
+                    else if (i >= 8 && i < 12)
+                    {
+                        FP[countFP] = (float.Parse(values[i]));
+                        countFP++;
+                    }
+                    else if (i >= 12 && i < 16)
+                    {
+                        CFP[countCFP] = (float.Parse(values[i]));
+                        countCFP++;
+                    }
+                    else
+                    {
+                        frequency = (float.Parse(values[i]));
+                    }
                 }
             }
 
             ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
 
             return colected;   
-
-            
         }
 
+
+        private Task<string[]> Receber(SerialPort con)
+        {
+            String[] values = new string[13];
+            return Task.Run(() =>
+            {
+                string message = "";
+                
+                String response = con.ReadLine();
+                String [] values = response.Split(';');
+                    
+                return values; 
+            });
+        }
     }
 }
