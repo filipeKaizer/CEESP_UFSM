@@ -23,5 +23,30 @@ namespace CEESP_software
             this.RPM = RPM;
             this.frequency = frequency;
         }
+
+        public float getIa(int index)
+        {
+            return this.Ia[index];
+        }
+
+        public float getVa(int index) 
+        {
+            return this.Va[index]; 
+        }
+
+        public float getFP(int index)
+        {
+            return this.FP[index];
+        }
+
+        public float getRPM()
+        {
+            return this.RPM;
+        }
+
+        public float getFrequency()
+        {
+            return this.frequency;
+        }
     }
 }

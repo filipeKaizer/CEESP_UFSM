@@ -101,6 +101,7 @@ namespace CEESP_software
                 connected = false;
             }
             
+
             if (connected)
             {
                 for (int i = 0; i < values.Length; i++)
@@ -131,6 +132,11 @@ namespace CEESP_software
                     }
                 }
             }
+            Ia[0] = 12; Ia[1] = 12; Ia[2] = 12; Ia[3] = 12;
+            Va[0] = 220; Va[1] = 220; Va[2] = 220; Va[3] = 220;
+            FP[0] = 0.10f; FP[1] = 0.10f; FP[2] = 0.10f; FP[3] = 0.10f;
+            RPM = 1500;
+            frequency = 60;
 
             ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
 
@@ -150,6 +156,7 @@ namespace CEESP_software
                     
                 return values; 
             });
+            
         }
     }
 }

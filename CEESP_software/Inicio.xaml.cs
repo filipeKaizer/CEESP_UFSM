@@ -20,12 +20,15 @@ namespace CEESP_software
         Storyboard connectAnim;
         bool connectAnimStatus = false;
 
-        public Inicio(List<ColectedData> data)
+        Grafico grafico;
+
+        public Inicio(List<ColectedData> data, Grafico grafico, SerialCOM serialCOM)
         {
             InitializeComponent();
-            this.serialCOM = new SerialCOM(this.data);
+            this.serialCOM = serialCOM;
             connectAnim = (Storyboard)FindResource("Connected");
             this.data = data;
+            this.grafico = grafico;
         }
 
 
@@ -65,6 +68,7 @@ namespace CEESP_software
         private async void test_Click(object sender, RoutedEventArgs e)
         {
             ListData1.colectedData.Add(await serialCOM.readValues());
+           // grafico.drawLines();
         }
     }
 }

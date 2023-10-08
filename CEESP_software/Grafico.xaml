@@ -134,17 +134,17 @@
                 </Button.Background>
             </Button>
             <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#3F000000">
-                <Label Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,23,60,89"/>
-                <Label Content="Ea:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,51,60,63"/>
-                <Label Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="6,78,60,35"/>
-                <Label Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,105,60,9"/>
-                <Label Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,-4,0,0"/>
+                <Label x:Name="VaValue" Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,23,60,89"/>
+                <Label x:Name="EaValue" Content="Ea:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,51,60,63"/>
+                <Label x:Name="XsIaValue" Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="6,78,60,35"/>
+                <Label x:Name="FPValue" Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,105,60,9"/>
+                <Label x:Name="IaValue" Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,-4,0,0"/>
             </Grid>
-            <ComboBox x:Name="Phase" Canvas.Left="312" Canvas.Top="410" Width="176" Height="30" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Foreground="Black" Cursor="Hand">
+            <ComboBox x:Name="Phase" Canvas.Left="312" Canvas.Top="410" Width="176" Height="30" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Foreground="Black" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="Phase_SelectionChanged">
+                <ComboBoxItem Content="Media"/>
                 <ComboBoxItem Cursor="Hand" Content="Fase A"/>
                 <ComboBoxItem Content="Fase B"/>
                 <ComboBoxItem Cursor="Hand" Content="Fase C"/>
-                <ComboBoxItem/>
             </ComboBox>
             <Grid x:Name="Legenda" Height="30" Canvas.Left="230" Canvas.Top="340" Width="340">
                 <Rectangle x:Name="l" Fill="#FF429743" Margin="0,7,320,3"/>

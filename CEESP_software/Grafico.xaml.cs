@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Threading;
 
 namespace CEESP_software
 {
@@ -29,7 +30,7 @@ namespace CEESP_software
         private bool info = true;
 
         public List<ColectedData> Data;
-        public SerialCOM Serial;
+        private SerialCOM Serial;
         Storyboard ShowInfo;
         Storyboard HideInfo;
         Storyboard ShowSub;
@@ -45,12 +46,12 @@ namespace CEESP_software
             ShowSub = (Storyboard)FindResource("ShowSub");
             HideSub = (Storyboard)FindResource("HideSub");
 
+            Phase.SelectedIndex = 0;
+
             plot = new plot(250, 450 / 2, 5);
             Data = referenceData;
-            Serial = referenceSerial;
+            this.Serial = referenceSerial;
         }
-
-
 
 
         public void drawLines()
@@ -64,19 +65,31 @@ namespace CEESP_software
                 }
             }
 
+            int index = Phase.SelectedIndex;
+            MessageBox.Show(index.ToString());
+            List<ColectedData> data = ListData1.colectedData;
+           // MessageBox.Show(data.Count.ToString());
+            ColectedData valores = data[0]; //Pega o ultimo dado coletado
+
             List<Line> objects = new List<Line>
+
             {
-                plot.createVa(200), //Adiciona Va
-                plot.createIa(10, (float)0.85, true), //Adiciona Ia
-                plot.createXs(10,(float)0.85), //Adiciona Xs
+                plot.createVa(valores.getVa(index)), //Adiciona Va
+                plot.createIa(valores.getIa(index), valores.getFP(index), true), //Adiciona Ia
+                plot.createXs(valores.getIa(index),valores.getFP(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
+
+            VaValue.Content = "Va: "+" V";
+            IaValue.Content = "Ia: " + valores.getIa(index).ToString() + " A";
+            XsIaValue.Content = "XsIa: " + (valores.getIa(index)*5).ToString() + " Ω";
+
+
 
             foreach(Line i in objects)
             {
                 Graph.Children.Add(i);
             }
-
             oldLines = objects;
 ;        }
 
@@ -96,7 +109,7 @@ namespace CEESP_software
 
         private void btLegenda_Click(object sender, RoutedEventArgs e)
         {
-            drawLines();
+            //drawLines();
             if (sub)
             {
                 ShowSub.Stop();
@@ -121,6 +134,14 @@ namespace CEESP_software
                 HideInfo.Stop();
                 ShowInfo.Begin();
                 info = true;
+            }
+        }
+
+        private void Phase_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListData1.colectedData.Count > 0)
+            {
+                drawLines();
             }
         }
     }
