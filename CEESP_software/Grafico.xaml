@@ -100,7 +100,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="Titulo" Content="Grafico" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White" Height="36" Width="86" d:IsHidden="True"/>
         <Canvas x:Name="Graph" Margin="-4,-1,0,1">
-            <Button x:Name="refresh" Content="" Canvas.Left="730" Canvas.Top="11" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.083,0.467" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand">
+            <Button x:Name="refresh" Content="" Canvas.Left="730" Canvas.Top="11" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.083,0.467" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" Click="refresh_Click">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Vector.png"/>
                 </Button.OpacityMask>

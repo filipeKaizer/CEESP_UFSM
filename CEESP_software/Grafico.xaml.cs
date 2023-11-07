@@ -28,6 +28,7 @@ namespace CEESP_software
         private plot plot;
         private bool sub = true;
         private bool info = true;
+        int items=0;
 
         public List<ColectedData> Data;
         private SerialCOM Serial;
@@ -68,14 +69,16 @@ namespace CEESP_software
             int index = Phase.SelectedIndex;
             MessageBox.Show(index.ToString());
             List<ColectedData> data = ListData1.colectedData;
-           // MessageBox.Show(data.Count.ToString());
-            ColectedData valores = data[0]; //Pega o ultimo dado coletado
+            MessageBox.Show(data.Count.ToString());
+            ColectedData valores = data[data.Count-1]; //Pega o ultimo dado coletado
 
+            MessageBox.Show("Dado: " + valores.getIa(0));
+            MessageBox.Show("Dado: " + valores.getFP(0));
             List<Line> objects = new List<Line>
 
             {
                 plot.createVa(valores.getVa(index)), //Adiciona Va
-                plot.createIa(valores.getIa(index), valores.getFP(index), true), //Adiciona Ia
+                plot.createIa(valores.getIa(index), valores.getFP(index), valores.getFPType(index)), //Adiciona Ia
                 plot.createXs(valores.getIa(index),valores.getFP(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
@@ -138,6 +141,14 @@ namespace CEESP_software
         }
 
         private void Phase_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListData1.colectedData.Count > 0)
+            {
+                drawLines();
+            }
+        }
+
+        private void refresh_Click(object sender, RoutedEventArgs e)
         {
             if (ListData1.colectedData.Count > 0)
             {

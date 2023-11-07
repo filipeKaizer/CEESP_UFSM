@@ -66,13 +66,9 @@ namespace CEESP_software
             bool connected = false;
 
             float[] Va = new float[4];
-            int countVa = 0;
             float[] Ia = new float[4];
-            int countIa = 0;
             float[] FP = new float[4];
-            int countFP = 0;
             float[] CFP = new float[4];
-            int countCFP = 0;
             float frequency = 0;
             float RPM = 0;
 
@@ -104,41 +100,78 @@ namespace CEESP_software
 
             if (connected)
             {
+                MessageBox.Show("Separando os dados...");
                 for (int i = 0; i < values.Length; i++)
                 {
-                    if (i < 4)
+                    if (values[i] != "NaN")
                     {
-                        Va[countVa] = (float.Parse(values[i]));
-                        countVa++;
-                    }
-                    else if (i >= 4 && i < 8)
-                    {
-                        Ia[countIa] = (float.Parse(values[i]));
-                        countIa++;
-                    }
-                    else if (i >= 8 && i < 12)
-                    {
-                        FP[countFP] = (float.Parse(values[i]));
-                        countFP++;
-                    }
-                    else if (i >= 12 && i < 16)
-                    {
-                        CFP[countCFP] = (float.Parse(values[i]));
-                        countCFP++;
-                    }
-                    else
-                    {
-                        frequency = (float.Parse(values[i]));
+                        string[] separados = values[i].Split('=');
+
+                        float valor = float.Parse(separados[1]) / 100;
+
+                        switch(separados[0])
+                        {
+                            case "Vm":
+                                Va[0] = valor;
+                            break;
+                            case "Va":
+                                Va[1] = valor;
+                            break;
+                            case "Vb":
+                                Va[2] = valor;
+                            break;
+                            case "Vc":
+                                Va[3] = valor;
+                            break;
+                            case "Im":
+                                Ia[0] = valor;
+                            break;
+                            case "Ia":
+                                Ia[1] = valor;
+                            break;
+                            case "Ib":
+                                Ia[2] = valor;
+                            break;
+                            case "Ic":
+                                Ia[3] = valor;
+                            break;
+                            case "FPt":
+                                FP[0] = valor;
+                            break;
+                            case "FPa":
+                                FP[1] = valor;
+                            break;
+                            case "FPb":
+                                FP[2] = valor;
+                            break;
+                            case "FPc":
+                                FP[3] = valor;
+                            break;
+                            case "CFPt":
+                                CFP[0] = valor;
+                            break;
+                            case "CFPa":
+                                CFP[1] = valor;
+                            break;
+                            case "CFPb":
+                                CFP[2] = valor;
+                            break;
+                            case "CFPc":
+                                CFP[3] = valor;
+                            break;
+                            case "F":
+                                frequency = valor;
+                            break;
+                        }
+
                     }
                 }
             }
-            Ia[0] = 12; Ia[1] = 12; Ia[2] = 12; Ia[3] = 12;
-            Va[0] = 220; Va[1] = 220; Va[2] = 220; Va[3] = 220;
-            FP[0] = 0.10f; FP[1] = 0.10f; FP[2] = 0.10f; FP[3] = 0.10f;
-            RPM = 1500;
-            frequency = 60;
 
-            ColectedData colected = new ColectedData(Ia, Va, FP, RPM, frequency);
+            MessageBox.Show("Ia: " + Ia[0]);
+
+
+            ColectedData colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
 
             return colected;   
         }

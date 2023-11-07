@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CEESP_software"
         mc:Ignorable="d"
-        Title="CEESP" Height="493" Width="800">
+        Title="CEESP" Height="493" Width="800" SizeToContent="WidthAndHeight" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize">
     <Window.Resources>
         <Storyboard x:Key="EscondeMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
@@ -292,7 +292,7 @@
 
         </TabControl>
 
-        <Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="458" Stroke="Black" VerticalAlignment="Center" Width="160" Fill="#4C010101" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="458" Stroke="Black" VerticalAlignment="Top" Width="160" Fill="#4C010101" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

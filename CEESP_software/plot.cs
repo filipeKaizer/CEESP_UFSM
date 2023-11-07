@@ -51,7 +51,7 @@ namespace CEESP_software
             return Va; 
         }
 
-        public Line createIa(float value, float FP, bool indutivo)
+        public Line createIa(float value, float FP, char type)
         {
             value = value * 5;
             float valueIC;
@@ -59,7 +59,7 @@ namespace CEESP_software
 
             SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(231, 23, 23));
 
-            if (indutivo) {
+            if (type == 'i') {
                 valueIC = value * (float)Math.Sin(angle); //Ou Ia*sub
             } else
             {
