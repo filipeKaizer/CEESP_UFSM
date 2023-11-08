@@ -15,11 +15,11 @@
         <ListView x:Name="ListData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Va" DisplayMemberBinding="{Binding Va}"/>
-                    <GridViewColumn Header="Ia" DisplayMemberBinding="{Binding Ia}"/>
-                    <GridViewColumn Header="FP" DisplayMemberBinding="{Binding FP}"/>
-                    <GridViewColumn Header="RPM" DisplayMemberBinding="{Binding RPM}"/>
-                    <GridViewColumn Header="F" DisplayMemberBinding="{Binding frequency}"/>
+                    <GridViewColumn Header="Va" Width="50"  DisplayMemberBinding="{Binding Va}"/>
+                    <GridViewColumn Header="Ia" Width="50" DisplayMemberBinding="{Binding Ia}"/>
+                    <GridViewColumn Header="FP" Width="50" DisplayMemberBinding="{Binding FP}"/>
+                    <GridViewColumn Header="RPM" Width="50" DisplayMemberBinding="{Binding RPM}"/>
+                    <GridViewColumn Header="F" Width="50" DisplayMemberBinding="{Binding frequency}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -67,6 +67,5 @@
         <Rectangle x:Name="RSave" HorizontalAlignment="Left" Height="24" Margin="639,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" RadiusX="10" RadiusY="10" Fill="#FF8C8EB8" Visibility="Hidden"/>
         <TextBlock x:Name="Tsave" HorizontalAlignment="Left" Margin="646,316,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Foreground="#FF120321" Visibility="Hidden"/>
         <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="639,316,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand"/>
-        <Button x:Name="text" Content="Button" HorizontalAlignment="Left" Margin="646,269,0,0" VerticalAlignment="Top" Click="text_Click"/>
     </Grid>
 </Page>

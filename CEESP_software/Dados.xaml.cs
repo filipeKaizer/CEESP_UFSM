@@ -90,12 +90,8 @@ namespace CEESP_software
 
         }
 
-        private void text_Click(object sender, RoutedEventArgs e)
+        public void atualizaDados()
         {
-            List<ColectedData> data = ListData1.colectedData;
-            foreach(ColectedData d in data){
-                MessageBox.Show(d.getVa(0).ToString());
-            }
 
         }
     }
