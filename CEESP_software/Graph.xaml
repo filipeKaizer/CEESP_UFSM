@@ -50,7 +50,7 @@
     <Grid>
 
         <oxy:PlotView x:Name="PlotGraph" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450" Width="800" Background="#33010101"/>
-        <Button x:Name="btReturn" Content="" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btReturn_Click" Cursor="Hand">
+        <Button x:Name="btReturn" Content="" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btReturn_Click" Cursor="Hand" AutomationProperties.HelpText="Retornar para a página de dados.">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/codicon_graph-line.png"/>
             </Button.OpacityMask>
@@ -58,7 +58,7 @@
                 <ImageBrush ImageSource="/codicon_graph-line.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btLegenda" Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand">
+        <Button x:Name="btLegenda" Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand" AutomationProperties.HelpText="Seleção de valores a serem mostrados">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/checkList.png"/>
             </Button.OpacityMask>
@@ -76,10 +76,10 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <CheckBox x:Name="VaCheck" Content="Va" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
-            <CheckBox x:Name="IaCheck" Content="Ia" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
-            <CheckBox x:Name="EaCheck" Content="Ea" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
-            <CheckBox x:Name="RPM" Content="RPM" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16"/>
+            <CheckBox x:Name="VaCheckBox" Content="Va" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16" Click="VaCheck_Checked" Background="#FF00DE03"/>
+            <CheckBox x:Name="IaCheck" Content="Ia" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16" Click="IaCheck_Checked" Background="#FFDE0000"/>
+            <CheckBox x:Name="EaCheck" Content="Ea" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16" Click="EaCheck_Checked" Background="#FF0014FF"/>
+            <CheckBox x:Name="RPM" Content="RPM" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFECECEC" Width="54" Height="16" Click="RPM_Checked" Background="#FFBB8700"/>
         </Grid>
 
     </Grid>

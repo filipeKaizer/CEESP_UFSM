@@ -162,6 +162,9 @@ namespace CEESP_software
             // Atualiza o dataView da classe dados
             this.ceesp.atualizaDados();
 
+            // Atualiza o Graph
+            this.ceesp.atualizaGraph();
+
             if (ListData1.colectedData.Count > 0)
             {
                 try

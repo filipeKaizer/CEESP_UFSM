@@ -66,19 +66,21 @@ namespace CEESP_software
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             changeCheck();
-            atualizaGraph();
-
-
         }
 
         public void atualizaGraph()
         {
-            var plotModel = new PlotModel { Title = "Meu Gráfico" };
+            // Define o modelo do gráfico
+            var plotModel = new PlotModel { Title = ""};
 
-            // Limpa
+            //Muda coloração
+            plotModel.PlotAreaBorderColor = OxyColor.FromRgb(160, 160, 160);
+            plotModel.TitleColor = OxyColor.FromRgb(160, 160, 160);
+            plotModel.TextColor = OxyColor.FromRgb(160, 160, 160);
+            plotModel.SubtitleColor = OxyColor.FromRgb(160, 160, 160);
+            plotModel.SelectionColor = OxyColor.FromRgb(160, 160, 160); 
 
-
-            /* CRIA OS TIPOS DE LINHAS */ 
+            /* CRIA OS TIPOS DE LINHAS */
             var VaLineSeries = new LineSeries
             {
                 Color = OxyColors.Green,  // Cor da linha
@@ -111,13 +113,35 @@ namespace CEESP_software
             /*--------------------*/
 
 
-
-            // Adicione a série ao PlotModel
-            plotModel.Series.Add(VaLineSeries);
-            plotModel.Series.Add(IaLineSeries);
-
+            // Adicione a série ao PlotModel conforme CheckBox
+            if (VaCheckBox.IsChecked == true) 
+                plotModel.Series.Add(VaLineSeries);
+            
+            if (IaCheck.IsChecked == true)
+                plotModel.Series.Add(IaLineSeries);
+         
             // Associe o PlotModel ao PlotView
             PlotGraph.Model = plotModel;
-        } 
+        }
+
+        private void IaCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            atualizaGraph();
+        }
+
+        private void EaCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            atualizaGraph();
+        }
+
+        private void RPM_Checked(object sender, RoutedEventArgs e)
+        {
+            atualizaGraph();
+        }
+
+        private void VaCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            atualizaGraph();
+        }
     }
 }
