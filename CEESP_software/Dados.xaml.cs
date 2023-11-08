@@ -23,17 +23,13 @@ namespace CEESP_software
     {
         private Brush ActualSaveAfterEditColor;
         public CEESP CEESP;
-        public SerialCOM Serial;
 
-        public List<ColectedData> Data;
 
         bool edit=false;
-        public Dados(CEESP reference, SerialCOM referenceSerial, List<ColectedData> referenceData)
+        public Dados(CEESP reference)
         {
             InitializeComponent();
             CEESP = reference;
-            Serial = referenceSerial;
-            Data = referenceData;
         }
 
         private  void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)
@@ -92,7 +88,24 @@ namespace CEESP_software
 
         public void atualizaDados()
         {
+            ListViewItem item;
 
+            ListData.Items.Clear();
+
+            foreach (ColectedData i in ListData1.colectedData)
+            {
+                item = new ListViewItem();
+                item.Content = new
+                {
+                    Va = i.getVa(0),
+                    Ia = i.getIa(0),
+                    FP = i.getFP(0),
+                    RPM = '-',
+                    F = i.getFrequency()
+                };
+
+                ListData.Items.Add(item);
+            }
         }
     }
 }

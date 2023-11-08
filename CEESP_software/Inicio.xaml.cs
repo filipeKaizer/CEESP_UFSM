@@ -12,7 +12,6 @@ namespace CEESP_software
     public partial class Inicio : Page
     {
         List<string> compatiblePorts;
-        List<ColectedData> data;
 
         private SerialCOM serialCOM;
         private Brush originalBtColor;
@@ -25,12 +24,11 @@ namespace CEESP_software
 
         Grafico grafico;
 
-        public Inicio(List<ColectedData> data, Grafico grafico, CEESP ceesp, SerialCOM serialCOM)
+        public Inicio(Grafico grafico, CEESP ceesp, SerialCOM serialCOM)
         {
             InitializeComponent();
             this.serialCOM = serialCOM;
             connectAnim = (Storyboard)FindResource("Connected");
-            this.data = data;
             this.grafico = grafico;
             this.ceesp = ceesp;
         }

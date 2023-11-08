@@ -13,11 +13,9 @@ namespace CEESP_software
     public  class SerialCOM
     {
         private String portSelected="";
-        List<ColectedData> colectedDatas;
 
-        public SerialCOM(List<ColectedData> DataReference)
+        public SerialCOM()
         {
-            this.colectedDatas = DataReference;
         }
 
        public async Task<List <string>> SearchPorts()

@@ -32,14 +32,15 @@ namespace CEESP_software
 
         float xs = 5;
 
-        public List<ColectedData> Data;
         private SerialCOM serialCOM;
+        private CEESP ceesp;
+
         Storyboard ShowInfo;
         Storyboard HideInfo;
         Storyboard ShowSub;
         Storyboard HideSub;
 
-        public Grafico(SerialCOM referenceSerial, List<ColectedData> referenceData)
+        public Grafico(SerialCOM referenceSerial, CEESP ceesp)
         {
             InitializeComponent();
             InitializeTime(10);
@@ -52,8 +53,9 @@ namespace CEESP_software
             Phase.SelectedIndex = 0;
 
             plot = new plot(250, 450 / 2, 5);
-            Data = referenceData;
+
             this.serialCOM = referenceSerial;
+            this.ceesp = ceesp;
         }
 
 
@@ -154,7 +156,11 @@ namespace CEESP_software
 
         private async void atualiza()
         {
+            // Realiza leitura no serialCOM e atualiza o colectedData
             ListData1.colectedData.Add(await serialCOM.readValues());
+
+            // Atualiza o dataView da classe dados
+            this.ceesp.atualizaDados();
 
             if (ListData1.colectedData.Count > 0)
             {

@@ -13,8 +13,11 @@ namespace CEESP_software
         private Storyboard MostraMenu;
         private bool MenuAberto = false;
 
-        public List<ColectedData> colectedData;
         public SerialCOM serialCOM;
+        public Grafico grafico;
+        public Inicio inicio;
+        public Dados dados;
+
         /*private Brush rtColorInicio;
         private Brush rtColorGrafico;
         private Brush rtColorDados;
@@ -25,13 +28,15 @@ namespace CEESP_software
         {
             InitializeComponent();
 
-            this.serialCOM = new SerialCOM(this.colectedData);
-            Grafico grafico = new Grafico(this.serialCOM, colectedData);
+            this.serialCOM = new SerialCOM();
+            this.grafico = new Grafico(this.serialCOM, this);
+            this.inicio = new Inicio(this.grafico, this, this.serialCOM);
+            this.dados = new Dados(this);
 
             //Associa cada frame do tabcontrol Work a uma pagina.
-            FrameInicio.Navigate(new Inicio(colectedData, grafico, this, this.serialCOM));
-            FrameGraficos.Navigate(grafico);
-            FrameDados.Navigate(new Dados(this, this.serialCOM, colectedData));
+            FrameInicio.Navigate(this.inicio);
+            FrameGraficos.Navigate(this.grafico);
+            FrameDados.Navigate(this.dados);
             FrameGraphPlot.Navigate(new Graph(this));
 
             this.EscondeMenu = (Storyboard)FindResource("EscondeMenu");
@@ -101,5 +106,9 @@ namespace CEESP_software
             SetPage(2, true);
         }
 
+        public void atualizaDados()
+        {
+            this.dados.atualizaDados();
+        }
     }
 }
