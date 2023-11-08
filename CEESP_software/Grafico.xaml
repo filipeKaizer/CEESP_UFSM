@@ -94,7 +94,7 @@
         </Storyboard>
     </Page.Resources>
 
-    <Grid Background="#33010101" Margin="0,0,15,0">
+    <Grid Background="#33010101">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -133,9 +133,11 @@
                     <ImageBrush ImageSource="/Legenda.png"/>
                 </Button.Background>
             </Button>
-            <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="139" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#3F000000">
-                <Label x:Name="IaValue" Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,-4,0,0"/>
-                <Label x:Name="VaValue" Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,23,0,0"/>
+            <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="139" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#3F000000" Visibility="Hidden">
+                <Label x:Name="IaValue" Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,10,0,0"/>
+                <Label x:Name="VaValue" Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,39,0,0"/>
+                <Label x:Name="XsIaValue" Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,71,0,0"/>
+                <Label x:Name="FPValue" Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,103,0,0"/>
             </Grid>
             <ComboBox x:Name="Phase" Canvas.Left="312" Canvas.Top="410" Width="176" Height="30" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Foreground="Black" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="Phase_SelectionChanged">
                 <ComboBoxItem Content="Media"/>
@@ -143,7 +145,7 @@
                 <ComboBoxItem Content="Fase B"/>
                 <ComboBoxItem Cursor="Hand" Content="Fase C"/>
             </ComboBox>
-            <Grid x:Name="Legenda" Height="30" Canvas.Left="230" Canvas.Top="340" Width="340">
+            <Grid x:Name="Legenda" Height="30" Canvas.Left="230" Canvas.Top="340" Width="340" Visibility="Hidden">
                 <Rectangle x:Name="l" Fill="#FF429743" Margin="0,7,320,3"/>
                 <TextBlock x:Name="l1" TextWrapping="Wrap" Text="Va" Foreground="#FFB2B6B2" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Open Sans" FontSize="20" Margin="25,3,0,0"/>
                 <Rectangle x:Name="l2" Fill="#FFE71717" Margin="68,7,252,3"/>
@@ -155,8 +157,6 @@
                 <Rectangle x:Name="l8" Fill="#FF3D0D2C" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.1,0.533" Margin="291,7,0,0"/>
                 <TextBlock x:Name="l9" TextWrapping="Wrap" Text="φ" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,0,0,0"/>
             </Grid>
-            <Label x:Name="XsIaValue" Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Center" Canvas.Left="51" Canvas.Top="136" VerticalAlignment="Top"/>
-            <Label x:Name="FPValue" Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Center" Canvas.Left="51" Canvas.Top="168" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>
 </Page>

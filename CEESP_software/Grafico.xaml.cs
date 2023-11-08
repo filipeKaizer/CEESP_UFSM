@@ -26,8 +26,8 @@ namespace CEESP_software
         private List<Line> oldLines;
 
         private plot plot;
-        private bool sub = true;
-        private bool info = true;
+        private bool sub = false;
+        private bool info = false;
         int items=0;
 
         float xs = 5;
@@ -50,7 +50,15 @@ namespace CEESP_software
             ShowSub = (Storyboard)FindResource("ShowSub");
             HideSub = (Storyboard)FindResource("HideSub");
 
-            Phase.SelectedIndex = 0;
+            // Inicia a legenda e as informações de forma escondida
+            HideSub.Begin();
+            HideInfo.Begin();
+
+            Info.Visibility = Visibility.Visible;
+            Legenda.Visibility = Visibility.Visible;
+            // -----------------------------------------------------
+
+            Phase.SelectedIndex = 0; 
 
             plot = new plot(250, 450 / 2, 5);
 
@@ -84,10 +92,10 @@ namespace CEESP_software
             };
 
             // Atuliza tabela de valores
-            VaValue.Content = "Va: " + valores.getVa(index).ToString() + "V";
-            IaValue.Content = "Ia: " + valores.getIa(index).ToString() + "A";
-            XsIaValue.Content = "XsIa: " + (valores.getIa(index)*5).ToString() + "V";
-            FPValue.Content = "FP: " + valores.getFP(index).ToString() + valores.getFPType(index);
+            VaValue.Content = "Va: " + Math.Round(valores.getVa(index), 2).ToString() + "V";
+            IaValue.Content = "Ia: " + Math.Round(valores.getIa(index), 2).ToString() + "A";
+            XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index)*5), 2).ToString() + "V";
+            FPValue.Content = "FP: " + Math.Round(valores.getFP(index), 2).ToString() + valores.getFPType(index);
 
             // Adiciona as linhas
             foreach(Line i in objects)
