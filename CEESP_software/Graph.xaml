@@ -58,7 +58,7 @@
                 <ImageBrush ImageSource="/codicon_graph-line.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand">
+        <Button x:Name="btLegenda" Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/checkList.png"/>
             </Button.OpacityMask>

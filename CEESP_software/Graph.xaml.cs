@@ -66,9 +66,58 @@ namespace CEESP_software
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             changeCheck();
+            atualizaGraph();
+
+
         }
 
+        public void atualizaGraph()
+        {
+            var plotModel = new PlotModel { Title = "Meu Gráfico" };
+
+            // Limpa
 
 
+            /* CRIA OS TIPOS DE LINHAS */ 
+            var VaLineSeries = new LineSeries
+            {
+                Color = OxyColors.Green,  // Cor da linha
+                StrokeThickness = 2     // Espessura da linha
+            };
+
+            var IaLineSeries = new LineSeries
+            {
+                Color = OxyColors.Red,  // Cor da linha
+                StrokeThickness = 2     // Espessura da linha
+            };
+
+            var EaLineSeries = new LineSeries
+            {
+                Color = OxyColors.Blue,  // Cor da linha
+                StrokeThickness = 2     // Espessura da linha
+            };
+            /*-------------------------*/
+
+            /* ADICIONA OS PONTOS */
+            List<ColectedData> data = ListData1.colectedData;
+            
+            for (int i = 0; i < data.Count; i++)
+            {
+                ColectedData valores = data[i];
+
+                VaLineSeries.Points.Add(new DataPoint(i, valores.getVa(0)));
+                IaLineSeries.Points.Add(new DataPoint(i, valores.getIa(0)));
+            }
+            /*--------------------*/
+
+
+
+            // Adicione a série ao PlotModel
+            plotModel.Series.Add(VaLineSeries);
+            plotModel.Series.Add(IaLineSeries);
+
+            // Associe o PlotModel ao PlotView
+            PlotGraph.Model = plotModel;
+        } 
     }
 }

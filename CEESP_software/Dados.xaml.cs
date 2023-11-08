@@ -73,6 +73,9 @@ namespace CEESP_software
                 TBAngle.IsEnabled = false;
                 edit = false;
                 btSaveAfterEdit.Visibility = Visibility.Hidden;
+                btEdit.IsEnabled = false;
+                RetSave.Visibility = Visibility.Hidden;
+                LabelSave.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -82,6 +85,10 @@ namespace CEESP_software
                 TBAngle.IsEnabled = true;
                 edit = true;
                 btSaveAfterEdit.Visibility = Visibility.Visible;
+                btSaveAfterEdit.IsEnabled = true;
+                btEdit.Visibility = Visibility.Visible;
+                RetSave.Visibility = Visibility.Visible;
+
             }
 
         }

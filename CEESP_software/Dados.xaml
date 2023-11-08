@@ -66,6 +66,8 @@
         <TextBox x:Name="TBAngle" HorizontalAlignment="Left" Margin="630,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
         <Rectangle x:Name="RSave" HorizontalAlignment="Left" Height="24" Margin="639,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" RadiusX="10" RadiusY="10" Fill="#FF8C8EB8" Visibility="Hidden"/>
         <TextBlock x:Name="Tsave" HorizontalAlignment="Left" Margin="646,316,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Foreground="#FF120321" Visibility="Hidden"/>
-        <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="639,316,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand"/>
+        <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="651,318,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+        <Rectangle x:Name="RetSave" HorizontalAlignment="Left" Height="25" Margin="651,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="#FF8C8EB8" RadiusX="10" RadiusY="10"/>
+        <Label x:Name="LabelSave" Content="Salvar" HorizontalAlignment="Left" Margin="653,312,0,0" VerticalAlignment="Top" Foreground="#FF120321" Background="{x:Null}" FontSize="20" FontFamily="Times New Roman" FontWeight="Bold"/>
     </Grid>
 </Page>
