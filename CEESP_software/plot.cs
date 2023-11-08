@@ -78,17 +78,25 @@ namespace CEESP_software
             return Ia;
         }
 
-        public Line createXs(float IaValue, float FP)
+        public Line createXs(float IaValue, float FP, char type)
         {
             SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(193, 81, 0));
             float angulo = (float)(Math.Acos(FP));
-         //   MessageBox.Show(((XSValue * IaValue) * Math.Cos(1.5708 - angulo)).ToString());
+            int typeValue = 1;
+
+            if (type == 'i')
+            {
+                typeValue = 1; // é indutivo, o Xs é deslocado para a direita
+            } else
+            {
+                typeValue = -1; // é capacitivo, o xs é deslocado para a esquerda
+            }
 
             Line Xs = new Line
             {
                 X1 = FinalX,
                 Y1 = FinalY,
-                X2 = FinalX + XSValue*IaValue*Math.Cos(1.5708-angulo), //Subtrai 90 do angulo.
+                X2 = FinalX + typeValue * XSValue * IaValue * Math.Cos(1.5708-angulo), //Subtrai 90 do angulo.
                 Y2 = FinalY - (XSValue*IaValue)*Math.Sin(1.5708-angulo),
                 Stroke = customBrush,
                 StrokeThickness = 2

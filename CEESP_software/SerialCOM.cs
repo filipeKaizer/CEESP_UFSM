@@ -124,16 +124,16 @@ namespace CEESP_software
                                 Va[3] = valor;
                             break;
                             case "Im":
-                                Ia[0] = valor;
+                                Ia[0] = valor * 10;
                             break;
                             case "Ia":
-                                Ia[1] = valor;
+                                Ia[1] = valor * 10;
                             break;
                             case "Ib":
-                                Ia[2] = valor;
+                                Ia[2] = valor * 10;
                             break;
                             case "Ic":
-                                Ia[3] = valor;
+                                Ia[3] = valor * 10;
                             break;
                             case "FPt":
                                 FP[0] = valor;
@@ -167,9 +167,6 @@ namespace CEESP_software
                     }
                 }
             }
-
-            MessageBox.Show("Ia: " + Ia[0]);
-
 
             ColectedData colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
 

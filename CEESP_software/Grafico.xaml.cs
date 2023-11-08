@@ -67,27 +67,23 @@ namespace CEESP_software
             }
 
             int index = Phase.SelectedIndex;
-            MessageBox.Show(index.ToString());
             List<ColectedData> data = ListData1.colectedData;
-            MessageBox.Show(data.Count.ToString());
             ColectedData valores = data[data.Count-1]; //Pega o ultimo dado coletado
 
-            MessageBox.Show("Dado: " + valores.getIa(0));
-            MessageBox.Show("Dado: " + valores.getFP(0));
             List<Line> objects = new List<Line>
 
             {
                 plot.createVa(valores.getVa(index)), //Adiciona Va
                 plot.createIa(valores.getIa(index), valores.getFP(index), valores.getFPType(index)), //Adiciona Ia
-                plot.createXs(valores.getIa(index),valores.getFP(index)), //Adiciona Xs
+                plot.createXs(valores.getIa(index),valores.getFP(index), valores.getFPType(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
 
-            VaValue.Content = "Va: "+" V";
-            IaValue.Content = "Ia: " + valores.getIa(index).ToString() + " A";
-            XsIaValue.Content = "XsIa: " + (valores.getIa(index)*5).ToString() + " Ω";
-
-
+            // Atuliza tabela de valores
+            VaValue.Content = "Va: " + valores.getVa(index).ToString() + "V";
+            IaValue.Content = "Ia: " + valores.getIa(index).ToString() + "A";
+            XsIaValue.Content = "XsIa: " + (valores.getIa(index)*5).ToString() + "V";
+            FPValue.Content = "FP: " + valores.getFP(index).ToString() + valores.getFPType(index);
 
             foreach(Line i in objects)
             {

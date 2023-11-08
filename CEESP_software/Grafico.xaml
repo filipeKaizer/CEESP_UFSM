@@ -99,7 +99,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label x:Name="Titulo" Content="Grafico" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White" Height="36" Width="86" d:IsHidden="True"/>
-        <Canvas x:Name="Graph" Margin="-4,-1,0,1">
+        <Canvas x:Name="Graph" Margin="-4,-1,-13,1">
             <Button x:Name="refresh" Content="" Canvas.Left="730" Canvas.Top="11" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.083,0.467" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" Click="refresh_Click">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Vector.png"/>
@@ -133,12 +133,9 @@
                     <ImageBrush ImageSource="/Legenda.png"/>
                 </Button.Background>
             </Button>
-            <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#3F000000">
-                <Label x:Name="VaValue" Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,23,60,89"/>
-                <Label x:Name="EaValue" Content="Ea:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,51,60,63"/>
-                <Label x:Name="XsIaValue" Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="6,78,60,35"/>
-                <Label x:Name="FPValue" Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" Margin="24,105,60,9"/>
-                <Label x:Name="IaValue" Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,-4,0,0"/>
+            <Grid x:Name="Info" Height="140" Canvas.Left="26" Canvas.Top="85" Width="139" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#3F000000">
+                <Label x:Name="IaValue" Content="Ia:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,-4,0,0"/>
+                <Label x:Name="VaValue" Content="Va:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,23,0,0"/>
             </Grid>
             <ComboBox x:Name="Phase" Canvas.Left="312" Canvas.Top="410" Width="176" Height="30" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Foreground="Black" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="Phase_SelectionChanged">
                 <ComboBoxItem Content="Media"/>
@@ -158,6 +155,8 @@
                 <Rectangle x:Name="l8" Fill="#FF3D0D2C" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.1,0.533" Margin="291,7,0,0"/>
                 <TextBlock x:Name="l9" TextWrapping="Wrap" Text="φ" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,0,0,0"/>
             </Grid>
+            <Label x:Name="XsIaValue" Content="XsIa:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Center" Canvas.Left="51" Canvas.Top="136" VerticalAlignment="Top"/>
+            <Label x:Name="FPValue" Content="FP:" Background="{x:Null}" Foreground="White" FontSize="15" HorizontalContentAlignment="Center" FontFamily="Cascadia Code" HorizontalAlignment="Center" Canvas.Left="51" Canvas.Top="168" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>
 </Page>
