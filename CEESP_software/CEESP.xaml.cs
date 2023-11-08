@@ -24,14 +24,14 @@ namespace CEESP_software
         public CEESP()
         {
             InitializeComponent();
-            Grafico grafico = new Grafico(this.serialCOM, colectedData);
 
             this.serialCOM = new SerialCOM(this.colectedData);
+            Grafico grafico = new Grafico(this.serialCOM, colectedData);
 
             //Associa cada frame do tabcontrol Work a uma pagina.
-            FrameInicio.Navigate(new Inicio(colectedData, grafico, this.serialCOM));
+            FrameInicio.Navigate(new Inicio(colectedData, grafico, this, this.serialCOM));
             FrameGraficos.Navigate(grafico);
-            FrameDados.Navigate(new Dados(this, this.serialCOM));
+            FrameDados.Navigate(new Dados(this, this.serialCOM, colectedData));
             FrameGraphPlot.Navigate(new Graph(this));
 
             this.EscondeMenu = (Storyboard)FindResource("EscondeMenu");

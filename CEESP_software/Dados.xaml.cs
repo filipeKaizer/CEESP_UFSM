@@ -25,14 +25,15 @@ namespace CEESP_software
         public CEESP CEESP;
         public SerialCOM Serial;
 
+        public List<ColectedData> Data;
+
         bool edit=false;
-        public Dados(CEESP reference, SerialCOM referenceSerial)
+        public Dados(CEESP reference, SerialCOM referenceSerial, List<ColectedData> referenceData)
         {
             InitializeComponent();
             CEESP = reference;
             Serial = referenceSerial;
-            
-
+            Data = referenceData;
         }
 
         private  void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)

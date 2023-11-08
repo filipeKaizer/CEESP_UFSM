@@ -12,14 +12,13 @@ namespace CEESP_software
 
     public  class SerialCOM
     {
-        public static String portSelected="";
+        private String portSelected="";
         List<ColectedData> colectedDatas;
 
         public SerialCOM(List<ColectedData> DataReference)
         {
             this.colectedDatas = DataReference;
         }
-
 
        public async Task<List <string>> SearchPorts()
         {
@@ -47,7 +46,6 @@ namespace CEESP_software
                     if (int.Parse(serialPort.ReadLine()) == resposta)
                     {
                         comp.Add(port);
-                        MessageBox.Show("Porta compatível: " + port);
                     }
                     serialPort.Close();
                 }
@@ -58,8 +56,6 @@ namespace CEESP_software
             }
             return comp;
         }
-
-
 
         public async Task<ColectedData> readValues()
         {
@@ -76,7 +72,7 @@ namespace CEESP_software
             String[] values = { };
 
             try{
-                SerialPort connection = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
+                SerialPort connection = new SerialPort(portSelected, 9600, Parity.None, 8, StopBits.One);
                 connection.Open();
 
                 connection.WriteLine("snd"); //Pede envio de dados
@@ -97,10 +93,8 @@ namespace CEESP_software
                 connected = false;
             }
             
-
             if (connected)
             {
-                MessageBox.Show("Separando os dados...");
                 for (int i = 0; i < values.Length; i++)
                 {
                     if (values[i] != "NaN")
@@ -163,7 +157,6 @@ namespace CEESP_software
                                 frequency = valor;
                             break;
                         }
-
                     }
                 }
             }
@@ -172,7 +165,6 @@ namespace CEESP_software
 
             return colected;   
         }
-
 
         private Task<string[]> Receber(SerialPort con)
         {
@@ -186,7 +178,11 @@ namespace CEESP_software
                     
                 return values; 
             });
-            
+        }
+
+        public void setPort(String port)
+        {
+            this.portSelected = port;
         }
     }
 }

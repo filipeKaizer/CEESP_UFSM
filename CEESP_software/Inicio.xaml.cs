@@ -17,21 +17,23 @@ namespace CEESP_software
         private SerialCOM serialCOM;
         private Brush originalBtColor;
 
+        private CEESP ceesp;
+
         Storyboard connectAnim;
         bool connectAnimStatus = false;
+        bool portSelected = false;
 
         Grafico grafico;
 
-        public Inicio(List<ColectedData> data, Grafico grafico, SerialCOM serialCOM)
+        public Inicio(List<ColectedData> data, Grafico grafico, CEESP ceesp, SerialCOM serialCOM)
         {
             InitializeComponent();
             this.serialCOM = serialCOM;
             connectAnim = (Storyboard)FindResource("Connected");
             this.data = data;
             this.grafico = grafico;
+            this.ceesp = ceesp;
         }
-
-
 
         private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -46,14 +48,29 @@ namespace CEESP_software
 
         private async void Buscar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            LPorts.Visibility = System.Windows.Visibility.Visible;
-            List<string> compatiblePorts = await serialCOM.SearchPorts(); //Busca portas de forma assincrona
-
-            foreach (string port in compatiblePorts)
+            if (!portSelected)
             {
-                LPorts.Items.Add(port);
-            }
+                LPorts.Visibility = System.Windows.Visibility.Visible;
+                List<string> compatiblePorts = await serialCOM.SearchPorts(); //Busca portas de forma assincrona
 
+                foreach (string port in compatiblePorts)
+                {
+                    LPorts.Items.Add(port);
+                }
+            } else
+            {
+                if (Xs.Text != "")
+                {
+                    float XsValue = float.Parse(Xs.Text);
+                    this.grafico.setXs(XsValue);
+                } else
+                {
+                    MessageBox.Show("O valor informado não é válido.\nAdotando Xs = 5.");
+                    this.grafico.setXs(5);
+                }
+
+                ceesp.SetPage(1, true);
+            }
         }
 
         private void LPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,12 +80,10 @@ namespace CEESP_software
                 connectAnim.Begin();
                 connectAnimStatus = true;
             }
-        }
+            Buscar.Content = "Iniciar";
+            portSelected = true;
 
-        private async void test_Click(object sender, RoutedEventArgs e)
-        {
-            ListData1.colectedData.Add(await serialCOM.readValues());
-           // grafico.drawLines();
+            serialCOM.setPort(LPorts.SelectedItem.ToString());
         }
     }
 }

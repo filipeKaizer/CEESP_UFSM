@@ -33,6 +33,7 @@ namespace CEESP_software
 
         public Line createVa(float value)
         {
+
             // Criar um pincel (brush) usando a cor personalizada
             SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(73,172,71));
 
@@ -184,7 +185,10 @@ namespace CEESP_software
         }
 
 
-
+        public void setXs(float XsValue)
+        {
+            this.XSValue = XsValue;
+        }
 
     }
 }

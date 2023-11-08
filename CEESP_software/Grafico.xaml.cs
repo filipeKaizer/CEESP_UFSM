@@ -30,8 +30,10 @@ namespace CEESP_software
         private bool info = true;
         int items=0;
 
+        float xs = 5;
+
         public List<ColectedData> Data;
-        private SerialCOM Serial;
+        private SerialCOM serialCOM;
         Storyboard ShowInfo;
         Storyboard HideInfo;
         Storyboard ShowSub;
@@ -51,7 +53,7 @@ namespace CEESP_software
 
             plot = new plot(250, 450 / 2, 5);
             Data = referenceData;
-            this.Serial = referenceSerial;
+            this.serialCOM = referenceSerial;
         }
 
 
@@ -85,6 +87,7 @@ namespace CEESP_software
             XsIaValue.Content = "XsIa: " + (valores.getIa(index)*5).ToString() + "V";
             FPValue.Content = "FP: " + valores.getFP(index).ToString() + valores.getFPType(index);
 
+            // Adiciona as linhas
             foreach(Line i in objects)
             {
                 Graph.Children.Add(i);
@@ -146,10 +149,29 @@ namespace CEESP_software
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
+            atualiza();
+        }
+
+        private async void atualiza()
+        {
+            ListData1.colectedData.Add(await serialCOM.readValues());
+
             if (ListData1.colectedData.Count > 0)
             {
-                drawLines();
+                try
+                {
+                    drawLines();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("Dados inválidos. Verifique se o módulo está conectado e ativo. \n" + error.Message);
+                }
             }
+        }
+
+        public void setXs(float XsValue)
+        {
+            this.plot.setXs(XsValue);
         }
     }
 }
