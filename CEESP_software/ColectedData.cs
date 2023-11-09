@@ -50,13 +50,10 @@ namespace CEESP_software
             {
                 case 1:
                     return 'i';
-                break;
                 case 2:
                     return 'c';
-                break;
                 default:
-                    return 'r';
-                break;
+                    return 'i';
             }
         }
 

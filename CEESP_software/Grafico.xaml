@@ -99,7 +99,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label x:Name="Titulo" Content="Grafico" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White" Height="36" Width="86" d:IsHidden="True"/>
-        <Canvas x:Name="Graph" Margin="-4,-1,-13,1">
+        <Canvas x:Name="Graph" Margin="-4,-1,0,1">
             <Button x:Name="refresh" Content="" Canvas.Left="730" Canvas.Top="11" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.083,0.467" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" Click="refresh_Click">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Vector.png"/>
@@ -125,7 +125,7 @@
                     <ImageBrush ImageSource="/Data.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btLegenda" Content="Button" Canvas.Left="730" Canvas.Top="403" Width="35" Height="31" BorderBrush="#00707070" Foreground="#00000000" Click="btLegenda_Click" Cursor="Hand">
+            <Button x:Name="btLegenda" Content="Button" Canvas.Left="745" Canvas.Top="410" Width="35" Height="30" BorderBrush="#00707070" Foreground="#00000000" Click="btLegenda_Click" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Legenda.png"/>
                 </Button.OpacityMask>
@@ -157,6 +157,18 @@
                 <Rectangle x:Name="l8" Fill="#FF3D0D2C" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.1,0.533" Margin="291,7,0,0"/>
                 <TextBlock x:Name="l9" TextWrapping="Wrap" Text="φ" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,0,0,0"/>
             </Grid>
+            <Rectangle Height="30" Canvas.Left="573" Canvas.Top="410" Width="100" Fill="#0CD9D9D9"/>
+            <Button x:Name="ViewZoomMais" Content="Button" Canvas.Left="583" Canvas.Top="415" Cursor="" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="20" Width="20" Click="ViewZoomMais_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Zoom +.png" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="ViewZoomMenos" Content="Button" Canvas.Left="613" Canvas.Top="415" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="ViewZoomMenos_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Zoom -.png"/>
+                </Button.Background>
+            </Button>
+            <Label x:Name="LabelZoom" Content="1x" Canvas.Left="641" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF"/>
         </Canvas>
     </Grid>
 </Page>

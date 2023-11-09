@@ -27,6 +27,8 @@
     <None Remove="save.png" />
     <None Remove="Settings.jpg" />
     <None Remove="Vector.png" />
+    <None Remove="Zoom +.png" />
+    <None Remove="Zoom -.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +56,12 @@
     <Resource Include="save.png" />
     <Resource Include="Settings.jpg" />
     <Resource Include="Vector.png" />
+    <Resource Include="Zoom +.png" />
+    <Resource Include="Zoom -.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Icons\" />
   </ItemGroup>
 
 </Project>

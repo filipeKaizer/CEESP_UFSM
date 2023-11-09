@@ -28,8 +28,10 @@ namespace CEESP_software
         private plot plot;
         private bool sub = false;
         private bool info = false;
-        int items=0;
+        private int zoomScale = 1;
 
+        int items=0;
+        
         float xs = 5;
 
         private SerialCOM serialCOM;
@@ -80,14 +82,15 @@ namespace CEESP_software
 
             int index = Phase.SelectedIndex;
             List<ColectedData> data = ListData1.colectedData;
-            ColectedData valores = data[data.Count-1]; //Pega o ultimo dado coletado
+
+            ColectedData valores = data[data.Count - 1]; //Pega o ultimo dado coletado
 
             List<Line> objects = new List<Line>
 
             {
-                plot.createVa(valores.getVa(index)), //Adiciona Va
-                plot.createIa(valores.getIa(index), valores.getFP(index), valores.getFPType(index)), //Adiciona Ia
-                plot.createXs(valores.getIa(index),valores.getFP(index), valores.getFPType(index)), //Adiciona Xs
+                plot.createVa(valores.getVa(index) * this.zoomScale), //Adiciona Va
+                plot.createIa(valores.getIa(index) * this.zoomScale, valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Ia
+                plot.createXs(valores.getIa(index) * this.zoomScale,valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
 
@@ -189,6 +192,47 @@ namespace CEESP_software
         public void setXs(float XsValue)
         {
             this.plot.setXs(XsValue);
+        }
+
+        private void ViewZoomMais_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.zoomScale < 10)
+            {
+                this.zoomScale++;
+            }
+
+            LabelZoom.Content = this.zoomScale.ToString() + "x";
+
+            // Se houver dados já lidos, atualiza
+            if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
+            {
+                try
+                {
+                    drawLines();
+                } catch
+                {
+
+                }
+            }
+        }
+
+        private void ViewZoomMenos_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.zoomScale >= 1)
+            {
+                this.zoomScale--;
+            }
+
+            LabelZoom.Content = this.zoomScale.ToString() + "x";
+
+            if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
+            {
+                try
+                {
+                    drawLines();
+                }
+                catch { }
+            }
         }
     }
 }
