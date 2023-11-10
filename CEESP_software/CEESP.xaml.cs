@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace CEESP_software
@@ -30,7 +28,7 @@ namespace CEESP_software
         {
             InitializeComponent();
 
-            this.serialCOM = new SerialCOM();
+            this.serialCOM = new SerialCOM(this);
             this.grafico = new Grafico(this.serialCOM, this);
             this.inicio = new Inicio(this.grafico, this, this.serialCOM);
             this.dados = new Dados(this);
@@ -127,7 +125,12 @@ namespace CEESP_software
 
         public bool isValidPort()
         {
-           return this.serialCOM.isValidPort();
+            return this.serialCOM.isValidPort();
+        }
+
+        public void setProgress(string texto, int progresso, bool ativo)
+        {
+            this.inicio.setProgress(texto, progresso, ativo);
         }
     }
 }

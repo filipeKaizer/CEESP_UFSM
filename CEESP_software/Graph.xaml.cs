@@ -1,21 +1,9 @@
-﻿using System;
+﻿using OxyPlot;
+using OxyPlot.Series;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
-using OxyPlot.Series;
-using OxyPlot;
-using OxyPlot.Wpf;
 
 namespace CEESP_software
 {
@@ -46,10 +34,11 @@ namespace CEESP_software
         {
             if (!CheckVisible)
             {
-               Hidecheck.Stop();
-               Showcheck.Begin();
-               Check_Situation.Content = "A";
-            } else
+                Hidecheck.Stop();
+                Showcheck.Begin();
+                Check_Situation.Content = "A";
+            }
+            else
             {
                 Showcheck.Stop();
                 Hidecheck.Begin();
@@ -71,14 +60,14 @@ namespace CEESP_software
         public void atualizaGraph()
         {
             // Define o modelo do gráfico
-            var plotModel = new PlotModel { Title = ""};
+            var plotModel = new PlotModel { Title = "" };
 
             //Muda coloração
             plotModel.PlotAreaBorderColor = OxyColor.FromRgb(160, 160, 160);
             plotModel.TitleColor = OxyColor.FromRgb(160, 160, 160);
             plotModel.TextColor = OxyColor.FromRgb(160, 160, 160);
             plotModel.SubtitleColor = OxyColor.FromRgb(160, 160, 160);
-            plotModel.SelectionColor = OxyColor.FromRgb(160, 160, 160); 
+            plotModel.SelectionColor = OxyColor.FromRgb(160, 160, 160);
 
             /* CRIA OS TIPOS DE LINHAS */
             var VaLineSeries = new LineSeries
@@ -102,7 +91,7 @@ namespace CEESP_software
 
             /* ADICIONA OS PONTOS */
             List<ColectedData> data = ListData1.colectedData;
-            
+
             for (int i = 0; i < data.Count; i++)
             {
                 ColectedData valores = data[i];
@@ -114,12 +103,12 @@ namespace CEESP_software
 
 
             // Adicione a série ao PlotModel conforme CheckBox
-            if (VaCheckBox.IsChecked == true) 
+            if (VaCheckBox.IsChecked == true)
                 plotModel.Series.Add(VaLineSeries);
-            
+
             if (IaCheck.IsChecked == true)
                 plotModel.Series.Add(IaLineSeries);
-         
+
             // Associe o PlotModel ao PlotView
             PlotGraph.Model = plotModel;
         }

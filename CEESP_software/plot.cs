@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -35,7 +29,7 @@ namespace CEESP_software
         {
 
             // Criar um pincel (brush) usando a cor personalizada
-            SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(73,172,71));
+            SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(73, 172, 71));
 
             Line Va = new Line
             {
@@ -49,7 +43,7 @@ namespace CEESP_software
             FinalX = (float)Va.X2;
             FinalY = (float)Va.Y2;
             ActualBrush = customBrush;
-            return Va; 
+            return Va;
         }
 
         public Line createIa(float value, float FP, char type)
@@ -60,9 +54,11 @@ namespace CEESP_software
 
             SolidColorBrush customBrush = new SolidColorBrush(Color.FromRgb(231, 23, 23));
 
-            if (type == 'i') {
+            if (type == 'i')
+            {
                 valueIC = value * (float)Math.Sin(angle); //Ou Ia*sub
-            } else
+            }
+            else
             {
                 valueIC = (-1) * value * (float)Math.Sin(angle);
             }
@@ -88,7 +84,8 @@ namespace CEESP_software
             if (type == 'i')
             {
                 typeValue = 1; // é indutivo, o Xs é deslocado para a direita
-            } else
+            }
+            else
             {
                 typeValue = -1; // é capacitivo, o xs é deslocado para a esquerda
             }
@@ -97,8 +94,8 @@ namespace CEESP_software
             {
                 X1 = FinalX,
                 Y1 = FinalY,
-                X2 = FinalX + typeValue * XSValue * IaValue * Math.Cos(1.5708-angulo), //Subtrai 90 do angulo.
-                Y2 = FinalY - (XSValue*IaValue)*Math.Sin(1.5708-angulo),
+                X2 = FinalX + typeValue * XSValue * IaValue * Math.Cos(1.5708 - angulo), //Subtrai 90 do angulo.
+                Y2 = FinalY - (XSValue * IaValue) * Math.Sin(1.5708 - angulo),
                 Stroke = customBrush,
                 StrokeThickness = 2
             };
@@ -167,7 +164,7 @@ namespace CEESP_software
             };
 
             return path;
-            
+
         }
 
         public Polygon createArrow()

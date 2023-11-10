@@ -45,6 +45,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "NumericUpDown": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "OxyPlot.Wpf": {
               "target": "Package",
               "version": "[2.1.2, )"

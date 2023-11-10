@@ -62,7 +62,7 @@
         <Label x:Name="Titulo" Content="Monitor de Gerador Síncrono" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Elephant" FontSize="20" Foreground="White"/>
         <Rectangle x:Name="btRetangulo" HorizontalAlignment="Center" Height="30" Margin="0,376,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Fill="#F2CAC3C3" RadiusX="12" RadiusY="12"/>
         <Label x:Name="Lbutton" Content="Buscar" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Foreground="#FF110931" FontWeight="Bold" FontFamily="Segoe UI" FontSize="22" Height="38"/>
-        <ListBox x:Name="LPorts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="300,225,300,105" Width="200" Height="120" Background="#5E373D4E" BorderBrush="#FF051C18" Foreground="#FFEFEAB2" FontWeight="SemiBold" FontSize="15" FontStyle="Italic" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" SelectionChanged="LPorts_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="LPorts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="300,225,300,105" Width="200" Height="120" Background="#5E373D4E" BorderBrush="#FF051C18" Foreground="#FFEFEAB2" FontWeight="SemiBold" FontSize="15" FontStyle="Italic" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" SelectionChanged="LPorts_SelectionChanged" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -73,8 +73,8 @@
             </ListBox.RenderTransform>
         </ListBox>
         <Button x:Name="Buscar" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" HorizontalAlignment="Center" Margin="0,376,0,0" VerticalAlignment="Top" Background="#00DDDDE0" Foreground="#00000000" Width="100" Height="30" BorderBrush="#00707070" Cursor="Hand" OpacityMask="#00000000" Click="Buscar_Click"/>
-        <ProgressBar x:Name="progress" HorizontalAlignment="Center" Height="10" Margin="0,432,0,0" VerticalAlignment="Top" Width="306" BorderBrush="{x:Null}" Foreground="#FF247508" Visibility="Hidden"/>
-        <Label x:Name="verbose" Content="Buscando" HorizontalAlignment="Center" Margin="0,409,0,0" VerticalAlignment="Top" Width="200" Foreground="#FFE0BEBE" FontSize="10" Visibility="Hidden"/>
+        <ProgressBar x:Name="progress" HorizontalAlignment="Left" Height="8" Margin="253,432,0,0" VerticalAlignment="Top" Width="300" BorderBrush="{x:Null}" Foreground="#FF2400FF" Background="{x:Null}" Value="100"/>
+        <Label x:Name="verbose" Content="Buscando" HorizontalAlignment="Center" Margin="0,410,0,0" VerticalAlignment="Top" Width="288" Foreground="#FFE0BEBE" FontFamily="Agency FB" Height="22" HorizontalContentAlignment="Center"/>
         <Grid x:Name="GXs" Margin="827,225,-290,85" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -85,9 +85,15 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Informe a resistencia Xs:" VerticalAlignment="Top" FontSize="22" Foreground="White"/>
-            <TextBox x:Name="Xs" HorizontalAlignment="Center" TextWrapping="Wrap" Text="5" VerticalAlignment="Center" Width="100" Height="24" FontSize="15" TextAlignment="Center" RenderTransformOrigin="0.48,1.6" Background="White"/>
-            <TextBlock HorizontalAlignment="Left" Margin="16,113,0,0" TextWrapping="Wrap" Text="Caso não for informado, será adotado 5Ω." VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Foreground="#B2FFFFFF" FontFamily="Agency FB"><Run Text="Informe"/><Run Text=" "/><Run Text="X"/><Run Language="pt-br" Text="s"/></TextBlock>
+            <TextBox x:Name="Xs" HorizontalAlignment="Center" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="61" Height="22" FontSize="15" RenderTransformOrigin="0.48,1.6" Background="#99FFFFFF" Margin="0,91,0,0" BorderThickness="1,1,1,1" BorderBrush="#99FFFFFF" TextAlignment="Center">
+                <TextBox.ToolTip>
+                    <StackPanel Width="125" Height="80">
+                        <TextBlock Text="Xs (Ω):" FontWeight="Bold"/>
+                        <TextBlock Text="O Xs é a reatancia do gerador. Caso não seja informado, será adorado o valor de 5Ω." TextAlignment="Justify" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </TextBox.ToolTip>
+            </TextBox>
         </Grid>
 
     </Grid>

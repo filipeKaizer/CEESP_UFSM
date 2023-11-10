@@ -1,31 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace CEESP_software
 {
 
-    public  class SerialCOM
+    public class SerialCOM
     {
-        private String portSelected="";
+        private String portSelected = "";
+        private CEESP cessp;
 
-        public SerialCOM()
+        public SerialCOM(CEESP ceesp)
         {
+            this.cessp = ceesp;
         }
 
-       public async Task<List <string>> SearchPorts()
+        public async Task<List<string>> SearchPorts()
         {
             string[] ports = SerialPort.GetPortNames();
             List<string> comp = new List<string>();
             Random random = new Random();
+            int percent = 0;
+
+            if (ports.Length > 0)
+                percent = (98) / ports.Length;
 
             foreach (String port in ports)
             {
+                this.cessp.setProgress((port + ": Testando..."), (int)(percent / 2), true);
+
                 SerialPort serialPort = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
 
                 try
@@ -36,14 +41,18 @@ namespace CEESP_software
                     int B = random.Next(0, 101);
 
                     int resposta = (A % B) * (A + B); // O teste é feito com uma operação matemática
-                    
+
                     serialPort.WriteLine("test"); //Pede teste
 
                     serialPort.WriteLine($"{A},{B}"); //Envia os valores de teste
 
                     if (int.Parse(serialPort.ReadLine()) == resposta)
                     {
+                        this.cessp.setProgress((port + ": Compativel"), percent, true);
                         comp.Add(port);
+                    } else
+                    {
+                        this.cessp.setProgress((port + ": Não compativel"), percent, true);
                     }
                     serialPort.Close();
                 }
@@ -51,6 +60,7 @@ namespace CEESP_software
                 {
                     MessageBox.Show(e.Message);
                 }
+
             }
             return comp;
         }
@@ -69,28 +79,30 @@ namespace CEESP_software
 
             String[] values = { };
 
-            try{
+            try
+            {
                 SerialPort connection = new SerialPort(portSelected, 9600, Parity.None, 8, StopBits.One);
                 connection.Open();
 
                 connection.WriteLine("snd"); //Pede envio de dados
 
                 values = await Receber(connection); //Chama de forma assincrona a função para ler dados do arduino
-                String msg="";
-                foreach(String i in values)
+                String msg = "";
+                foreach (String i in values)
                 {
-                    msg += i+" ";
+                    msg += i + " ";
                 }
 
                 connection.Close();
                 connected = true;
 
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 //MessageBox.Show(e.Message);
                 connected = false;
             }
-            
+
             if (connected)
             {
                 for (int i = 0; i < values.Length; i++)
@@ -101,59 +113,59 @@ namespace CEESP_software
 
                         float valor = float.Parse(separados[1]) / 100;
 
-                        switch(separados[0])
+                        switch (separados[0])
                         {
                             case "Vm":
                                 Va[0] = valor;
-                            break;
+                                break;
                             case "Va":
                                 Va[1] = valor;
-                            break;
+                                break;
                             case "Vb":
                                 Va[2] = valor;
-                            break;
+                                break;
                             case "Vc":
                                 Va[3] = valor;
-                            break;
+                                break;
                             case "Im":
                                 Ia[0] = valor * 10;
-                            break;
+                                break;
                             case "Ia":
                                 Ia[1] = valor * 10;
-                            break;
+                                break;
                             case "Ib":
                                 Ia[2] = valor * 10;
-                            break;
+                                break;
                             case "Ic":
                                 Ia[3] = valor * 10;
-                            break;
+                                break;
                             case "FPt":
                                 FP[0] = valor;
-                            break;
+                                break;
                             case "FPa":
                                 FP[1] = valor;
-                            break;
+                                break;
                             case "FPb":
                                 FP[2] = valor;
-                            break;
+                                break;
                             case "FPc":
                                 FP[3] = valor;
-                            break;
+                                break;
                             case "CFPt":
                                 CFP[0] = valor;
-                            break;
+                                break;
                             case "CFPa":
                                 CFP[1] = valor;
-                            break;
+                                break;
                             case "CFPb":
                                 CFP[2] = valor;
-                            break;
+                                break;
                             case "CFPc":
                                 CFP[3] = valor;
-                            break;
+                                break;
                             case "F":
                                 frequency = valor;
-                            break;
+                                break;
                         }
                     }
                 }
@@ -161,7 +173,7 @@ namespace CEESP_software
 
             ColectedData colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
 
-            return colected;   
+            return colected;
         }
 
         private Task<string[]> Receber(SerialPort con)
@@ -170,11 +182,11 @@ namespace CEESP_software
             return Task.Run(() =>
             {
                 string message = "";
-                
+
                 String response = con.ReadLine();
-                String [] values = response.Split(';');
-                    
-                return values; 
+                String[] values = response.Split(';');
+
+                return values;
             });
         }
 
@@ -188,7 +200,7 @@ namespace CEESP_software
             if (this.portSelected != "")
             {
                 return true;
-            } 
+            }
             return false;
         }
     }

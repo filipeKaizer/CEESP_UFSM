@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -34,6 +31,8 @@ namespace CEESP_software
             connectAnim = (Storyboard)FindResource("Connected");
             this.grafico = grafico;
             this.ceesp = ceesp;
+
+            setProgress("", 0, false);
         }
 
         private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -51,23 +50,41 @@ namespace CEESP_software
         {
             if (!portSelected)
             {
-                LPorts.Visibility = System.Windows.Visibility.Visible;
+                setProgress("Iniciando busca", 2, true);
+
                 List<string> compatiblePorts = await serialCOM.SearchPorts(); //Busca portas de forma assincrona
 
                 foreach (string port in compatiblePorts)
                 {
                     LPorts.Items.Add(port);
                 }
-            } else
+
+                if (compatiblePorts.Count >= 1)
+                    LPorts.Visibility = System.Windows.Visibility.Visible;
+
+                setProgress("", 0, false);
+                verbose.Visibility = Visibility.Visible;
+
+                if (compatiblePorts.Count >= 1)
+                {
+                    verbose.Content = "Portas compativeis: " + compatiblePorts.Count;
+                } else
+                {
+                    verbose.Content = "Nenhuma porta válida encontrada";
+                }
+            }
+            else
             {
                 if (Xs.Text != "")
                 {
+                    verbose.Visibility = Visibility.Hidden;
                     float XsValue = float.Parse(Xs.Text);
                     this.grafico.setXs(XsValue);
 
                     // Inicializa a atualização automática
-
-                } else
+                    this.grafico.AutoRefreshInit();
+                }
+                else
                 {
                     MessageBox.Show("O valor informado não é válido.\nAdotando Xs = 5.");
                     this.grafico.setXs(5);
@@ -90,5 +107,22 @@ namespace CEESP_software
             serialCOM.setPort(LPorts.SelectedItem.ToString());
         }
 
+
+        public void setProgress(string texto, float progresso, bool ativo)
+        {
+            if (ativo)
+            {
+                progress.Visibility = Visibility.Visible;
+                verbose.Visibility = Visibility.Visible;
+
+                //Adiciona valores
+                progress.Value = progresso;
+                verbose.Content = texto;
+            } else
+            {
+                progress.Visibility = Visibility.Hidden;
+                verbose.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

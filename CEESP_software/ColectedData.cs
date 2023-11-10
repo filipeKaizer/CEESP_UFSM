@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Xaml.Permissions;
-
-namespace CEESP_software
+﻿namespace CEESP_software
 {
     public class ColectedData
     {
@@ -32,9 +24,9 @@ namespace CEESP_software
             return this.Ia[index];
         }
 
-        public float getVa(int index) 
+        public float getVa(int index)
         {
-            return this.Va[index]; 
+            return this.Va[index];
         }
 
         public float getFP(int index)
@@ -46,7 +38,7 @@ namespace CEESP_software
         {
             int type = (int)this.CFP[index];
 
-            switch(type)
+            switch (type)
             {
                 case 1:
                     return 'i';

@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CEESP_software
 {
@@ -25,16 +13,16 @@ namespace CEESP_software
         public CEESP CEESP;
 
 
-        bool edit=false;
+        bool edit = false;
         public Dados(CEESP reference)
         {
             InitializeComponent();
             CEESP = reference;
         }
 
-        private  void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)
+        private void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void btSaveAfterEdit_MouseEnter(object sender, RoutedEventArgs e)
@@ -50,7 +38,7 @@ namespace CEESP_software
 
         private void btEdit_Click(object sender, RoutedEventArgs e)
         {
-                  
+
         }
 
         private void btGraph_Click(object sender, RoutedEventArgs e)

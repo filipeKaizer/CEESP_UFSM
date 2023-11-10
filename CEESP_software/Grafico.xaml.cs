@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
-using System.Threading;
-using OxyPlot;
+using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Reflection;
 
 namespace CEESP_software
 {
@@ -25,7 +13,7 @@ namespace CEESP_software
     /// </summary>
     public partial class Grafico : Page
     {
-        List <String> times = new List<string>();
+        List<String> times = new List<string>();
         private List<Line> oldLines;
         private DispatcherTimer timer;
 
@@ -36,8 +24,8 @@ namespace CEESP_software
 
         private int tempo = 2;
 
-        int items=0;
-        
+        int items = 0;
+
         float xs = 5;
 
         private SerialCOM serialCOM;
@@ -66,7 +54,7 @@ namespace CEESP_software
             Legenda.Visibility = Visibility.Visible;
             // -----------------------------------------------------
 
-            Phase.SelectedIndex = 0; 
+            Phase.SelectedIndex = 0;
 
             plot = new plot(250, 450 / 2, 5);
 
@@ -103,22 +91,23 @@ namespace CEESP_software
             // Atuliza tabela de valores
             VaValue.Content = "Va: " + Math.Round(valores.getVa(index), 2).ToString() + "V";
             IaValue.Content = "Ia: " + Math.Round(valores.getIa(index), 2).ToString() + "A";
-            XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index)*5), 2).ToString() + "V";
+            XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index) * 5), 2).ToString() + "V";
             FPValue.Content = "FP: " + Math.Round(valores.getFP(index), 2).ToString() + valores.getFPType(index);
 
             // Adiciona as linhas
-            foreach(Line i in objects)
+            foreach (Line i in objects)
             {
                 Graph.Children.Add(i);
             }
             oldLines = objects;
-;        }
+            ;
+        }
 
         public void InitializeTime(int n)
         {
-            for (int i = 2; i < n; i+=2)
+            for (int i = 2; i < n; i += 2)
             {
-                times.Add(i+"s");
+                times.Add(i + "s");
             }
             CBTimes.ItemsSource = times;
         }
@@ -132,12 +121,13 @@ namespace CEESP_software
                 string? v = CBTimes.SelectedValue.ToString();
                 string selectedValueString = v;
 
-                 this.tempo = int.Parse(selectedValueString[0].ToString());
+                this.tempo = int.Parse(selectedValueString[0].ToString());
 
-                if (timer != null) 
+                if (timer != null)
                     timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime());
 
-            } catch
+            }
+            catch
             {
                 tempo = 2;
             }
@@ -150,7 +140,9 @@ namespace CEESP_software
                 ShowSub.Stop();
                 HideSub.Begin();
                 sub = false;
-            } else { 
+            }
+            else
+            {
                 HideSub.Stop();
                 ShowSub.Begin();
                 sub = true;
@@ -164,7 +156,8 @@ namespace CEESP_software
                 ShowInfo.Stop();
                 HideInfo.Begin();
                 info = false;
-            } else
+            }
+            else
             {
                 HideInfo.Stop();
                 ShowInfo.Begin();
@@ -232,7 +225,8 @@ namespace CEESP_software
                 try
                 {
                     drawLines();
-                } catch
+                }
+                catch
                 {
 
                 }
@@ -263,7 +257,7 @@ namespace CEESP_software
         {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime()); // Defina o intervalo inicial
-            timer.Tick += async(sender, e) => atualiza();
+            timer.Tick += async (sender, e) => atualiza();
 
             // Inicie o timer
             timer.Start();

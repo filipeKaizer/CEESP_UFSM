@@ -41,3 +41,4 @@ C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\obj\Debug\net6.0-windows\re
 C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\obj\Debug\net6.0-windows\CEESP_software.pdb
 C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\obj\Debug\net6.0-windows\CEESP_software.genruntimeconfig.cache
 C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\obj\Debug\net6.0-windows\ref\CEESP_software.dll
+C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\bin\Debug\net6.0-windows\NumericUpDown.dll

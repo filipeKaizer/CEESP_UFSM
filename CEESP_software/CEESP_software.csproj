@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NumericUpDown" Version="3.0.2" />
     <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
   </ItemGroup>
