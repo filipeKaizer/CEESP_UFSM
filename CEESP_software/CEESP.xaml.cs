@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media.Animation;
 
@@ -34,6 +35,7 @@ namespace CEESP_software
             this.inicio = new Inicio(this.grafico, this, this.serialCOM);
             this.dados = new Dados(this);
             this.graph = new Graph(this);
+
 
             //Associa cada frame do tabcontrol Work a uma pagina.
             FrameInicio.Navigate(this.inicio);
@@ -88,7 +90,7 @@ namespace CEESP_software
             }
         }
 
-        private void btIncio_Click(object sender, RoutedEventArgs e)
+        private async void btIncio_Click(object sender, RoutedEventArgs e)
         {
             SetPage(0, true);
         }
@@ -116,6 +118,16 @@ namespace CEESP_software
         public void atualizaGraph()
         {
             this.graph.atualizaGraph();
+        }
+
+        public int getTimeRefresh()
+        {
+            return this.grafico.getRefreshTime();
+        }
+
+        public bool isValidPort()
+        {
+           return this.serialCOM.isValidPort();
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -61,6 +64,9 @@ namespace CEESP_software
                 {
                     float XsValue = float.Parse(Xs.Text);
                     this.grafico.setXs(XsValue);
+
+                    // Inicializa a atualização automática
+
                 } else
                 {
                     MessageBox.Show("O valor informado não é válido.\nAdotando Xs = 5.");
@@ -83,5 +89,6 @@ namespace CEESP_software
 
             serialCOM.setPort(LPorts.SelectedItem.ToString());
         }
+
     }
 }

@@ -87,7 +87,7 @@ namespace CEESP_software
 
             } catch(Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
                 connected = false;
             }
             
@@ -181,6 +181,15 @@ namespace CEESP_software
         public void setPort(String port)
         {
             this.portSelected = port;
+        }
+
+        public bool isValidPort()
+        {
+            if (this.portSelected != "")
+            {
+                return true;
+            } 
+            return false;
         }
     }
 }

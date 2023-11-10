@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Threading;
+using OxyPlot;
+using System.Windows.Threading;
+using System.Reflection;
 
 namespace CEESP_software
 {
@@ -24,11 +27,14 @@ namespace CEESP_software
     {
         List <String> times = new List<string>();
         private List<Line> oldLines;
+        private DispatcherTimer timer;
 
         private plot plot;
         private bool sub = false;
         private bool info = false;
         private int zoomScale = 1;
+
+        private int tempo = 2;
 
         int items=0;
         
@@ -120,11 +126,25 @@ namespace CEESP_software
         private void CBTimes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TimeSelectet.Content = CBTimes.SelectedItem.ToString();
+            try
+            {
+
+                string? v = CBTimes.SelectedValue.ToString();
+                string selectedValueString = v;
+
+                 this.tempo = int.Parse(selectedValueString[0].ToString());
+
+                if (timer != null) 
+                    timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime());
+
+            } catch
+            {
+                tempo = 2;
+            }
         }
 
         private void btLegenda_Click(object sender, RoutedEventArgs e)
         {
-            //drawLines();
             if (sub)
             {
                 ShowSub.Stop();
@@ -165,26 +185,29 @@ namespace CEESP_software
             atualiza();
         }
 
-        private async void atualiza()
+        public async void atualiza()
         {
-            // Realiza leitura no serialCOM e atualiza o colectedData
-            ListData1.colectedData.Add(await serialCOM.readValues());
-
-            // Atualiza o dataView da classe dados
-            this.ceesp.atualizaDados();
-
-            // Atualiza o Graph
-            this.ceesp.atualizaGraph();
-
-            if (ListData1.colectedData.Count > 0)
+            if (true)
             {
-                try
+                // Realiza leitura no serialCOM e atualiza o colectedData
+                ListData1.colectedData.Add(await serialCOM.readValues());
+
+                // Atualiza o dataView da classe dados
+                this.ceesp.atualizaDados();
+
+                // Atualiza o Graph
+                this.ceesp.atualizaGraph();
+
+                if (ListData1.colectedData.Count > 0)
                 {
-                    drawLines();
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show("Dados inválidos. Verifique se o módulo está conectado e ativo. \n" + error.Message);
+                    try
+                    {
+                        drawLines();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Dados inválidos. Verifique se o módulo está conectado e ativo. \n" + error.Message);
+                    }
                 }
             }
         }
@@ -233,6 +256,22 @@ namespace CEESP_software
                 }
                 catch { }
             }
+        }
+
+        // Sistema de refresh automático
+        public void AutoRefreshInit()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime()); // Defina o intervalo inicial
+            timer.Tick += async(sender, e) => atualiza();
+
+            // Inicie o timer
+            timer.Start();
+        }
+
+        public int getRefreshTime()
+        {
+            return this.tempo;
         }
     }
 }

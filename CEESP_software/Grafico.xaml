@@ -116,7 +116,7 @@
                     <ImageBrush ImageSource="/ri_time-line.png"/>
                 </ComboBox.OpacityMask>
             </ComboBox>
-            <Label x:Name="TimeSelectet" Content="5s" Canvas.Left="708" Canvas.Top="26" Background="#00FBFAFA" Foreground="#FFF7E0E0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="22"/>
+            <Label x:Name="TimeSelectet" Content="2s" Canvas.Left="708" Canvas.Top="26" Background="#00FBFAFA" Foreground="#FFF7E0E0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="22"/>
             <Button x:Name="btDados" Content="" Canvas.Left="10" Canvas.Top="407" Width="31" Height="33" Foreground="#00000000" BorderBrush="#00707070" RenderTransformOrigin="0.758,0.53" Cursor="Hand" Click="btDados_Click">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/Data.png"/>
