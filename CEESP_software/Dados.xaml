@@ -32,7 +32,7 @@
                 <ImageBrush ImageSource="/codicon_graph-line.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btDelete" Content="" HorizontalAlignment="Left" Margin="508,402,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand">
+        <Button x:Name="btDelete" Content="" HorizontalAlignment="Left" Margin="508,402,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" Click="btDelete_Click">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/mdi_delete-outline.png"/>
             </Button.OpacityMask>

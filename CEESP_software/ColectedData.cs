@@ -8,8 +8,8 @@ namespace CEESP_software
         public float[] Va;
         public float[] FP;
         public float[] CFP;
-        public float RPM;
-        public float frequency;
+        public float RPM=0;
+        public float frequency = 0;
 
         public ColectedData(float[] Ia, float[] Va, float[] FP, float[] CFP, float RPM, float frequency)
         {

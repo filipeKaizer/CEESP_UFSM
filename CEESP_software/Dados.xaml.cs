@@ -91,7 +91,7 @@ namespace CEESP_software
                     Va = i.getVa(0),
                     Ia = i.getIa(0),
                     FP = i.getFP(0),
-                    RPM = '-',
+                    RPM = i.getRPM(),
                     F = i.getFrequency()
                 };
 
@@ -133,13 +133,43 @@ namespace CEESP_software
 
                 try
                 {
-                    TBAngle.Text = Math.Round(Math.Acos((double) fp), 2).ToString() + "º"; 
+                    if (fp <= 0)
+                    {
+                        TBAngle.Text = "90º";
+                    } else if (fp >= 1)
+                    {
+                        TBAngle.Text = "0º";
+                    } else {
+                        TBAngle.Text = Math.Round(Math.Acos((int)fp)).ToString() + "º";
+                    }
+
                 } catch
                 {
 
                 }
 
             }
+        }
+
+        private void btDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListData.SelectedIndex != -1)
+            {
+                ListData1.colectedData.Remove(ListData1.colectedData[ListData.SelectedIndex]);
+                LegendaDefault();
+                atualizaDados();
+
+            }
+        }
+
+        private void LegendaDefault()
+        {
+            TBIa.Text = "0";
+            TBVa.Text = "0";
+            TBFP.Text = "0";
+            TBRPM.Text = "0";
+            TBF.Text = "0";
+            TBAngle.Text = "0";
         }
     }
 }
