@@ -12,7 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="ListData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black">
+        <ListView x:Name="ListData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,86,262,64" Width="480" Height="300" Background="#2B000000" BorderBrush="#3F828790" Foreground="#FFEDEFF3" OpacityMask="Black" SelectionChanged="ListData_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Va" Width="50"  DisplayMemberBinding="{Binding Va}"/>
@@ -56,18 +56,22 @@
                 <ImageBrush ImageSource="/save.png"/>
             </Button.Background>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="591,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Ia:" FontFamily="Times New Roman" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="586,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Va:" FontFamily="Times New Roman" FontSize="20" RenderTransformOrigin="1.2,0.652"/>
-        <TextBlock HorizontalAlignment="Left" Margin="569,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="XsIa:" FontFamily="Times New Roman" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="595,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20" Height="28"><Run Text="φ:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="TBIa" HorizontalAlignment="Left" Margin="630,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFDFAFA" SelectionTextBrush="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
-        <TextBox x:Name="TBVa" HorizontalAlignment="Left" Margin="630,128,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
-        <TextBox x:Name="TBXA" HorizontalAlignment="Left" Margin="630,152,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
-        <TextBox x:Name="TBAngle" HorizontalAlignment="Left" Margin="630,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="620,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Ia:" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="614,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Va:" FontFamily="Times New Roman" FontSize="20" RenderTransformOrigin="1.2,0.652"/>
+        <TextBlock HorizontalAlignment="Left" Margin="593,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="RPM:" FontFamily="Times New Roman" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="639,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20" Height="28"><Run Text="φ:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="TBIa" HorizontalAlignment="Left" Margin="653,100,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFDFAFA" SelectionTextBrush="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBVa" HorizontalAlignment="Left" Margin="653,124,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBAngle" HorizontalAlignment="Left" Margin="668,252,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="62" Height="20" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBox x:Name="TBRPM" HorizontalAlignment="Left" Margin="653,172,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
         <Rectangle x:Name="RSave" HorizontalAlignment="Left" Height="24" Margin="639,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" RadiusX="10" RadiusY="10" Fill="#FF8C8EB8" Visibility="Hidden"/>
         <TextBlock x:Name="Tsave" HorizontalAlignment="Left" Margin="646,316,0,0" TextWrapping="Wrap" Text="Salvar" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Foreground="#FF120321" Visibility="Hidden"/>
-        <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="651,318,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
         <Rectangle x:Name="RetSave" HorizontalAlignment="Left" Height="25" Margin="651,316,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="#FF8C8EB8" RadiusX="10" RadiusY="10"/>
         <Label x:Name="LabelSave" Content="Salvar" HorizontalAlignment="Left" Margin="653,312,0,0" VerticalAlignment="Top" Foreground="#FF120321" Background="{x:Null}" FontSize="20" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <Button x:Name="btSaveAfterEdit" Content="Ol" HorizontalAlignment="Left" Margin="651,318,0,0" VerticalAlignment="Top" Background="#FF8C2D2D" BorderBrush="#00707070" Foreground="#FFA23030" OpacityMask="#00000000" Width="70" Height="24" Click="btSaveAfterEdit_Click" MouseEnter="btSaveAfterEdit_MouseEnter" MouseLeave="btSaveAfterEdit_MouseLeave" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+        <TextBlock HorizontalAlignment="Left" Margin="613,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20"><Run Language="pt-br" Text="FP:"/></TextBlock>
+        <TextBox x:Name="TBFP" HorizontalAlignment="Left" Margin="653,148,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="599,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20" Text="Freq:"/>
+        <TextBox x:Name="TBF" HorizontalAlignment="Left" Margin="653,196,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
     </Grid>
 </Page>

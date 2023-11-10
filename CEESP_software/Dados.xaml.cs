@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -13,32 +14,28 @@ namespace CEESP_software
         public CEESP CEESP;
 
 
-        bool edit = false;
+        bool edit = true;
         public Dados(CEESP reference)
         {
             InitializeComponent();
             CEESP = reference;
+            changeVisibility();
         }
 
         private void btSaveAfterEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            atualizaBaseDeDados();
         }
 
         private void btSaveAfterEdit_MouseEnter(object sender, RoutedEventArgs e)
         {
             ActualSaveAfterEditColor = RSave.Fill;
-            RSave.Fill = Brushes.LightGray;
+            RetSave.Fill = Brushes.LightGray;
         }
 
         private void btSaveAfterEdit_MouseLeave(object sender, RoutedEventArgs e)
         {
-            RSave.Fill = ActualSaveAfterEditColor;
-        }
-
-        private void btEdit_Click(object sender, RoutedEventArgs e)
-        {
-
+            RetSave.Fill = ActualSaveAfterEditColor;
         }
 
         private void btGraph_Click(object sender, RoutedEventArgs e)
@@ -57,11 +54,11 @@ namespace CEESP_software
             {
                 TBIa.IsEnabled = false;
                 TBVa.IsEnabled = false;
-                TBXA.IsEnabled = false;
-                TBAngle.IsEnabled = false;
+                TBFP.IsEnabled = false;
+                TBRPM.IsEnabled = false;
+                TBF.IsEnabled = false;
                 edit = false;
                 btSaveAfterEdit.Visibility = Visibility.Hidden;
-                btEdit.IsEnabled = false;
                 RetSave.Visibility = Visibility.Hidden;
                 LabelSave.Visibility = Visibility.Hidden;
             }
@@ -69,16 +66,15 @@ namespace CEESP_software
             {
                 TBIa.IsEnabled = true;
                 TBVa.IsEnabled = true;
-                TBXA.IsEnabled = true;
-                TBAngle.IsEnabled = true;
+                TBFP.IsEnabled = true;
+                TBRPM.IsEnabled = true;
+                TBF.IsEnabled = true;
                 edit = true;
                 btSaveAfterEdit.Visibility = Visibility.Visible;
                 btSaveAfterEdit.IsEnabled = true;
-                btEdit.Visibility = Visibility.Visible;
                 RetSave.Visibility = Visibility.Visible;
-
+                LabelSave.Visibility = Visibility.Visible;
             }
-
         }
 
         public void atualizaDados()
@@ -100,6 +96,49 @@ namespace CEESP_software
                 };
 
                 ListData.Items.Add(item);
+            }
+        }
+
+        private void atualizaBaseDeDados()
+        {
+            if (ListData.SelectedIndex != -1)
+            {
+                try
+                {
+                    ListData1.colectedData[ListData.SelectedIndex].setIa(float.Parse(TBIa.Text), 0);
+                    ListData1.colectedData[ListData.SelectedIndex].setVa(float.Parse(TBVa.Text), 0);
+                    ListData1.colectedData[ListData.SelectedIndex].setFP(float.Parse(TBFP.Text), 0);
+                    ListData1.colectedData[ListData.SelectedIndex].setRPM(float.Parse(TBRPM.Text));
+                    ListData1.colectedData[ListData.SelectedIndex].setFrequency(float.Parse(TBF.Text));
+                    atualizaDados();
+                } catch
+                {
+                    MessageBox.Show("Erro.");
+                }
+            }
+        }
+
+        private void ListData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListData.SelectedIndex != -1)
+            {
+                int p = 2;
+
+                float fp = ListData1.colectedData[ListData.SelectedIndex].getFP(0);
+                TBIa.Text = Math.Round(ListData1.colectedData[ListData.SelectedIndex].getIa(0), p).ToString();
+                TBVa.Text = Math.Round(ListData1.colectedData[ListData.SelectedIndex].getVa(0), p).ToString();
+                TBFP.Text = Math.Round(fp, p).ToString();
+                TBRPM.Text = Math.Round(ListData1.colectedData[ListData.SelectedIndex].getRPM(), p).ToString();
+                TBF.Text = Math.Round(ListData1.colectedData[ListData.SelectedIndex].getFrequency(), p).ToString();
+
+                try
+                {
+                    TBAngle.Text = Math.Round(Math.Acos((double) fp), 2).ToString() + "º"; 
+                } catch
+                {
+
+                }
+
             }
         }
     }

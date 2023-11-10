@@ -1,4 +1,6 @@
-﻿namespace CEESP_software
+﻿using System;
+
+namespace CEESP_software
 {
     public class ColectedData
     {
@@ -57,6 +59,30 @@
         public float getFrequency()
         {
             return this.frequency;
+        }
+
+        public void setFrequency(float valor) {
+            this.frequency = valor;
+        }
+
+        public void setFP (float valor, int index)
+        {
+            this.FP[index] = valor;
+        }
+
+        public void setRPM (float valor)
+        {
+            this.RPM = valor;
+        }
+
+        public void setVa (float valor, int index)
+        {
+            this.Va[index] = valor;
+        }
+
+        public void setIa (float valor, int index)
+        {
+            this.Ia[index] = valor;
         }
     }
 }
