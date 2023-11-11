@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\CEESP-UFSM\\CEESP_software\\CEESP_software\\CEESP_software.csproj": {}
+    "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\CEESP_software.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\CEESP-UFSM\\CEESP_software\\CEESP_software\\CEESP_software.csproj": {
+    "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\CEESP_software.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\CEESP-UFSM\\CEESP_software\\CEESP_software\\CEESP_software.csproj",
+        "projectUniqueName": "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\CEESP_software.csproj",
         "projectName": "CEESP_software",
-        "projectPath": "C:\\Projetos\\CEESP-UFSM\\CEESP_software\\CEESP_software\\CEESP_software.csproj",
+        "projectPath": "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\CEESP_software.csproj",
         "packagesPath": "C:\\Users\\filip\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\CEESP-UFSM\\CEESP_software\\CEESP_software\\obj\\",
+        "outputPath": "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,6 +45,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "EPPlus.Core": {
+              "target": "Package",
+              "version": "[1.5.4, )"
+            },
             "NumericUpDown": {
               "target": "Package",
               "version": "[3.0.2, )"

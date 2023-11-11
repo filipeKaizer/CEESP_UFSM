@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using OfficeOpenXml;
 
 namespace CEESP_software
 {
@@ -170,6 +173,64 @@ namespace CEESP_software
             TBRPM.Text = "0";
             TBF.Text = "0";
             TBAngle.Text = "0";
+        }
+
+
+        private void SalvarArquivo ()
+        {
+            SaveFileDialog SaveWindow = new SaveFileDialog();
+            SaveWindow.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
+            SaveWindow.Title = "Escolher caminho do arquivo de dados";
+
+            if (SaveWindow.ShowDialog() == true)
+            {
+                string caminhoArquivo = SaveWindow.FileName;
+
+                FileInfo fileInfo = new FileInfo(caminhoArquivo);
+
+                using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+                {
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Dados");
+
+                    // Adiciona os cabeçalhos
+                    worksheet.Cells[1, 1].Value = "Va";
+                    worksheet.Cells[1, 2].Value = "Ia";
+                    worksheet.Cells[1, 3].Value = "FP";
+                    worksheet.Cells[1, 4].Value = "RPM";
+                    worksheet.Cells[1, 5].Value = "Freq.";
+                    worksheet.Cells[1, 6].Value = "Tipo";
+
+                    // Adiciona os dados
+                    int i = 0;
+                    foreach(ColectedData data in ListData1.colectedData)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = Math.Round(data.getVa(0), 2);
+                        worksheet.Cells[i + 2, 2].Value = Math.Round(data.getIa(0), 2);
+                        worksheet.Cells[i + 2, 3].Value = Math.Round(data.getFP(0), 2);
+                        worksheet.Cells[i + 2, 4].Value = Math.Round(data.getRPM(), 2);
+                        worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFrequency(), 2);
+
+                        if (data.getFPType(0) == 'i')
+                            worksheet.Cells[i + 2, 6].Value = "Indutiva";
+                        if (data.getFPType(0) == 'c')
+                            worksheet.Cells[i + 2, 6].Value = "Capacitiva";
+                        if (data.getFPType(0) != 'i' && data.getFPType(0) != 'c')
+                            worksheet.Cells[i + 2, 6].Value = "Resistiva";
+
+                        i++;
+                    }
+
+                    excelPackage.Save();
+                }
+            }
+
+
+
+        }
+
+        private void btSave_Click(object sender, RoutedEventArgs e)
+        {
+            SalvarArquivo();
         }
     }
 }

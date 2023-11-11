@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\obj\Debug\net6.0-windows\
+C:\Projetos\CEESP_UFSM\CEESP_software\obj\Debug\net6.0-windows\
 CEESP_software
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Projetos\CEESP-UFSM\CEESP_software\CEESP_software\App.xaml
+C:\Projetos\CEESP_UFSM\CEESP_software\App.xaml
 61404155168
 
 13758554574
-1991126212748
+2032090400501
 CEESP.xaml;Dados.xaml;Grafico.xaml;Graph.xaml;Inicio.xaml;MainWindow.xaml;
 
 False
