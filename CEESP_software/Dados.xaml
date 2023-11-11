@@ -26,34 +26,34 @@
         <GridSplitter HorizontalAlignment="Left" Height="300" Margin="560,86,0,0" VerticalAlignment="Top" Width="2" Background="#66FFFFFF"/>
         <Button x:Name="btGraph" Content="" HorizontalAlignment="Left" Margin="58,402,0,0" VerticalAlignment="Top" BorderBrush="#00000000" Width="30" Height="30" Foreground="#02000000" Cursor="Hand" Click="btGraph_Click">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+                <ImageBrush ImageSource="/icons/graph.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+                <ImageBrush ImageSource="/icons/graph.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btDelete" Content="" HorizontalAlignment="Left" Margin="508,402,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" Click="btDelete_Click">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/mdi_delete-outline.png"/>
+                <ImageBrush ImageSource="/icons/delete.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/mdi_delete-outline.png"/>
+                <ImageBrush ImageSource="/icons/delete.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btEdit" Content="" HorizontalAlignment="Left" Margin="478,402,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand" Click="btEdit_Click_1">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/edit.png"/>
+                <ImageBrush ImageSource="/icons/edit.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/edit.png"/>
+                <ImageBrush ImageSource="/icons/edit.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btSave" Content="" HorizontalAlignment="Left" Margin="448,402,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="30" Height="30" Cursor="Hand" Click="btSave_Click">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/save.png"/>
+                <ImageBrush ImageSource="/icons/save.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/save.png"/>
+                <ImageBrush ImageSource="/icons/save.png"/>
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="620,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Ia:" FontFamily="Times New Roman" FontSize="20"/>

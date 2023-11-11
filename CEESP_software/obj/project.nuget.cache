@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pRMiOlNld+S6b62eWqiYf6tabfiGfqgsnycRpBabbPuhw6BP1qtE75VOhqY8Oppw4DRom4VHO+DVerUp12oYtw==",
+  "dgSpecHash": "2OKqVz1AYhrKa1wibMlKpqVm+9ghVJzpwl6yN42pcnOLOZEqdMOsV3o8qD4QITmHm/HscAnPCTrUFFp30sIkAg==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\CEESP_UFSM\\CEESP_software\\CEESP_software.csproj",
+  "projectFilePath": "C:\\Projetos\\CEESP\\CEESP_software\\CEESP_software.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\filip\\.nuget\\packages\\epplus.core\\1.5.4\\epplus.core.1.5.4.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

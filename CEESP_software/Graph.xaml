@@ -52,18 +52,18 @@
         <oxy:PlotView x:Name="PlotGraph" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450" Width="800" Background="#33010101"/>
         <Button x:Name="btReturn" Content="" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="30" Height="30" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btReturn_Click" Cursor="Hand" AutomationProperties.HelpText="Retornar para a página de dados.">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+                <ImageBrush ImageSource="/icons/graph.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/codicon_graph-line.png"/>
+                <ImageBrush ImageSource="/icons/graph.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btLegenda" Content="" HorizontalAlignment="Left" Margin="57,410,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click" Cursor="Hand" AutomationProperties.HelpText="Seleção de valores a serem mostrados">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/checkList.png"/>
+                <ImageBrush ImageSource="/icons/checkList.png"/>
             </Button.OpacityMask>
             <Button.Background>
-                <ImageBrush ImageSource="/checkList.png"/>
+                <ImageBrush ImageSource="/icons/checkList.png"/>
             </Button.Background>
         </Button>
         <Label x:Name="Check_Situation" Content="D" HorizontalAlignment="Left" Margin="81,425,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="10" FontFamily="Times New Roman"/>

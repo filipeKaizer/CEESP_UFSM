@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CEESP_software
-build_property.ProjectDir = C:\Projetos\CEESP_UFSM\CEESP_software\
+build_property.ProjectDir = C:\Projetos\CEESP\CEESP_software\

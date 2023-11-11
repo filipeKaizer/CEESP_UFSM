@@ -424,7 +424,7 @@
         </Button>
         <Button x:Name="Menu" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.656,0.954" BorderBrush="#00707070" Foreground="#00000000" Width="35" Height="35" Click="Menu_Click" Cursor="Hand">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/Frame.png"/>
+                <ImageBrush ImageSource="/icons/frame.png"/>
             </Button.OpacityMask>
             <Button.RenderTransform>
                 <TransformGroup>
@@ -435,12 +435,12 @@
                 </TransformGroup>
             </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="/Frame.png"/>
+                <ImageBrush ImageSource="/icons/frame.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="Config" Content="Button" HorizontalAlignment="Left" Margin="125,414,0,0" VerticalAlignment="Top" BorderBrush="#00707070" Foreground="#00000000" Width="30" Height="30" RenderTransformOrigin="0.57,1.113" Cursor="Hand">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/mingcute_settings-6-line.png"/>
+                <ImageBrush ImageSource="/icons/setting.png"/>
             </Button.OpacityMask>
             <Button.RenderTransform>
                 <TransformGroup>
@@ -451,7 +451,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="/mingcute_settings-6-line.png"/>
+                <ImageBrush ImageSource="/icons/setting.png"/>
             </Button.Background>
         </Button>
     </Grid>

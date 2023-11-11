@@ -119,10 +119,10 @@
             <Label x:Name="TimeSelectet" Content="2s" Canvas.Left="708" Canvas.Top="26" Background="#00FBFAFA" Foreground="#FFF7E0E0" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="22"/>
             <Button x:Name="btDados" Content="" Canvas.Left="10" Canvas.Top="407" Width="31" Height="33" Foreground="#00000000" BorderBrush="#00707070" RenderTransformOrigin="0.758,0.53" Cursor="Hand" Click="btDados_Click">
                 <Button.OpacityMask>
-                    <ImageBrush ImageSource="/Data.png"/>
+                    <ImageBrush ImageSource="/icons/Data.png"/>
                 </Button.OpacityMask>
                 <Button.Background>
-                    <ImageBrush ImageSource="/Data.png"/>
+                    <ImageBrush ImageSource="/icons/Data.png"/>
                 </Button.Background>
             </Button>
             <Button x:Name="btLegenda" Content="Button" Canvas.Left="745" Canvas.Top="410" Width="35" Height="30" BorderBrush="#00707070" Foreground="#00000000" Click="btLegenda_Click" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -159,13 +159,19 @@
             </Grid>
             <Rectangle Height="30" Canvas.Left="573" Canvas.Top="410" Width="100" Fill="#0CD9D9D9"/>
             <Button x:Name="ViewZoomMais" Content="Button" Canvas.Left="583" Canvas.Top="415" Cursor="" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="20" Width="20" Click="ViewZoomMais_Click">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/icons/mais.png"/>
+                </Button.OpacityMask>
                 <Button.Background>
-                    <ImageBrush ImageSource="/Zoom +.png" Stretch="Fill"/>
+                    <ImageBrush ImageSource="/icons/mais.png" Stretch="Fill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="ViewZoomMenos" Content="Button" Canvas.Left="613" Canvas.Top="415" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="ViewZoomMenos_Click">
+            <Button x:Name="ViewZoomMenos" Content="Button" Canvas.Left="613" Canvas.Top="415" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="" Click="ViewZoomMenos_Click">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/icons/mais.png"/>
+                </Button.OpacityMask>
                 <Button.Background>
-                    <ImageBrush ImageSource="/Zoom -.png"/>
+                    <ImageBrush ImageSource="/icons/mais.png"/>
                 </Button.Background>
             </Button>
             <Label x:Name="LabelZoom" Content="1x" Canvas.Left="641" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF"/>

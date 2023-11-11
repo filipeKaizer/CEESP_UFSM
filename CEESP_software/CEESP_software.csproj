@@ -9,26 +9,20 @@
 
   <ItemGroup>
     <None Remove="checkList.png" />
-    <None Remove="codicon_graph-line.jpg" />
     <None Remove="codicon_graph-line.png" />
-    <None Remove="codicon_settings.jpg" />
     <None Remove="codicon_settings.png" />
-    <None Remove="Data.jpg" />
     <None Remove="Data.png" />
     <None Remove="edit.png" />
     <None Remove="Frame.png" />
-    <None Remove="Inicio.jpg" />
-    <None Remove="Inicio.png" />
-    <None Remove="Legenda.jpg" />
+    <None Remove="icons\mais.png" />
     <None Remove="Legenda.png" />
+    <None Remove="mais.png" />
     <None Remove="mdi_delete-outline.png" />
     <None Remove="mingcute_settings-6-line.png" />
     <None Remove="ri_time-line.png" />
     <None Remove="save.png" />
-    <None Remove="Settings.jpg" />
     <None Remove="Vector.png" />
-    <None Remove="Zoom +.png" />
-    <None Remove="Zoom -.png" />
+    <None Remove="ZoomMenos.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,31 +33,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="checkList.png" />
-    <Resource Include="codicon_graph-line.jpg" />
-    <Resource Include="codicon_graph-line.png" />
-    <Resource Include="codicon_settings.jpg" />
+    <Resource Include="icons\checkList.png" />
+    <Resource Include="icons\graph.png" />
     <Resource Include="codicon_settings.png" />
-    <Resource Include="Data.jpg" />
-    <Resource Include="Data.png" />
-    <Resource Include="edit.png" />
-    <Resource Include="Frame.png" />
-    <Resource Include="Inicio.jpg" />
-    <Resource Include="Inicio.png" />
-    <Resource Include="Legenda.jpg" />
+    <Resource Include="icons\Data.png" />
+    <Resource Include="icons\edit.png" />
+    <Resource Include="icons\Frame.png" />
+    <Resource Include="icons\mais.png" />
     <Resource Include="Legenda.png" />
-    <Resource Include="mdi_delete-outline.png" />
-    <Resource Include="mingcute_settings-6-line.png" />
+    <Resource Include="icons\delete.png" />
+    <Resource Include="icons\setting.png" />
     <Resource Include="ri_time-line.png" />
-    <Resource Include="save.png" />
-    <Resource Include="Settings.jpg" />
+    <Resource Include="icons\save.png" />
     <Resource Include="Vector.png" />
-    <Resource Include="Zoom +.png" />
-    <Resource Include="Zoom -.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Icons\" />
   </ItemGroup>
 
 </Project>
