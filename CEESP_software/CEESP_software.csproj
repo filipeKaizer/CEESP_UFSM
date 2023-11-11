@@ -22,6 +22,7 @@
     <None Remove="ri_time-line.png" />
     <None Remove="save.png" />
     <None Remove="Vector.png" />
+    <None Remove="Zoom -.png" />
     <None Remove="ZoomMenos.png" />
   </ItemGroup>
 
@@ -35,17 +36,17 @@
   <ItemGroup>
     <Resource Include="icons\checkList.png" />
     <Resource Include="icons\graph.png" />
-    <Resource Include="codicon_settings.png" />
     <Resource Include="icons\Data.png" />
     <Resource Include="icons\edit.png" />
     <Resource Include="icons\Frame.png" />
     <Resource Include="icons\mais.png" />
-    <Resource Include="Legenda.png" />
+    <Resource Include="icons\Legenda.png" />
     <Resource Include="icons\delete.png" />
     <Resource Include="icons\setting.png" />
-    <Resource Include="ri_time-line.png" />
+    <Resource Include="icons\ri_time-line.png" />
     <Resource Include="icons\save.png" />
-    <Resource Include="Vector.png" />
+    <Resource Include="icons\Vector.png" />
+    <Resource Include="icons\menos.png" />
   </ItemGroup>
 
 </Project>
