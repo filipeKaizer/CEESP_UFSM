@@ -87,7 +87,7 @@ namespace CEESP_software
                 else
                 {
                     MessageBox.Show("O valor informado não é válido.\nAdotando Xs = 5.");
-                    this.grafico.setXs(5);
+                    this.grafico.setXs(ListData1.configData.getXs());
                 }
 
                 ceesp.SetPage(1, true);

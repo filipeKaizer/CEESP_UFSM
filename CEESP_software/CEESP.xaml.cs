@@ -88,7 +88,7 @@ namespace CEESP_software
             }
         }
 
-        private async void btIncio_Click(object sender, RoutedEventArgs e)
+        private void btIncio_Click(object sender, RoutedEventArgs e)
         {
             SetPage(0, true);
         }

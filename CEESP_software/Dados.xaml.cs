@@ -178,49 +178,52 @@ namespace CEESP_software
 
         private void SalvarArquivo ()
         {
+            if (ListData1.colectedData.Count != 0) { 
+
             SaveFileDialog SaveWindow = new SaveFileDialog();
             SaveWindow.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
             SaveWindow.Title = "Escolher caminho do arquivo de dados";
 
-            if (SaveWindow.ShowDialog() == true)
-            {
-                string caminhoArquivo = SaveWindow.FileName;
-
-                FileInfo fileInfo = new FileInfo(caminhoArquivo);
-
-                using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+                if (SaveWindow.ShowDialog() == true)
                 {
-                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Dados");
+                    string caminhoArquivo = SaveWindow.FileName;
 
-                    // Adiciona os cabeçalhos
-                    worksheet.Cells[1, 1].Value = "Va";
-                    worksheet.Cells[1, 2].Value = "Ia";
-                    worksheet.Cells[1, 3].Value = "FP";
-                    worksheet.Cells[1, 4].Value = "RPM";
-                    worksheet.Cells[1, 5].Value = "Freq.";
-                    worksheet.Cells[1, 6].Value = "Tipo";
+                    FileInfo fileInfo = new FileInfo(caminhoArquivo);
 
-                    // Adiciona os dados
-                    int i = 0;
-                    foreach(ColectedData data in ListData1.colectedData)
+                    using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
                     {
-                        worksheet.Cells[i + 2, 1].Value = Math.Round(data.getVa(0), 2);
-                        worksheet.Cells[i + 2, 2].Value = Math.Round(data.getIa(0), 2);
-                        worksheet.Cells[i + 2, 3].Value = Math.Round(data.getFP(0), 2);
-                        worksheet.Cells[i + 2, 4].Value = Math.Round(data.getRPM(), 2);
-                        worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFrequency(), 2);
+                        ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Dados");
 
-                        if (data.getFPType(0) == 'i')
-                            worksheet.Cells[i + 2, 6].Value = "Indutiva";
-                        if (data.getFPType(0) == 'c')
-                            worksheet.Cells[i + 2, 6].Value = "Capacitiva";
-                        if (data.getFPType(0) != 'i' && data.getFPType(0) != 'c')
-                            worksheet.Cells[i + 2, 6].Value = "Resistiva";
+                        // Adiciona os cabeçalhos
+                        worksheet.Cells[1, 1].Value = "Va";
+                        worksheet.Cells[1, 2].Value = "Ia";
+                        worksheet.Cells[1, 3].Value = "FP";
+                        worksheet.Cells[1, 4].Value = "RPM";
+                        worksheet.Cells[1, 5].Value = "Freq.";
+                        worksheet.Cells[1, 6].Value = "Tipo";
 
-                        i++;
+                        // Adiciona os dados
+                        int i = 0;
+                        foreach (ColectedData data in ListData1.colectedData)
+                        {
+                            worksheet.Cells[i + 2, 1].Value = Math.Round(data.getVa(0), 2);
+                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getIa(0), 2);
+                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getFP(0), 2);
+                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getRPM(), 2);
+                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFrequency(), 2);
+
+                            if (data.getFPType(0) == 'i')
+                                worksheet.Cells[i + 2, 6].Value = "Indutiva";
+                            if (data.getFPType(0) == 'c')
+                                worksheet.Cells[i + 2, 6].Value = "Capacitiva";
+                            if (data.getFPType(0) != 'i' && data.getFPType(0) != 'c')
+                                worksheet.Cells[i + 2, 6].Value = "Resistiva";
+
+                            i++;
+                        }
+
+                        excelPackage.Save();
                     }
-
-                    excelPackage.Save();
                 }
             }
 

@@ -42,7 +42,7 @@ namespace CEESP_software
 
                     int resposta = (A % B) * (A + B); // O teste é feito com uma operação matemática
 
-                    serialPort.WriteLine("test"); //Pede teste
+                    serialPort.WriteLine(ListData1.configData.getCmdTest()); //Pede teste
 
                     serialPort.WriteLine($"{A},{B}"); //Envia os valores de teste
 
@@ -81,10 +81,10 @@ namespace CEESP_software
 
             try
             {
-                SerialPort connection = new SerialPort(portSelected, 9600, Parity.None, 8, StopBits.One);
+                SerialPort connection = new SerialPort(portSelected, ListData1.configData.getBoundRate(), Parity.None, 8, StopBits.One);
                 connection.Open();
 
-                connection.WriteLine("snd"); //Pede envio de dados
+                connection.WriteLine(ListData1.configData.getCmdSend()); //Pede envio de dados
 
                 values = await Receber(connection); //Chama de forma assincrona a função para ler dados do arduino
                 String msg = "";
@@ -99,7 +99,6 @@ namespace CEESP_software
             }
             catch (Exception e)
             {
-                //MessageBox.Show(e.Message);
                 connected = false;
             }
 
@@ -128,16 +127,16 @@ namespace CEESP_software
                                 Va[3] = valor;
                                 break;
                             case "Im":
-                                Ia[0] = valor * 10;
+                                Ia[0] = valor * ListData1.configData.getIaMultiplier();
                                 break;
                             case "Ia":
-                                Ia[1] = valor * 10;
+                                Ia[1] = valor * ListData1.configData.getIaMultiplier();
                                 break;
                             case "Ib":
-                                Ia[2] = valor * 10;
+                                Ia[2] = valor * ListData1.configData.getIaMultiplier();
                                 break;
                             case "Ic":
-                                Ia[3] = valor * 10;
+                                Ia[3] = valor * ListData1.configData.getIaMultiplier();
                                 break;
                             case "FPt":
                                 FP[0] = valor;

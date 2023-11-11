@@ -56,7 +56,7 @@ namespace CEESP_software
 
             Phase.SelectedIndex = 0;
 
-            plot = new plot(250, 450 / 2, 5);
+            plot = new plot(ListData1.configData.getCenterX(), ListData1.configData.getCenterY() / 2, ListData1.configData.getXs());
 
             this.serialCOM = referenceSerial;
             this.ceesp = ceesp;
@@ -89,10 +89,10 @@ namespace CEESP_software
             };
 
             // Atuliza tabela de valores
-            VaValue.Content = "Va: " + Math.Round(valores.getVa(index), 2).ToString() + "V";
-            IaValue.Content = "Ia: " + Math.Round(valores.getIa(index), 2).ToString() + "A";
-            XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index) * 5), 2).ToString() + "V";
-            FPValue.Content = "FP: " + Math.Round(valores.getFP(index), 2).ToString() + valores.getFPType(index);
+            VaValue.Content = "Va: " + Math.Round(valores.getVa(index), ListData1.configData.getDecimals()).ToString() + "V";
+            IaValue.Content = "Ia: " + Math.Round(valores.getIa(index), ListData1.configData.getDecimals()).ToString() + "A";
+            XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index) * ListData1.configData.getXs()), ListData1.configData.getDecimals()).ToString() + "V";
+            FPValue.Content = "FP: " + Math.Round(valores.getFP(index), ListData1.configData.getDecimals()).ToString() + valores.getFPType(index);
 
             // Adiciona as linhas
             foreach (Line i in objects)
