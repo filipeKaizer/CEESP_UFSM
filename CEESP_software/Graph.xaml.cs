@@ -73,25 +73,25 @@ namespace CEESP_software
             var VaLineSeries = new LineSeries
             {
                 Color = OxyColors.Green,  // Cor da linha
-                StrokeThickness = 2     // Espessura da linha
+                StrokeThickness = ListData1.configData.getLarguraLinha()     // Espessura da linha
             };
 
             var IaLineSeries = new LineSeries
             {
                 Color = OxyColors.Red,  // Cor da linha
-                StrokeThickness = 2     // Espessura da linha
+                StrokeThickness = ListData1.configData.getLarguraLinha()    // Espessura da linha
             };
 
             var EaLineSeries = new LineSeries
             {
                 Color = OxyColors.Blue,  // Cor da linha
-                StrokeThickness = 2     // Espessura da linha
+                StrokeThickness = ListData1.configData.getLarguraLinha()    // Espessura da linha
             };
 
             var RPMLineSeries = new LineSeries
             {
                 Color = OxyColors.Yellow,  // Cor da linha
-                StrokeThickness = 2     // Espessura da linha
+                StrokeThickness = ListData1.configData.getLarguraLinha()   // Espessura da linha
             };
             /*-------------------------*/
 

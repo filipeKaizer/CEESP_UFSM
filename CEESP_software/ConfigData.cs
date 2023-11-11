@@ -15,10 +15,20 @@ namespace CEESP_software
         private int decimals;
         private int boundRate;
         private int IaMultiplier;
+        private int LarguraLinha;
+        private int dataBits;
 
         private string cmdSend;
         private string cmdRele;
         private string cmdTest;
+        private string UnTensao;
+        private string UnCorrente;
+        private string UnRPM;
+        private string UnFreq;
+        private string UnTempo;
+
+        private bool AdicionarUnidade;
+
         
         public ConfigData()
         {
@@ -30,13 +40,24 @@ namespace CEESP_software
             // Grafico
             this.centerX = 250;
             this.centerY = 450;
+            this.LarguraLinha = 2;
 
             // Comunicação
             this.boundRate = 9600;
             this.cmdTest = "test";
             this.cmdSend = "snd";
             this.cmdRele = "rele";
-        }
+            this.dataBits = 8;
+
+            // Arquivo
+            this.AdicionarUnidade = false;
+            this.UnCorrente = "A";
+            this.UnTensao = "V";
+            this.UnFreq = "Hz";
+            this.UnRPM = "RPM";
+            this.UnTempo = "s";
+
+    }
 
         public float getCenterX()
         {
@@ -63,6 +84,11 @@ namespace CEESP_software
             return this.boundRate;
         }
 
+        public int getDataBits()
+        {
+            return this.dataBits;
+        }
+
         public string getCmdSend()
         {
             return this.cmdSend;
@@ -83,5 +109,40 @@ namespace CEESP_software
             return this.IaMultiplier;
         }
 
+        public int getLarguraLinha()
+        {
+            return this.LarguraLinha;
+        }
+
+
+        public string getUnCorrente()
+        {
+            return this.UnCorrente;
+        }
+
+        public string getUnTensao()
+        {
+            return this.UnTensao;
+        }
+
+        public string getUnRPM()
+        {
+            return this.UnRPM;
+        }
+
+        public string getUnFreq()
+        {
+            return this.UnFreq;
+        }
+
+        public string getUnTempo()
+        {
+            return this.UnTempo;
+        }
+
+        public bool getUnidade()
+        {
+            return this.AdicionarUnidade;
+        }
     }
 }

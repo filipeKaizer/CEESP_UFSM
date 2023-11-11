@@ -26,7 +26,7 @@ namespace CEESP_software
 
         int items = 0;
 
-        float xs = 5;
+        float xs = ListData1.configData.getXs();
 
         private SerialCOM serialCOM;
         private CEESP ceesp;

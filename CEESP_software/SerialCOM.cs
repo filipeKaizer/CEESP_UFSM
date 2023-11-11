@@ -33,7 +33,7 @@ namespace CEESP_software
             {
                 this.cessp.setProgress((port + ": Testando..."), (int)(percent / 2), true);
 
-                SerialPort serialPort = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                SerialPort serialPort = new SerialPort(port, ListData1.configData.getBoundRate(), Parity.None, 8, StopBits.One);
 
                 try
                 {
@@ -83,7 +83,7 @@ namespace CEESP_software
 
             try
             {
-                SerialPort connection = new SerialPort(portSelected, ListData1.configData.getBoundRate(), Parity.None, 8, StopBits.One);
+                SerialPort connection = new SerialPort(portSelected, ListData1.configData.getBoundRate(), Parity.None, ListData1.configData.getDataBits(), StopBits.One);
                 connection.Open();
 
                 connection.WriteLine(ListData1.configData.getCmdSend()); //Pede envio de dados

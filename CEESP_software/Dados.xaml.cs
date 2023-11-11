@@ -206,14 +206,18 @@ namespace CEESP_software
 
                         // Adiciona os dados
                         int i = 0;
+                        bool u = ListData1.configData.getUnidade();
+                        ConfigData c = ListData1.configData;
+                        
                         foreach (ColectedData data in ListData1.colectedData)
                         {
-                            worksheet.Cells[i + 2, 1].Value = data.getTempo();
-                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), 2);
-                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), 2);
+                          //       LINHA/COLUNA -> Valor    | Valor do DB     | Adiciona Unidade se u = true
+                            worksheet.Cells[i + 2, 1].Value = data.getTempo() + ((u) ? c.getUnTempo() : "");
+                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), 2) + ((u) ? c.getUnTensao() : "");
+                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), 2) + ((u) ? c.getUnCorrente() : "");
                             worksheet.Cells[i + 2, 4].Value = Math.Round(data.getFP(0), 2);
-                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getRPM(), 2);
-                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getFrequency(), 2);
+                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getRPM(), 2) + ((u) ? c.getUnRPM() : "");
+                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getFrequency(), 2) + ((u) ? c.getUnFreq() : "");
 
                             if (data.getFPType(0) == 'i')
                                 worksheet.Cells[i + 2, 6].Value = "Indutiva";

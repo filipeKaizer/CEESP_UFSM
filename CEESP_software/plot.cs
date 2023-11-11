@@ -38,7 +38,7 @@ namespace CEESP_software
                 X2 = (centerX + value),
                 Y2 = centerY,
                 Stroke = customBrush,
-                StrokeThickness = 2
+                StrokeThickness = ListData1.configData.getLarguraLinha()
             };
             FinalX = (float)Va.X2;
             FinalY = (float)Va.Y2;
@@ -48,7 +48,7 @@ namespace CEESP_software
 
         public Line createIa(float value, float FP, char type)
         {
-            value = value * 5;
+            value = value * ListData1.configData.getIaMultiplier();
             float valueIC;
             float angle = (float)Math.Acos(FP);
 
@@ -69,7 +69,7 @@ namespace CEESP_software
                 X2 = centerX + value * Math.Cos(angle),
                 Y2 = centerY + valueIC,
                 Stroke = customBrush,
-                StrokeThickness = 2
+                StrokeThickness = ListData1.configData.getLarguraLinha()
             };
             ActualBrush = customBrush;
             return Ia;
@@ -97,7 +97,7 @@ namespace CEESP_software
                 X2 = FinalX + typeValue * XSValue * IaValue * Math.Cos(1.5708 - angulo), //Subtrai 90 do angulo.
                 Y2 = FinalY - (XSValue * IaValue) * Math.Sin(1.5708 - angulo),
                 Stroke = customBrush,
-                StrokeThickness = 2
+                StrokeThickness = ListData1.configData.getLarguraLinha()
             };
             this.FinalX = (float)Xs.X2;
             this.FinalY = (float)Xs.Y2;
@@ -116,7 +116,7 @@ namespace CEESP_software
                 X2 = FinalX,
                 Y2 = FinalY,
                 Stroke = customBrush,
-                StrokeThickness = 2
+                StrokeThickness = ListData1.configData.getLarguraLinha()
             };
 
             return Ea;
@@ -159,7 +159,7 @@ namespace CEESP_software
             Path path = new Path
             {
                 Stroke = customBrush,
-                StrokeThickness = 2,
+                StrokeThickness = ListData1.configData.getLarguraLinha(),
                 Data = pathGeometry
             };
 
