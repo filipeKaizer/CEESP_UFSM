@@ -281,5 +281,10 @@ namespace CEESP_software
         {
             return this.tempo;
         }
+
+        private void btGraph_Click(object sender, RoutedEventArgs e)
+        {
+            this.ceesp.SetPage(5, true);
+        }
     }
 }

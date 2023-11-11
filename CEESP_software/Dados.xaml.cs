@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using OfficeOpenXml;
+using System.Globalization;
 
 namespace CEESP_software
 {
@@ -94,7 +95,7 @@ namespace CEESP_software
                     Tempo = i.getTempo()+"s",
                     Va = i.getVa(0),
                     Ia = i.getIa(0),
-                    FP = i.getFP(0),
+                    FP = Math.Round(i.getFP(0), 2).ToString(),
                     RPM = i.getRPM(),
                     F = i.getFrequency()
                 };
@@ -107,14 +108,28 @@ namespace CEESP_software
         {
             if (ListData.SelectedIndex != -1)
             {
+                CultureInfo US = new CultureInfo("en-US");
+                CultureInfo Brazil = new CultureInfo("pt-br");
+
+
                 try
                 {
-                    ListData1.colectedData[ListData.SelectedIndex].setIa(float.Parse(TBIa.Text), 0);
-                    ListData1.colectedData[ListData.SelectedIndex].setVa(float.Parse(TBVa.Text), 0);
-                    ListData1.colectedData[ListData.SelectedIndex].setFP(float.Parse(TBFP.Text), 0);
-                    ListData1.colectedData[ListData.SelectedIndex].setRPM(float.Parse(TBRPM.Text));
-                    ListData1.colectedData[ListData.SelectedIndex].setFrequency(float.Parse(TBF.Text));
+                    if (float.TryParse(TBIa.Text, NumberStyles.Float, US, out float Ia))
+                        ListData1.colectedData[ListData.SelectedIndex].setIa(Ia, 0);
+                    if (float.TryParse(TBVa.Text, NumberStyles.Float, US, out float Va))
+                        ListData1.colectedData[ListData.SelectedIndex].setVa(Va, 0);
+                    if (float.TryParse(TBFP.Text, NumberStyles.Float, US, out float FP))
+                        ListData1.colectedData[ListData.SelectedIndex].setFP(FP, 0);
+                    if (float.TryParse(TBRPM.Text, NumberStyles.Float, US, out float RPM))
+                        ListData1.colectedData[ListData.SelectedIndex].setRPM(RPM);
+                    if (float.TryParse(TBF.Text, NumberStyles.Float, US, out float F))
+                        ListData1.colectedData[ListData.SelectedIndex].setFrequency(F);
+                    
                     atualizaDados();
+                    btSaveAfterEdit.Visibility = Visibility.Hidden;
+                    RetSave.Visibility = Visibility.Hidden;
+                    LabelSave.Visibility = Visibility.Hidden;
+
                 } catch
                 {
                     MessageBox.Show("Erro.");
