@@ -12,6 +12,8 @@ namespace CEESP_software
         private String portSelected = "";
         private CEESP cessp;
 
+        private int tempoCorrente = 0;
+
         public SerialCOM(CEESP ceesp)
         {
             this.cessp = ceesp;
@@ -170,7 +172,11 @@ namespace CEESP_software
                 }
             }
 
+            // Adicio o tempo corrente baseado no refreshTime
+            tempoCorrente += cessp.getTimeRefresh();
+            
             ColectedData colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
+            colected.setTempo(tempoCorrente);            
 
             return colected;
         }

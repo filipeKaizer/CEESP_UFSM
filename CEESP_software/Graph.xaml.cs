@@ -87,6 +87,12 @@ namespace CEESP_software
                 Color = OxyColors.Blue,  // Cor da linha
                 StrokeThickness = 2     // Espessura da linha
             };
+
+            var RPMLineSeries = new LineSeries
+            {
+                Color = OxyColors.Yellow,  // Cor da linha
+                StrokeThickness = 2     // Espessura da linha
+            };
             /*-------------------------*/
 
             /* ADICIONA OS PONTOS */
@@ -95,9 +101,11 @@ namespace CEESP_software
             for (int i = 0; i < data.Count; i++)
             {
                 ColectedData valores = data[i];
+                int t = valores.getTempo();
 
-                VaLineSeries.Points.Add(new DataPoint(i, valores.getVa(0)));
-                IaLineSeries.Points.Add(new DataPoint(i, valores.getIa(0)));
+                VaLineSeries.Points.Add(new DataPoint(t, valores.getVa(0)));
+                IaLineSeries.Points.Add(new DataPoint(t, valores.getIa(0)));
+                RPMLineSeries.Points.Add(new DataPoint(t, valores.getRPM()));
             }
             /*--------------------*/
 
@@ -108,6 +116,9 @@ namespace CEESP_software
 
             if (IaCheck.IsChecked == true)
                 plotModel.Series.Add(IaLineSeries);
+
+            if (RPM.IsChecked == true)
+                plotModel.Series.Add(RPMLineSeries);
 
             // Associe o PlotModel ao PlotView
             PlotGraph.Model = plotModel;

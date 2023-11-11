@@ -4,12 +4,13 @@ namespace CEESP_software
 {
     public class ColectedData
     {
-        public float[] Ia;
-        public float[] Va;
-        public float[] FP;
-        public float[] CFP;
-        public float RPM=0;
-        public float frequency = 0;
+        private float[] Ia;
+        private float[] Va;
+        private float[] FP;
+        private float[] CFP;
+        private float RPM=0;
+        private float frequency = 0;
+        private int tempo=0;
 
         public ColectedData(float[] Ia, float[] Va, float[] FP, float[] CFP, float RPM, float frequency)
         {
@@ -83,6 +84,16 @@ namespace CEESP_software
         public void setIa (float valor, int index)
         {
             this.Ia[index] = valor;
+        }
+
+        public int getTempo()
+        {
+            return this.tempo;
+        }
+
+        public void setTempo(int tempo)
+        {
+            this.tempo = tempo;
         }
     }
 }

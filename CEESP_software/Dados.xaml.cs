@@ -91,6 +91,7 @@ namespace CEESP_software
                 item = new ListViewItem();
                 item.Content = new
                 {
+                    Tempo = i.getTempo()+"s",
                     Va = i.getVa(0),
                     Ia = i.getIa(0),
                     FP = i.getFP(0),
@@ -195,22 +196,24 @@ namespace CEESP_software
                         ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Dados");
 
                         // Adiciona os cabeçalhos
-                        worksheet.Cells[1, 1].Value = "Va";
-                        worksheet.Cells[1, 2].Value = "Ia";
-                        worksheet.Cells[1, 3].Value = "FP";
-                        worksheet.Cells[1, 4].Value = "RPM";
-                        worksheet.Cells[1, 5].Value = "Freq.";
-                        worksheet.Cells[1, 6].Value = "Tipo";
+                        worksheet.Cells[1, 1].Value = "Tempo";
+                        worksheet.Cells[1, 2].Value = "Va";
+                        worksheet.Cells[1, 3].Value = "Ia";
+                        worksheet.Cells[1, 4].Value = "FP";
+                        worksheet.Cells[1, 5].Value = "RPM";
+                        worksheet.Cells[1, 6].Value = "Freq.";
+                        worksheet.Cells[1, 7].Value = "Tipo";
 
                         // Adiciona os dados
                         int i = 0;
                         foreach (ColectedData data in ListData1.colectedData)
                         {
-                            worksheet.Cells[i + 2, 1].Value = Math.Round(data.getVa(0), 2);
-                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getIa(0), 2);
-                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getFP(0), 2);
-                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getRPM(), 2);
-                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFrequency(), 2);
+                            worksheet.Cells[i + 2, 1].Value = data.getTempo();
+                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), 2);
+                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), 2);
+                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getFP(0), 2);
+                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getRPM(), 2);
+                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getFrequency(), 2);
 
                             if (data.getFPType(0) == 'i')
                                 worksheet.Cells[i + 2, 6].Value = "Indutiva";
