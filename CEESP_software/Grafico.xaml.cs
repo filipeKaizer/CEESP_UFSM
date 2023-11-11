@@ -20,7 +20,7 @@ namespace CEESP_software
         private plot plot;
         private bool sub = false;
         private bool info = false;
-        private int zoomScale = 1;
+        private float zoomScale = 1;
 
         private int tempo = 2;
 
@@ -228,10 +228,10 @@ namespace CEESP_software
         {
             if (this.zoomScale < 10)
             {
-                this.zoomScale++;
+                this.zoomScale += 0.2f;
             }
 
-            LabelZoom.Content = this.zoomScale.ToString() + "x";
+            LabelZoom.Content = Math.Round(this.zoomScale, 1).ToString() + "x";
 
             // Se houver dados já lidos, atualiza
             if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
@@ -249,12 +249,12 @@ namespace CEESP_software
 
         private void ViewZoomMenos_Click(object sender, RoutedEventArgs e)
         {
-            if (this.zoomScale >= 1)
+            if (this.zoomScale > 0)
             {
-                this.zoomScale--;
+                this.zoomScale -= 0.2f;
             }
 
-            LabelZoom.Content = this.zoomScale.ToString() + "x";
+            LabelZoom.Content = Math.Round(this.zoomScale, 1).ToString() + "x";
 
             if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
             {
