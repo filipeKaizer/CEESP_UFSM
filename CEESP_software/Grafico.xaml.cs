@@ -105,6 +105,7 @@ namespace CEESP_software
 
         public void InitializeTime(int n)
         {
+            times.Add("Pause");
             for (int i = 2; i < n; i += 2)
             {
                 times.Add(i + "s");
@@ -115,21 +116,34 @@ namespace CEESP_software
         private void CBTimes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TimeSelectet.Content = CBTimes.SelectedItem.ToString();
-            try
+
+            if (CBTimes.SelectedItem.ToString() == "Pause")
             {
-
-                string? v = CBTimes.SelectedValue.ToString();
-                string selectedValueString = v;
-
-                this.tempo = int.Parse(selectedValueString[0].ToString());
-
                 if (timer != null)
-                    timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime());
-
+                {
+                    TimeSelectet.Content = "P";
+                    timer.Stop();
+                }
             }
-            catch
+            else
             {
-                tempo = 2;
+                try
+                {
+                    
+                    string? v = CBTimes.SelectedValue.ToString();
+                    string selectedValueString = v;
+
+                    this.tempo = int.Parse(selectedValueString[0].ToString());
+
+                    if (timer != null)
+                        timer.Interval = TimeSpan.FromSeconds(this.getRefreshTime());
+                    if (timer != null && !timer.IsEnabled)
+                        timer.Start();
+                }
+                catch
+                {
+                    tempo = 2;
+                }
             }
         }
 

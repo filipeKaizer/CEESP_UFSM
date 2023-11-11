@@ -108,7 +108,7 @@
                     <ImageBrush ImageSource="/icons/Vector.png"/>
                 </Button.Background>
             </Button>
-            <ComboBox x:Name="CBTimes" Canvas.Left="685" Canvas.Top="10" Width="32" Height="32" BorderBrush="#004A3D3D" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="CBTimes_SelectionChanged" Cursor="Hand" Foreground="#00000000">
+            <ComboBox x:Name="CBTimes" Canvas.Left="685" Canvas.Top="10" Width="32" Height="32" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="CBTimes_SelectionChanged" Cursor="Hand">
                 <ComboBox.Background>
                     <ImageBrush ImageSource="/icons/ri_time-line.png"/>
                 </ComboBox.Background>
