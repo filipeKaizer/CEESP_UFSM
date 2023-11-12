@@ -229,7 +229,7 @@ namespace CEESP_software {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CEESP_software;component/ceesp.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CEESP_software;V1.0.0.0;component/ceesp.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\CEESP.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

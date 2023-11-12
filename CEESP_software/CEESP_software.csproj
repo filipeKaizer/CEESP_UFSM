@@ -49,4 +49,8 @@
     <Resource Include="icons\menos.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Instalador\" />
+  </ItemGroup>
+
 </Project>
