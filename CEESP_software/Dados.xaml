@@ -25,6 +25,22 @@
                     <GridViewColumn Header="Tipo" Width="70" DisplayMemberBinding="{Binding Tipo}"/>
                 </GridView>
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Foreground" Value="White" />
+                    <Style.Triggers>
+                        <!-- Define a cor de fundo quando o item é selecionado -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#00152B7C" />
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#00506ED8" />
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
         <GridSplitter HorizontalAlignment="Left" Height="300" Margin="560,86,0,0" VerticalAlignment="Top" Width="2" Background="#66FFFFFF"/>
         <Button x:Name="btGraph" Content="" HorizontalAlignment="Left" Margin="58,402,0,0" VerticalAlignment="Top" BorderBrush="#00000000" Width="30" Height="30" Foreground="#02000000" Cursor="Hand" Click="btGraph_Click">
