@@ -174,7 +174,7 @@
                     <ImageBrush ImageSource="/icons/menos.png"/>
                 </Button.Background>
             </Button>
-            <Label x:Name="LabelZoom" Content="1x" Canvas.Left="641" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF"/>
+            <Label x:Name="LabelZoom" Content="1x" Canvas.Left="638" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" HorizontalContentAlignment="Center"/>
             <Button x:Name="btGraph" Content="Button" Canvas.Left="57" Canvas.Top="410" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btGraph_Click" Visibility="Collapsed">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/icons/graph.png"/>

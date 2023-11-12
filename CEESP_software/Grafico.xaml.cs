@@ -60,6 +60,7 @@ namespace CEESP_software
 
             this.serialCOM = referenceSerial;
             this.ceesp = ceesp;
+           
         }
 
 
@@ -82,9 +83,9 @@ namespace CEESP_software
             List<Line> objects = new List<Line>
 
             {
-                plot.createVa(valores.getVa(index) * this.zoomScale), //Adiciona Va
-                plot.createIa(valores.getIa(index) * this.zoomScale, valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Ia
-                plot.createXs(valores.getIa(index) * this.zoomScale,valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Xs
+                plot.createVa(valores.getVa(index) * (float)this.zoomScale), //Adiciona Va
+                plot.createIa(valores.getIa(index) * (float)this.zoomScale, valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Ia
+                plot.createXs(valores.getIa(index) * (float)this.zoomScale,valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
 
@@ -130,7 +131,7 @@ namespace CEESP_software
                 try
                 {
                     
-                    string? v = CBTimes.SelectedValue.ToString();
+                    string v = CBTimes.SelectedValue.ToString();
                     string selectedValueString = v;
 
                     this.tempo = int.Parse(selectedValueString[0].ToString());
@@ -249,9 +250,9 @@ namespace CEESP_software
 
         private void ViewZoomMenos_Click(object sender, RoutedEventArgs e)
         {
-            if (this.zoomScale > 0)
+            if (this.zoomScale > 0.2f && this.zoomScale != 0)
             {
-                this.zoomScale -= 0.2f;
+                this.zoomScale -= (float)0.2;
             }
 
             LabelZoom.Content = Math.Round(this.zoomScale, 1).ToString() + "x";

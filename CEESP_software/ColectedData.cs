@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Numerics;
+using System.Windows;
 
 namespace CEESP_software
 {
@@ -6,6 +8,7 @@ namespace CEESP_software
     {
         private float[] Ia;
         private float[] Va;
+        private float[] Ea;
         private float[] FP;
         private float[] CFP;
         private float RPM=0;
@@ -20,6 +23,20 @@ namespace CEESP_software
             this.CFP = CFP;
             this.RPM = RPM;
             this.frequency = frequency;
+
+            float[] EaValues = {0, 0, 0, 0};
+
+            for (int i = 0; i < 4; i++)
+            {
+                float angle = (float)Math.Acos(FP[i]);
+                //                                   R                     Aj
+                Complex complexo = new Complex((Va[i] * FP[i]), (Va[i] * Math.Sin(angle)));
+
+                EaValues[i] = (float)complexo.Real;
+            }
+
+            this.Ea = EaValues;
+
         }
 
         public float getIa(int index)
@@ -69,6 +86,9 @@ namespace CEESP_software
         public void setFP (float valor, int index)
         {
             this.FP[index] = valor;
+
+            this.Ea[index] = calculaEa(index, this.getVa(index), valor);
+
         }
 
         public void setRPM (float valor)
@@ -79,6 +99,8 @@ namespace CEESP_software
         public void setVa (float valor, int index)
         {
             this.Va[index] = valor;
+
+            this.Ea[index] = calculaEa(index, valor, this.getFP(index));
         }
 
         public void setIa (float valor, int index)
@@ -91,9 +113,27 @@ namespace CEESP_software
             return this.tempo;
         }
 
+        public float getEa(int index)
+        {
+            return this.Ea[index];
+        }
+
         public void setTempo(int tempo)
         {
             this.tempo = tempo;
+        }
+
+        private float calculaEa(int i, float Va, float FP)
+        {
+            float Ea = 0;
+
+            float angle = (float)Math.Acos(FP);
+            //                                   R                     Aj
+            Complex complexo = new Complex((Va * FP), (Va * Math.Sin(angle)));
+
+            Ea = (float)complexo.Real;
+
+            return Ea;
         }
     }
 }

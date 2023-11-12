@@ -106,6 +106,7 @@ namespace CEESP_software
                 VaLineSeries.Points.Add(new DataPoint(t, valores.getVa(0)));
                 IaLineSeries.Points.Add(new DataPoint(t, valores.getIa(0)));
                 RPMLineSeries.Points.Add(new DataPoint(t, valores.getRPM()));
+                EaLineSeries.Points.Add(new DataPoint(t, valores.getEa(0)));
             }
             /*--------------------*/
 
@@ -119,6 +120,9 @@ namespace CEESP_software
 
             if (RPM.IsChecked == true)
                 plotModel.Series.Add(RPMLineSeries);
+
+            if (EaCheck.IsChecked == true)
+                plotModel.Series.Add(EaLineSeries);
 
             // Associe o PlotModel ao PlotView
             PlotGraph.Model = plotModel;

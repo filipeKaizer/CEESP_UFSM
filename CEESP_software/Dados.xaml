@@ -18,9 +18,11 @@
                     <GridViewColumn Header="Tempo" Width="50"  DisplayMemberBinding="{Binding Tempo}"/>
                     <GridViewColumn Header="Va" Width="50"  DisplayMemberBinding="{Binding Va}"/>
                     <GridViewColumn Header="Ia" Width="50" DisplayMemberBinding="{Binding Ia}"/>
+                    <GridViewColumn Header="Ea" Width="50" DisplayMemberBinding="{Binding Ea}"/>
                     <GridViewColumn Header="FP" Width="50" DisplayMemberBinding="{Binding FP}"/>
                     <GridViewColumn Header="RPM" Width="50" DisplayMemberBinding="{Binding RPM}"/>
                     <GridViewColumn Header="F" Width="50" DisplayMemberBinding="{Binding F}"/>
+                    <GridViewColumn Header="Tipo" Width="70" DisplayMemberBinding="{Binding Tipo}"/>
                 </GridView>
             </ListView.View>
         </ListView>

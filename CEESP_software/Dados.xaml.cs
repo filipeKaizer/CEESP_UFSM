@@ -92,12 +92,14 @@ namespace CEESP_software
                 item = new ListViewItem();
                 item.Content = new
                 {
-                    Tempo = i.getTempo()+"s",
+                    Tempo = i.getTempo() + "s",
                     Va = i.getVa(0),
                     Ia = i.getIa(0),
+                    Ea = Math.Round(i.getEa(0), 2),
                     FP = Math.Round(i.getFP(0), 2).ToString(),
                     RPM = i.getRPM(),
-                    F = i.getFrequency()
+                    F = i.getFrequency(),
+                    Tipo = (i.getFPType(0) == 'i') ? "Indutivo" : "Capacitivo"
                 };
 
                 ListData.Items.Add(item);
@@ -111,24 +113,32 @@ namespace CEESP_software
                 CultureInfo US = new CultureInfo("en-US");
                 CultureInfo Brazil = new CultureInfo("pt-br");
 
-
                 try
                 {
-                    if (float.TryParse(TBIa.Text, NumberStyles.Float, US, out float Ia))
+                    if (float.TryParse(TBIa.Text, NumberStyles.Float, Brazil, out float Ia))
                         ListData1.colectedData[ListData.SelectedIndex].setIa(Ia, 0);
-                    if (float.TryParse(TBVa.Text, NumberStyles.Float, US, out float Va))
+                    if (float.TryParse(TBVa.Text, NumberStyles.Float, Brazil, out float Va))
                         ListData1.colectedData[ListData.SelectedIndex].setVa(Va, 0);
-                    if (float.TryParse(TBFP.Text, NumberStyles.Float, US, out float FP))
+                    if (float.TryParse(TBFP.Text, NumberStyles.Float, Brazil, out float FP))
                         ListData1.colectedData[ListData.SelectedIndex].setFP(FP, 0);
-                    if (float.TryParse(TBRPM.Text, NumberStyles.Float, US, out float RPM))
+                    if (float.TryParse(TBRPM.Text, NumberStyles.Float, Brazil, out float RPM))
                         ListData1.colectedData[ListData.SelectedIndex].setRPM(RPM);
-                    if (float.TryParse(TBF.Text, NumberStyles.Float, US, out float F))
+                    if (float.TryParse(TBF.Text, NumberStyles.Float, Brazil, out float F))
                         ListData1.colectedData[ListData.SelectedIndex].setFrequency(F);
                     
                     atualizaDados();
+                    this.CEESP.atualizaGraph();
+                    this.CEESP.atualizaGrafico();
+
+                    // Desativa edição
                     btSaveAfterEdit.Visibility = Visibility.Hidden;
                     RetSave.Visibility = Visibility.Hidden;
                     LabelSave.Visibility = Visibility.Hidden;
+                    TBVa.IsEnabled = false;
+                    TBFP.IsEnabled = false;
+                    TBIa.IsEnabled = false;
+                    TBRPM.IsEnabled = false;
+                    TBF.IsEnabled = false;
 
                 } catch
                 {

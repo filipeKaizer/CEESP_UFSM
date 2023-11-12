@@ -118,6 +118,11 @@ namespace CEESP_software
             this.graph.atualizaGraph();
         }
 
+        public void atualizaGrafico()
+        {
+            this.grafico.drawLines();
+        }
+
         public int getTimeRefresh()
         {
             return this.grafico.getRefreshTime();
