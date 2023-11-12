@@ -139,6 +139,7 @@ namespace CEESP_software
                     TBIa.IsEnabled = false;
                     TBRPM.IsEnabled = false;
                     TBF.IsEnabled = false;
+                    edit = false;
 
                 } catch
                 {
@@ -151,7 +152,7 @@ namespace CEESP_software
         {
             if (ListData.SelectedIndex != -1)
             {
-                int p = 2;
+                int p = ListData1.configData.getDecimals();
 
                 float fp = ListData1.colectedData[ListData.SelectedIndex].getFP(0);
                 TBIa.Text = Math.Round(ListData1.colectedData[ListData.SelectedIndex].getIa(0), p).ToString();
@@ -169,7 +170,7 @@ namespace CEESP_software
                     {
                         TBAngle.Text = "0º";
                     } else {
-                        TBAngle.Text = Math.Round(Math.Acos((int)fp)).ToString() + "º";
+                        TBAngle.Text = Math.Round((float)(Math.Acos((float)fp) * 180) / Math.PI, ListData1.configData.getDecimals()).ToString() + "º";
                     }
 
                 } catch
@@ -224,10 +225,11 @@ namespace CEESP_software
                         worksheet.Cells[1, 1].Value = "Tempo";
                         worksheet.Cells[1, 2].Value = "Va";
                         worksheet.Cells[1, 3].Value = "Ia";
-                        worksheet.Cells[1, 4].Value = "FP";
-                        worksheet.Cells[1, 5].Value = "RPM";
-                        worksheet.Cells[1, 6].Value = "Freq.";
-                        worksheet.Cells[1, 7].Value = "Tipo";
+                        worksheet.Cells[1, 4].Value = "Ea";
+                        worksheet.Cells[1, 5].Value = "FP";
+                        worksheet.Cells[1, 6].Value = "RPM";
+                        worksheet.Cells[1, 7].Value = "Freq.";
+                        worksheet.Cells[1, 8].Value = "Tipo";
 
                         // Adiciona os dados
                         int i = 0;
@@ -236,20 +238,22 @@ namespace CEESP_software
                         
                         foreach (ColectedData data in ListData1.colectedData)
                         {
+                            int p = c.getDecimals();
                           //       LINHA/COLUNA -> Valor    | Valor do DB     | Adiciona Unidade se u = true
                             worksheet.Cells[i + 2, 1].Value = data.getTempo() + ((u) ? c.getUnTempo() : "");
-                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), 2) + ((u) ? c.getUnTensao() : "");
-                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), 2) + ((u) ? c.getUnCorrente() : "");
-                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getFP(0), 2);
-                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getRPM(), 2) + ((u) ? c.getUnRPM() : "");
-                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getFrequency(), 2) + ((u) ? c.getUnFreq() : "");
+                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), p) + ((u) ? c.getUnTensao() : "");
+                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), p) + ((u) ? c.getUnCorrente() : "");
+                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getEa(0), p) + ((u) ? c.getUnTensao() : "");
+                            worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFP(0), p);
+                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getRPM(), p) + ((u) ? c.getUnRPM() : "");
+                            worksheet.Cells[i + 2, 7].Value = Math.Round(data.getFrequency(), p) + ((u) ? c.getUnFreq() : "");
 
                             if (data.getFPType(0) == 'i')
-                                worksheet.Cells[i + 2, 6].Value = "Indutiva";
+                                worksheet.Cells[i + 2, 8].Value = "Indutiva";
                             if (data.getFPType(0) == 'c')
-                                worksheet.Cells[i + 2, 6].Value = "Capacitiva";
+                                worksheet.Cells[i + 2, 8].Value = "Capacitiva";
                             if (data.getFPType(0) != 'i' && data.getFPType(0) != 'c')
-                                worksheet.Cells[i + 2, 6].Value = "Resistiva";
+                                worksheet.Cells[i + 2, 8].Value = "Resistiva";
 
                             i++;
                         }

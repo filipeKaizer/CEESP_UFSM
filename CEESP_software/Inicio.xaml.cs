@@ -38,7 +38,7 @@ namespace CEESP_software
         private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             originalBtColor = btRetangulo.Fill;
-            btRetangulo.Fill = Brushes.LightGray;
+            btRetangulo.Fill = Brushes.DarkGray;
         }
 
         private void Button_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
