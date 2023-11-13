@@ -129,16 +129,16 @@ namespace CEESP_software
                                 Va[3] = valor;
                                 break;
                             case "Im":
-                                Ia[0] = valor * ListData1.configData.getIaMultiplier();
+                                Ia[0] = valor;
                                 break;
                             case "Ia":
-                                Ia[1] = valor * ListData1.configData.getIaMultiplier();
+                                Ia[1] = valor;
                                 break;
                             case "Ib":
-                                Ia[2] = valor * ListData1.configData.getIaMultiplier();
+                                Ia[2] = valor;
                                 break;
                             case "Ic":
-                                Ia[3] = valor * ListData1.configData.getIaMultiplier();
+                                Ia[3] = valor;
                                 break;
                             case "FPt":
                                 FP[0] = valor;
@@ -174,30 +174,25 @@ namespace CEESP_software
             // Adicio o tempo corrente baseado no refreshTime
             tempoCorrente += cessp.getTimeRefresh();
 
-            // Verifica se há algum valor nulo e atualiza valores conforme o resultado
-            bool valido = true;
+            // Elimina valores NaN, subtiutuindo por 0
             for (int i = 0; i < 3; i++)
             {
-                if (Va[i].ToString() == "NaN" || Ia[i].ToString() == "NaN")
-                {
-                    valido = false;
-                    break;
-                }
+                if (Va[i].ToString() == "NaN")
+                    Va[i] = 0;
+
+                if (Ia[i].ToString() == "NaN") 
+                    Ia[i] = 0;
+
+                if (CFP[i].ToString() == "NaN")
+                    CFP[i] = 0;
+
+                if (FP[i].ToString() == "NaN")
+                    FP[i] = 0;
             }
             ColectedData colected;
 
-            if (valido)
-            {
-                colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
-            } else
-            {
-                float [] Vn = { 0, 0, 0, 0 };
-                float [] In = { 0, 0, 0, 0 };
-                float[] FPn = { 0, 0, 0, 0 };
-                float[] CFn = { 0, 0, 0, 0 };
-                colected = new ColectedData(Vn, In, FPn, CFn, RPM, frequency);
-            }
-
+            colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
+            
             colected.setTempo(tempoCorrente);
             colected.setXs(this.cessp.getXs());
             this.cessp.setProgressRingStatus(false);
@@ -209,11 +204,20 @@ namespace CEESP_software
             String[] values = new string[13];
             return Task.Run(() =>
             {
-                string message = "";
+                try
+                {
+                    string message = "";
 
-                String response = con.ReadLine();
-                String[] values = response.Split(';');
-
+                    String response = con.ReadLine();
+                    values = response.Split(';');
+                } catch (Exception e)
+                {
+                    for (int i = 0; i < 13; i++)
+                    {
+                        values[i] = "NaN";
+                    }
+                    MessageBox.Show("Falha na comunicação");
+                }
                 return values;
             });
         }

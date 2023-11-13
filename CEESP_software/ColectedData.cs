@@ -67,12 +67,14 @@ namespace CEESP_software
 
             switch (type)
             {
+                case 0:
+                    return 'r';
                 case 1:
                     return 'i';
                 case 2:
                     return 'c';
                 default:
-                    return 'i';
+                    return ' ';
             }
         }
 

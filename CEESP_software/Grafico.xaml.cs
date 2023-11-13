@@ -93,7 +93,9 @@ namespace CEESP_software
             VaValue.Content = "Va: " + Math.Round(valores.getVa(index), ListData1.configData.getDecimals()).ToString() + "V";
             IaValue.Content = "Ia: " + Math.Round(valores.getIa(index), ListData1.configData.getDecimals()).ToString() + "A";
             XsIaValue.Content = "XsIa: " + Math.Round((valores.getIa(index) * ListData1.configData.getXs()), ListData1.configData.getDecimals()).ToString() + "V";
-            FPValue.Content = "FP: " + Math.Round(valores.getFP(index), ListData1.configData.getDecimals()).ToString() + valores.getFPType(index);
+            
+            string FPv = Math.Round(valores.getFP(index), ListData1.configData.getDecimals()).ToString();
+            FPValue.Content = "FP: " + FPv + ((FPv != "1") ? valores.getFPType(index) : 'r');
 
             // Adiciona as linhas
             foreach (Line i in objects)
@@ -130,7 +132,6 @@ namespace CEESP_software
             {
                 try
                 {
-                    
                     string v = CBTimes.SelectedValue.ToString();
                     string selectedValueString = v;
 
