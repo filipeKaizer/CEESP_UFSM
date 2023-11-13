@@ -1,9 +1,10 @@
-﻿<Page x:Class="CEESP_software.Grafico"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CEESP_software"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CEESP_software.Grafico"
       mc:Ignorable="d" 
       d:DesignHeight="450"
       Title="Grafico" Width="798">
@@ -157,24 +158,8 @@
                 <Rectangle x:Name="l8" Fill="#FF3D0D2C" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.1,0.533" Margin="291,7,0,0"/>
                 <TextBlock x:Name="l9" TextWrapping="Wrap" Text="φ" Foreground="#FFB2B6B2" FontFamily="Open Sans" FontSize="20" Height="27" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="316,0,0,0"/>
             </Grid>
-            <Rectangle Height="30" Canvas.Left="573" Canvas.Top="410" Width="100" Fill="#0CD9D9D9"/>
-            <Button x:Name="ViewZoomMais" Content="Button" Canvas.Left="583" Canvas.Top="415" Cursor="Hand" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="20" Width="20" Click="ViewZoomMais_Click">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/icons/mais.png"/>
-                </Button.OpacityMask>
-                <Button.Background>
-                    <ImageBrush ImageSource="/icons/mais.png" Stretch="Fill"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="ViewZoomMenos" Content="Button" Canvas.Left="613" Canvas.Top="415" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="ViewZoomMenos_Click">
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="/icons/menos.png"/>
-                </Button.OpacityMask>
-                <Button.Background>
-                    <ImageBrush ImageSource="/icons/menos.png"/>
-                </Button.Background>
-            </Button>
-            <Label x:Name="LabelZoom" Content="1x" Canvas.Left="638" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" HorizontalContentAlignment="Center"/>
+            <Rectangle Height="30" Canvas.Left="573" Canvas.Top="410" Width="140" Fill="#0CD9D9D9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label x:Name="LabelZoom" Content="1x" Canvas.Left="678" Canvas.Top="412" FontFamily="Algerian" Background="{x:Null}" Foreground="#FFAFAFAF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="35" HorizontalContentAlignment="Center"/>
             <Button x:Name="btGraph" Content="Button" Canvas.Left="57" Canvas.Top="410" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btGraph_Click" Visibility="Collapsed">
                 <Button.OpacityMask>
                     <ImageBrush ImageSource="/icons/graph.png"/>
@@ -183,11 +168,8 @@
                     <ImageBrush ImageSource="/icons/graph.png"/>
                 </Button.Background>
             </Button>
-            <Slider Canvas.Left="573" Canvas.Top="375" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="#FFE25E5E" BorderBrush="{x:Null}" IsDirectionReversed="True" Value="5">
-                <Slider.Ticks>
-                    <DoubleCollection>0, 1, 10</DoubleCollection>
-                </Slider.Ticks>
-            </Slider>
+            <Slider x:Name="Slider" Canvas.Left="578" Canvas.Top="417" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}" IsDirectionReversed="True" Value="1" HorizontalContentAlignment="Center" Height="16" ValueChanged="Slider_ValueChanged" FlowDirection="RightToLeft" SmallChange="0.20" Ticks="0, 1, 10"/>
+            <mah:ProgressRing x:Name="LoadingRing" Canvas.Left="658" Canvas.Top="16" VerticalAlignment="Top" Foreground="#B2255BB1" Width="20" Height="20" HorizontalAlignment="Left" />
         </Canvas>
     </Grid>
 </Page>

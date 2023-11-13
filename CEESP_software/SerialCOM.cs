@@ -171,13 +171,35 @@ namespace CEESP_software
                     }
                 }
             }
-
             // Adicio o tempo corrente baseado no refreshTime
             tempoCorrente += cessp.getTimeRefresh();
-            
-            ColectedData colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
-            colected.setTempo(tempoCorrente);            
 
+            // Verifica se há algum valor nulo e atualiza valores conforme o resultado
+            bool valido = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (Va[i].ToString() == "NaN" || Ia[i].ToString() == "NaN")
+                {
+                    valido = false;
+                    break;
+                }
+            }
+            ColectedData colected;
+
+            if (valido)
+            {
+                colected = new ColectedData(Ia, Va, FP, CFP, RPM, frequency);
+            } else
+            {
+                float [] Vn = { 0, 0, 0, 0 };
+                float [] In = { 0, 0, 0, 0 };
+                float[] FPn = { 0, 0, 0, 0 };
+                float[] CFn = { 0, 0, 0, 0 };
+                colected = new ColectedData(Vn, In, FPn, CFn, RPM, frequency);
+            }
+
+            colected.setTempo(tempoCorrente);
+            this.cessp.setProgressRingStatus(false);
             return colected;
         }
 

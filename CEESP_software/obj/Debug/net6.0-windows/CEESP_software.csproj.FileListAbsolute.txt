@@ -156,3 +156,6 @@ C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\MaterialDesignColors.d
 C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\ControlzEx.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\MahApps.Metro.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\de\MahApps.Metro.resources.dll

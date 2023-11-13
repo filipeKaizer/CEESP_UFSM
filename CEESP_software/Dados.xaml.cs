@@ -103,6 +103,7 @@ namespace CEESP_software
                 };
 
                 ListData.Items.Add(item);
+                TextNItens.Text = "Itens: " + ListData1.colectedData.Count;
             }
         }
 

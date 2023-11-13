@@ -191,6 +191,11 @@ namespace CEESP_software
             this.inicio.setProgress(texto, progresso, ativo);
         }
 
+        public void setProgressRingStatus(bool status)
+        {
+            this.grafico.setProgressRingStatus(status);
+        }
+
 
     }
 }

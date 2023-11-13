@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "vfbqyRXsRAVc+iATge7G8xamjzEoaW0gJ1eSyZZKXADNe2SupPtn2onScZXN34mOi/9/pC5sKHe1BCNyOlF72g==",
+  "dgSpecHash": "2YbH0XQVMpoI21pWyLZ5e6Sg+JxHNgFiDeSUO4zQtiCNE8GHThm+4SnqPdM0Z0Y+7fKezSNeQzhZmr8phpO/rQ==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\CEESP\\CEESP_software\\CEESP_software.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\filip\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\epplus.core\\1.5.4\\epplus.core.1.5.4.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\jesse.json\\6.0.0\\jesse.json.6.0.0.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\jesse.json.settings\\6.0.1\\jesse.json.settings.6.0.1.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\jesse.materialdesignthemes\\6.0.1\\jesse.materialdesignthemes.6.0.1.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\jesse.windowsdesktop\\6.3.1\\jesse.windowsdesktop.6.3.1.nupkg.sha512",
+    "C:\\Users\\filip\\.nuget\\packages\\mahapps.metro\\2.4.10\\mahapps.metro.2.4.10.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\materialdesignthemes.wpf\\1.0.1\\materialdesignthemes.wpf.1.0.1.nupkg.sha512",

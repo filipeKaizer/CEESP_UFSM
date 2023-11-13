@@ -92,5 +92,6 @@
         <TextBox x:Name="TBFP" HorizontalAlignment="Left" Margin="653,148,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
         <TextBlock HorizontalAlignment="Left" Margin="599,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Times New Roman" FontSize="20" Text="Freq:"/>
         <TextBox x:Name="TBF" HorizontalAlignment="Left" Margin="653,196,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="112" Height="19" Background="#2BFFFFFF" SelectionBrush="{x:Null}" Foreground="#FFF3F2F2" IsEnabled="False"/>
+        <TextBlock x:Name="TextNItens" HorizontalAlignment="Left" Margin="474,391,0,0" TextWrapping="Wrap" Text="Itens: 0" VerticalAlignment="Top" Foreground="#FFC3C3C3" Width="64" Height="10" FontSize="10" FontFamily="Arial Black" TextAlignment="Center"/>
     </Grid>
 </Page>

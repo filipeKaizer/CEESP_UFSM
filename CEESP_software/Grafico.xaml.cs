@@ -101,7 +101,7 @@ namespace CEESP_software
                 Graph.Children.Add(i);
             }
             oldLines = objects;
-            ;
+
         }
 
         public void InitializeTime(int n)
@@ -197,6 +197,7 @@ namespace CEESP_software
         {
             if (true)
             {
+                LoadingRing.IsActive = true;
                 // Realiza leitura no serialCOM e atualiza o colectedData
                 ListData1.colectedData.Add(await serialCOM.readValues());
 
@@ -208,6 +209,7 @@ namespace CEESP_software
 
                 // Atualiza o CBRelatorio
                 this.ceesp.atualizaCBRelatorio();
+
 
                 if (ListData1.colectedData.Count > 0)
                 {
@@ -228,47 +230,6 @@ namespace CEESP_software
             this.plot.setXs(XsValue);
         }
 
-        private void ViewZoomMais_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.zoomScale < 10)
-            {
-                this.zoomScale += 0.2f;
-            }
-
-            LabelZoom.Content = Math.Round(this.zoomScale, 1).ToString() + "x";
-
-            // Se houver dados já lidos, atualiza
-            if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
-            {
-                try
-                {
-                    drawLines();
-                }
-                catch
-                {
-
-                }
-            }
-        }
-
-        private void ViewZoomMenos_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.zoomScale > 0.2f && this.zoomScale != 0)
-            {
-                this.zoomScale -= (float)0.2;
-            }
-
-            LabelZoom.Content = Math.Round(this.zoomScale, 1).ToString() + "x";
-
-            if (ListData1.colectedData.Count != 0 && zoomScale > 0 && zoomScale < 10)
-            {
-                try
-                {
-                    drawLines();
-                }
-                catch { }
-            }
-        }
 
         // Sistema de refresh automático
         public void AutoRefreshInit()
@@ -289,6 +250,19 @@ namespace CEESP_software
         private void btGraph_Click(object sender, RoutedEventArgs e)
         {
             this.ceesp.SetPage(5, true);
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.zoomScale = (float)Slider.Value;
+            LabelZoom.Content = Math.Round(Slider.Value, 1) + "x";
+            if (ListData1.colectedData.Count > 0)
+                drawLines();
+        }
+
+        public void setProgressRingStatus(bool status)
+        {
+            this.LoadingRing.IsActive = status;
         }
     }
 }

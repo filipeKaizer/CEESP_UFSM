@@ -35,7 +35,7 @@ namespace CEESP_software
             // Valores
             this.XsDefault = 5.0f;
             this.decimals = 2;
-            this.IaMultiplier = 10;
+            this.IaMultiplier = 5;
 
             // Grafico
             this.centerX = 250;
