@@ -16,6 +16,8 @@ namespace CEESP_software
         private SerialCOM serialCOM;
         private Brush originalBtColor;
 
+        private float XsValue;
+
         private CEESP ceesp;
 
         Storyboard connectAnim;
@@ -80,7 +82,7 @@ namespace CEESP_software
                     verbose.Visibility = Visibility.Hidden;
                     float XsValue = float.Parse(Xs.Text);
                     this.grafico.setXs(XsValue);
-
+                    this.XsValue = XsValue;
                     // Inicializa a atualização automática
                     this.grafico.AutoRefreshInit();
                 }
@@ -94,6 +96,10 @@ namespace CEESP_software
             }
         }
 
+        public float getXs()
+        {
+            return this.XsValue;
+        }
         private void LPorts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!connectAnimStatus)

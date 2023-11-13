@@ -93,12 +93,12 @@ namespace CEESP_software
                 item.Content = new
                 {
                     Tempo = i.getTempo() + "s",
-                    Va = i.getVa(0),
-                    Ia = i.getIa(0),
+                    Va = Math.Round(i.getVa(0), 2),
+                    Ia = Math.Round(i.getIa(0), 2),
                     Ea = Math.Round(i.getEa(0), 2),
                     FP = Math.Round(i.getFP(0), 2).ToString(),
-                    RPM = i.getRPM(),
-                    F = i.getFrequency(),
+                    RPM = Math.Round(i.getRPM(), 2),
+                    F = Math.Round(i.getFrequency(), 2),
                     Tipo = (i.getFPType(0) == 'i') ? "Indutivo" : "Capacitivo"
                 };
 

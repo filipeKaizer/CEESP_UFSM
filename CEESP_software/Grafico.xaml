@@ -169,7 +169,7 @@
                 </Button.Background>
             </Button>
             <Slider x:Name="Slider" Canvas.Left="578" Canvas.Top="417" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}" IsDirectionReversed="True" Value="1" HorizontalContentAlignment="Center" Height="16" ValueChanged="Slider_ValueChanged" FlowDirection="RightToLeft" SmallChange="0.20" Ticks="0, 1, 10"/>
-            <mah:ProgressRing x:Name="LoadingRing" Canvas.Left="658" Canvas.Top="16" VerticalAlignment="Top" Foreground="#B2255BB1" Width="20" Height="20" HorizontalAlignment="Left" />
+            <mah:ProgressRing x:Name="LoadingRing" Canvas.Left="658" Canvas.Top="16" VerticalAlignment="Top" Foreground="#B2255BB1" Width="20" Height="20" HorizontalAlignment="Left" IsActive="False" />
         </Canvas>
     </Grid>
 </Page>

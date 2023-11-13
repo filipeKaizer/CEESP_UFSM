@@ -15,6 +15,8 @@ namespace CEESP_software
         private float frequency = 0;
         private int tempo=0;
 
+        private float Xs = 5;
+
         public ColectedData(float[] Ia, float[] Va, float[] FP, float[] CFP, float RPM, float frequency)
         {
             this.Ia = Ia;
@@ -30,9 +32,14 @@ namespace CEESP_software
             {
                 float angle = (float)Math.Acos(FP[i]);
                 //                                   R                     Aj
-                Complex complexo = new Complex((Va[i] * FP[i]), (Va[i] * Math.Sin(angle)));
+                //Complex complexo = new Complex((Va[i] * FP[i]), (Va[i] * Math.Sin(angle)));
+                //float Ea = 
 
-                EaValues[i] = (float)complexo.Real;
+
+                if (CFP[i] == 1)
+                    EaValues[i] = (this.Xs * Ia[i]) + Va[i];
+                if (CFP[i] == 2)
+                    EaValues[i] =  Va[i] - (this.Xs * Ia[i]);
             }
 
             this.Ea = EaValues;
@@ -134,6 +141,11 @@ namespace CEESP_software
             Ea = (float)complexo.Real;
 
             return Ea;
+        }
+
+        public void setXs(float Xs)
+        {
+            this.Xs = Xs;
         }
     }
 }

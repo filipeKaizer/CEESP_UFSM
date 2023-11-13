@@ -199,6 +199,7 @@ namespace CEESP_software
             }
 
             colected.setTempo(tempoCorrente);
+            colected.setXs(this.cessp.getXs());
             this.cessp.setProgressRingStatus(false);
             return colected;
         }

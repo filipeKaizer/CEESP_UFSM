@@ -95,8 +95,14 @@ namespace CEESP_software
             };
             /*-------------------------*/
 
-            /* ADICIONA OS PONTOS */
-            List<ColectedData> data = ListData1.colectedData;
+            /* ADICIONA OS PONTOS IGNORANDO OS NULOS */
+            List<ColectedData> data = new List<ColectedData>(); 
+
+            foreach (ColectedData i in ListData1.colectedData)
+            {
+                if (i.getVa(0) != 0 && i.getVa(1) != 0 && i.getVa(2) != 0 && i.getVa(3) != 0)
+                    data.Add(i);
+            }
 
             for (int i = 0; i < data.Count; i++)
             {

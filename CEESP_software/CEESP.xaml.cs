@@ -196,6 +196,9 @@ namespace CEESP_software
             this.grafico.setProgressRingStatus(status);
         }
 
-
+        public float getXs()
+        {
+            return this.inicio.getXs();
+        }
     }
 }
