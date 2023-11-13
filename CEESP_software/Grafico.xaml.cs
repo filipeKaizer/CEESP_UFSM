@@ -206,6 +206,9 @@ namespace CEESP_software
                 // Atualiza o Graph
                 this.ceesp.atualizaGraph();
 
+                // Atualiza o CBRelatorio
+                this.ceesp.atualizaCBRelatorio();
+
                 if (ListData1.colectedData.Count > 0)
                 {
                     try

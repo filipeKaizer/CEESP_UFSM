@@ -22,6 +22,9 @@
     <Compile Update="Inicio.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Relatorio.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CEESP.xaml">
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Relatorio.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

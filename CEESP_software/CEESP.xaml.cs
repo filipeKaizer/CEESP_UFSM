@@ -18,6 +18,7 @@ namespace CEESP_software
         public Inicio inicio;
         public Dados dados;
         public Graph graph;
+        public Relatorio relatorio;
 
         private Brush rtColorInicio;
         private Brush rtColorGrafico;
@@ -34,11 +35,13 @@ namespace CEESP_software
             this.inicio = new Inicio(this.grafico, this, this.serialCOM);
             this.dados = new Dados(this);
             this.graph = new Graph(this);
+            this.relatorio = new Relatorio(this, this.grafico);
 
 
             //Associa cada frame do tabcontrol Work a uma pagina.
             FrameInicio.Navigate(this.inicio);
             FrameGraficos.Navigate(this.grafico);
+            FrameRelatorio.Navigate(this.relatorio);
             FrameDados.Navigate(this.dados);
             FrameGraphPlot.Navigate(this.graph);
 
@@ -166,6 +169,11 @@ namespace CEESP_software
         public void atualizaGrafico()
         {
             this.grafico.drawLines();
+        }
+
+        public void atualizaCBRelatorio()
+        {
+            this.relatorio.atualizaCB();
         }
 
         public int getTimeRefresh()

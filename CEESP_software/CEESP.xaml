@@ -289,7 +289,6 @@
                 <Frame Name="FrameGraphPlot" NavigationUIVisibility="Hidden"/>
             </TabItem>
 
-
         </TabControl>
 
         <Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="458" Stroke="Black" VerticalAlignment="Top" Width="160" Fill="#4C010101" RenderTransformOrigin="0.5,0.5">
@@ -412,7 +411,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btRelat" HorizontalAlignment="Left" Margin="30,273,0,0" VerticalAlignment="Top" Background="#00000000" BorderBrush="#00000000" Height="30" Width="100" Foreground="#00000000" OpacityMask="#00000000" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseEnter="btRelatorio_MouseEnter" MouseLeave="btRelatorio_MouseLeave">
+        <Button x:Name="btRelat" HorizontalAlignment="Left" Margin="30,273,0,0" VerticalAlignment="Top" Background="#00000000" BorderBrush="#00000000" Height="30" Width="100" Foreground="#00000000" OpacityMask="#00000000" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseEnter="btRelatorio_MouseEnter" MouseLeave="btRelatorio_MouseLeave" Click="btRelatorio_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
