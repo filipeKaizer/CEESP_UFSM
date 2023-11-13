@@ -9,11 +9,27 @@
       Title="Relatorio">
 
     <Grid>
-        <ComboBox x:Name="CBValores" BorderBrush="#00ACACAC" OpacityMask="#191E1E1E" Background="#191E1E1E" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,53,0,367" Foreground="White" FontFamily="Times New Roman" Width="250" HorizontalAlignment="Center" FontSize="20">
+        <ComboBox x:Name="CBValores" BorderBrush="{x:Null}" OpacityMask="#191E1E1E" Background="#191E1E1E" Cursor="Hand" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,53,0,367" Foreground="White" FontFamily="Times New Roman" Width="250" HorizontalAlignment="Center" FontSize="20">
+            <ComboBox.Resources>
+                <!-- Definindo um estilo para os itens do ComboBox -->
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Green"/>
+                        </Trigger>
+                        <!-- Gatilho para alterar a cor de fundo quando o ComboBox estiver aberto -->
+                        <Trigger Property="ComboBox.IsDropDownOpen" Value="True">
+                            <Setter Property="Background" Value="#FA191443"/>
+                        </Trigger>
+                        <!-- Gatilho para restaurar a cor de fundo quando o ComboBox estiver fechado -->
+                        <Trigger Property="ComboBox.IsDropDownOpen" Value="False">
+                            <Setter Property="Background" Value="#FA191443"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ComboBox.Resources>
             <ComboBoxItem Content="Media"/>
-            <ComboBoxItem Cursor="Hand" Content="Fase A"/>
-            <ComboBoxItem Content="Fase B"/>
-            <ComboBoxItem Cursor="Hand" Content="Fase C"/>
         </ComboBox>
         <Rectangle x:Name="RtRelatorio" Height="230" Margin="0,0,0,88" Stroke="#59456F7C" VerticalAlignment="Bottom" Fill="#197578D6" HorizontalAlignment="Center" Width="250" RadiusX="10" RadiusY="10"/>
         <CheckBox x:Name="CKMostRecent" Content="Mais recente" HorizontalAlignment="Center" Margin="0,92,0,0" VerticalAlignment="Top" Foreground="#CC89959A" FontSize="11" Height="16" Width="84" BorderBrush="{x:Null}" Background="#CCAB9C9C" Checked="CKMostRecent_Checked"/>
@@ -21,6 +37,8 @@
         <Grid Width="250" Height="230" Margin="540,132,10,88" Background="#197578D6" HorizontalAlignment="Center" VerticalAlignment="Center">
             <GridSplitter HorizontalAlignment="Center" Height="1" Margin="0,28,0,0" VerticalAlignment="Top" Width="190" Background="#FF494C87" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{x:Null}"/>
             <TextBlock HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="Opções" VerticalAlignment="Top" Foreground="#D89BADB2" FontFamily="Britannic Bold" FontSize="15"/>
+            <GridSplitter HorizontalAlignment="Center" Height="60" Margin="0,160,0,0" VerticalAlignment="Top" Width="1" Background="#FF494C87" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{x:Null}"/>
+            <CheckBox HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" Height="15" Width="190" Checked="CheckBox_Checked" BorderBrush="{x:Null}" Background="#CCFFFFFF" Content="Diagrama fasorial" FontSize="8" VerticalContentAlignment="Center" FontFamily="Bodoni MT" Foreground="#CCFFFFFF"/>
         </Grid>
     </Grid>
 </Page>

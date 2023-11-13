@@ -84,8 +84,8 @@ namespace CEESP_software
 
             {
                 plot.createVa(valores.getVa(index) * (float)this.zoomScale), //Adiciona Va
-                plot.createIa(valores.getIa(index) * (float)this.zoomScale, valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Ia
-                plot.createXs(valores.getIa(index) * (float)this.zoomScale,valores.getFP(index) * this.zoomScale, valores.getFPType(index)), //Adiciona Xs
+                plot.createIa(valores.getIa(index) * (float)this.zoomScale, valores.getFP(index), valores.getFPType(index)), //Adiciona Ia
+                plot.createXs(valores.getIa(index) * (float)this.zoomScale,valores.getFP(index), valores.getFPType(index)), //Adiciona Xs
                 plot.createEa() //Adiciona Ea
             };
 
@@ -217,7 +217,7 @@ namespace CEESP_software
                     }
                     catch (Exception error)
                     {
-                        MessageBox.Show("Dados inválidos. Verifique se o módulo está conectado e ativo. \n" + error.Message);
+                        //MessageBox.Show("Dados inválidos. Verifique se o módulo está conectado e ativo. \n" + error.Message);
                     }
                 }
             }

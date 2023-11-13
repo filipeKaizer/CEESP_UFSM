@@ -49,6 +49,18 @@
               "target": "Package",
               "version": "[1.5.4, )"
             },
+            "Jesse.MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "MaterialDesignThemes.Wpf": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "NumericUpDown": {
               "target": "Package",
               "version": "[3.0.2, )"

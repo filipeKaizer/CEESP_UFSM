@@ -148,3 +148,11 @@ C:\Projetos\CEESP\CEESP_software\obj\Debug\net6.0-windows\CEESP_software.genrunt
 C:\Projetos\CEESP\CEESP_software\obj\Debug\net6.0-windows\ref\CEESP_software.dll
 C:\Projetos\CEESP\CEESP_software\obj\Debug\net6.0-windows\Relatorio.g.cs
 C:\Projetos\CEESP\CEESP_software\obj\Debug\net6.0-windows\Relatorio.baml
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Jesse.Json.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Jesse.Json.Settings.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Jesse.MaterialDesignThemes.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Jesse.WindowsDesktop.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Projetos\CEESP\CEESP_software\bin\Debug\net6.0-windows\System.Text.Json.dll

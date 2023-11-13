@@ -183,6 +183,11 @@
                     <ImageBrush ImageSource="/icons/graph.png"/>
                 </Button.Background>
             </Button>
+            <Slider Canvas.Left="573" Canvas.Top="375" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" Foreground="#FFE25E5E" BorderBrush="{x:Null}" IsDirectionReversed="True" Value="5">
+                <Slider.Ticks>
+                    <DoubleCollection>0, 1, 10</DoubleCollection>
+                </Slider.Ticks>
+            </Slider>
         </Canvas>
     </Grid>
 </Page>

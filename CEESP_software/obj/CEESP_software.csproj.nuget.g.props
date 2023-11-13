@@ -15,5 +15,7 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgOxyPlot_Wpf Condition=" '$(PkgOxyPlot_Wpf)' == '' ">C:\Users\filip\.nuget\packages\oxyplot.wpf\2.1.2</PkgOxyPlot_Wpf>
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\filip\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39</PkgMicrosoft_Xaml_Behaviors_Wpf>
+    <PkgMaterialDesignThemes Condition=" '$(PkgMaterialDesignThemes)' == '' ">C:\Users\filip\.nuget\packages\materialdesignthemes\4.9.0</PkgMaterialDesignThemes>
   </PropertyGroup>
 </Project>
