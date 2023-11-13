@@ -30,12 +30,6 @@ namespace CEESP_software
 
             for (int i = 0; i < 4; i++)
             {
-                float angle = (float)Math.Acos(FP[i]);
-                //                                   R                     Aj
-                //Complex complexo = new Complex((Va[i] * FP[i]), (Va[i] * Math.Sin(angle)));
-                //float Ea = 
-
-
                 if (CFP[i] == 1)
                     EaValues[i] = (this.Xs * Ia[i]) + Va[i];
                 if (CFP[i] == 2)
@@ -74,7 +68,7 @@ namespace CEESP_software
                 case 2:
                     return 'c';
                 default:
-                    return ' ';
+                    return '?';
             }
         }
 

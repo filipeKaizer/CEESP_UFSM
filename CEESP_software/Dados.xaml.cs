@@ -99,7 +99,7 @@ namespace CEESP_software
                     FP = Math.Round(i.getFP(0), 2).ToString(),
                     RPM = Math.Round(i.getRPM(), 2),
                     F = Math.Round(i.getFrequency(), 2),
-                    Tipo = (i.getFPType(0) == 'i') ? "Indutivo" : "Capacitivo"
+                    Tipo = (i.getFP(0) == 1) ? "Resisitivo" : ((i.getFPType(0) == 'i') ? "Indutivo" : "Capacitivo")
                 };
 
                 ListData.Items.Add(item);
@@ -241,20 +241,22 @@ namespace CEESP_software
                         {
                             int p = c.getDecimals();
                           //       LINHA/COLUNA -> Valor    | Valor do DB     | Adiciona Unidade se u = true
-                            worksheet.Cells[i + 2, 1].Value = data.getTempo() + ((u) ? c.getUnTempo() : "");
-                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), p) + ((u) ? c.getUnTensao() : "");
-                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), p) + ((u) ? c.getUnCorrente() : "");
-                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getEa(0), p) + ((u) ? c.getUnTensao() : "");
+                            worksheet.Cells[i + 2, 1].Value = data.getTempo();
+                            worksheet.Cells[i + 2, 2].Value = Math.Round(data.getVa(0), p);
+                            worksheet.Cells[i + 2, 3].Value = Math.Round(data.getIa(0), p);
+                            worksheet.Cells[i + 2, 4].Value = Math.Round(data.getEa(0), p);
                             worksheet.Cells[i + 2, 5].Value = Math.Round(data.getFP(0), p);
-                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getRPM(), p) + ((u) ? c.getUnRPM() : "");
-                            worksheet.Cells[i + 2, 7].Value = Math.Round(data.getFrequency(), p) + ((u) ? c.getUnFreq() : "");
+                            worksheet.Cells[i + 2, 6].Value = Math.Round(data.getRPM(), p);
+                            worksheet.Cells[i + 2, 7].Value = Math.Round(data.getFrequency(), p);
 
-                            if (data.getFPType(0) == 'i')
-                                worksheet.Cells[i + 2, 8].Value = "Indutiva";
-                            if (data.getFPType(0) == 'c')
-                                worksheet.Cells[i + 2, 8].Value = "Capacitiva";
-                            if (data.getFPType(0) != 'i' && data.getFPType(0) != 'c')
+                            if (data.getFP(0) == 1)
                                 worksheet.Cells[i + 2, 8].Value = "Resistiva";
+                            else if (data.getFPType(0) == 'i')
+                                worksheet.Cells[i + 2, 8].Value = "Indutiva";
+                            else if (data.getFPType(0) == 'c')
+                                worksheet.Cells[i + 2, 8].Value = "Capacitiva";
+                            else if (data.getFPType(0) == '?')
+                                worksheet.Cells[i + 2, 8].Value = "Inválido";
 
                             i++;
                         }
